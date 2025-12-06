@@ -73,7 +73,7 @@
 
     .btn-primary {
       display: inline-block;
-      background: #f97316;
+      background: #ef4444;          /* rouge */
       color: #fff;
       padding: 9px 16px;
       border-radius: 999px;
@@ -87,8 +87,25 @@
 
     .btn-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 8px 18px rgba(249, 115, 22, 0.35);
-      background: #ea580c;
+      box-shadow: 0 8px 18px rgba(239, 68, 68, 0.45);
+      background: #dc2626;
+    }
+
+    .btn-outline {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 9px 16px;
+      border: 1px solid #ffffff33;
+      color: #f9fafb;
+      font-size: 0.9rem;
+      cursor: pointer;
+      background: transparent;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-outline:hover {
+      background: #ffffff11;
+      border-color: #ffffff66;
     }
 
     /* HERO */
@@ -153,23 +170,6 @@
       flex-wrap: wrap;
       gap: 10px;
       align-items: center;
-    }
-
-    .btn-outline {
-      display: inline-block;
-      border-radius: 999px;
-      padding: 9px 16px;
-      border: 1px solid #ffffff33;
-      color: #f9fafb;
-      font-size: 0.9rem;
-      cursor: pointer;
-      background: transparent;
-      transition: background 0.15s ease, border-color 0.15s ease;
-    }
-
-    .btn-outline:hover {
-      background: #ffffff11;
-      border-color: #ffffff66;
     }
 
     .hero-card {
@@ -310,6 +310,24 @@
       align-items: center;
     }
 
+    /* ANIMATIONS AU SCROLL */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in-right {
+      opacity: 0;
+      transform: translateX(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .visible {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
     @media (max-width: 768px) {
       .hero-grid {
         grid-template-columns: 1fr;
@@ -336,7 +354,7 @@
 <body>
   <header>
     <div class="container nav">
-      <div class="logo">Rapid Auto Plus</div>
+      <a href="#top" class="logo">Rapid Auto Plus</a>
       <nav class="nav-links">
         <a href="#services">Services</a>
         <a href="#process">Comment ça marche</a>
@@ -349,9 +367,9 @@
 
   <main>
     <!-- HERO -->
-    <section class="hero" id="top">
+    <section class="hero fade-in" id="top">
       <div class="container hero-grid">
-        <div>
+        <div class="fade-in">
           <div class="hero-tag">
             <span></span>
             <div>Remplacement de pare-brise à domicile</div>
@@ -374,7 +392,7 @@
           </div>
         </div>
 
-        <aside class="hero-card">
+        <aside class="hero-card fade-in-right">
           <h2>Interventions à partir de Versailles</h2>
           <p>
             Adresse de départ des interventions :
@@ -395,7 +413,7 @@
 
     <!-- SERVICES -->
     <section id="services">
-      <div class="container">
+      <div class="container fade-in">
         <h2 class="section-title">Nos services</h2>
         <p class="section-subtitle">
           Rapid Auto Plus est spécialisé dans le remplacement de pare-brise à
@@ -404,7 +422,7 @@
         </p>
 
         <div class="cards">
-          <div class="card">
+          <div class="card fade-in">
             <h3><span>🚘</span> Remplacement de pare-brise</h3>
             <p>
               Remplacement complet du pare-brise à votre domicile ou sur votre
@@ -412,7 +430,7 @@
               constructeur.
             </p>
           </div>
-          <div class="card">
+          <div class="card fade-in">
             <h3><span>✅</span> Contrôle et sécurisation</h3>
             <p>
               Vérification de l’étanchéité, de la fixation et de la visibilité
@@ -420,7 +438,7 @@
               sécurité.
             </p>
           </div>
-          <div class="card">
+          <div class="card fade-in">
             <h3><span>📄</span> Accompagnement administratif</h3>
             <p>
               Conseils sur les démarches à effectuer auprès de votre assurance
@@ -433,7 +451,7 @@
 
     <!-- PROCESS -->
     <section id="process">
-      <div class="container">
+      <div class="container fade-in">
         <h2 class="section-title">Comment ça se passe ?</h2>
         <p class="section-subtitle">
           Un processus simple pour programmer votre remplacement de pare-brise
@@ -441,28 +459,28 @@
         </p>
 
         <div class="steps">
-          <div class="step">
+          <div class="step fade-in">
             <strong>1. Vous nous contactez</strong>
             <p>
               Par téléphone ou via le formulaire, vous indiquez le modèle de
               votre véhicule et le dommage constaté sur le pare-brise.
             </p>
           </div>
-          <div class="step">
+          <div class="step fade-in">
             <strong>2. Devis et rendez-vous</strong>
             <p>
               Nous vous communiquons un prix indicatif et vous proposons un
               créneau d’intervention selon vos disponibilités.
             </p>
           </div>
-          <div class="step">
+          <div class="step fade-in">
             <strong>3. Intervention à domicile</strong>
             <p>
               Le jour convenu, nous nous déplaçons à l’adresse indiquée avec le
               matériel nécessaire pour remplacer votre pare-brise.
             </p>
           </div>
-          <div class="step">
+          <div class="step fade-in">
             <strong>4. Contrôle final</strong>
             <p>
               Nous vérifions l’étanchéité, la fixation et la propreté de la
@@ -475,7 +493,7 @@
 
     <!-- ZONE -->
     <section id="zone">
-      <div class="container info-grid">
+      <div class="container info-grid fade-in">
         <div class="info-block">
           <h2 class="section-title" style="text-align:left;margin-bottom:8px;">
             Zone d’intervention
@@ -495,7 +513,7 @@
           </p>
         </div>
 
-        <div class="contact-box">
+        <div class="contact-box fade-in-right">
           <p><strong>Adresse :</strong></p>
           <p>
             Rapid Auto Plus<br />
@@ -512,7 +530,7 @@
 
     <!-- CONTACT -->
     <section id="contact">
-      <div class="container info-grid">
+      <div class="container info-grid fade-in">
         <div class="info-block">
           <h2 class="section-title" style="text-align:left;margin-bottom:8px;">
             Demande de devis & contact
@@ -534,7 +552,7 @@
           </p>
         </div>
 
-        <div class="contact-box">
+        <div class="contact-box fade-in-right">
           <p><strong>Formulaire (exemple)</strong></p>
           <p>
             Si vous utilisez un formulaire (WordPress, autre outil, etc.),
@@ -561,5 +579,25 @@
       <div>Adresse : 25 rue du Maréchal Foch, 78000 Versailles</div>
     </div>
   </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const animated = document.querySelectorAll(".fade-in, .fade-in-right");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      animated.forEach((el) => observer.observe(el));
+    });
+  </script>
 </body>
 </html>
