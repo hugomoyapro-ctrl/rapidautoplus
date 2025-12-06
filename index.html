@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rapid Auto Plus - Remplacement de pare-brise à domicile à Versailles</title>
+  <meta
+    name="description"
+    content="Rapid Auto Plus remplace votre pare-brise à domicile ou sur votre lieu de travail à Versailles et alentours. Intervention professionnelle, rapide et sans passage en garage."
+  />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    }
+
+    body {
+      background: #f3f4f6;
+      color: #111827;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    header {
+      background: #111827;
+      color: #f9fafb;
+      padding: 10px 0;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      opacity: 0.8;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: #f97316;
+      color: #fff;
+      padding: 9px 16px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        background 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(249, 115, 22, 0.35);
+      background: #ea580c;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(
+          135deg,
+          rgba(15, 23, 42, 0.92),
+          rgba(30, 64, 175, 0.9)
+        ),
+        url("https://images.pexels.com/photos/3806249/pexels-photo-3806249.jpeg?auto=compress&cs=tinysrgb&w=1200")
+          center/cover no-repeat;
+      color: #f9fafb;
+      padding: 70px 0 80px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(15, 23, 42, 0.7);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-tag span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.9rem, 3vw, 2.4rem);
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      font-size: 0.95rem;
+      max-width: 520px;
+      opacity: 0.95;
+      margin-bottom: 12px;
+    }
+
+    .hero-highlight {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      margin-top: 4px;
+    }
+
+    .hero-actions {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn-outline {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 9px 16px;
+      border: 1px solid #ffffff33;
+      color: #f9fafb;
+      font-size: 0.9rem;
+      cursor: pointer;
+      background: transparent;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-outline:hover {
+      background: #ffffff11;
+      border-color: #ffffff66;
+    }
+
+    .hero-card {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 16px;
+      padding: 18px 16px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.7);
+      font-size: 0.9rem;
+    }
+
+    .hero-card h2 {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .hero-card p {
+      margin-bottom: 6px;
+      opacity: 0.95;
+    }
+
+    .hero-card small {
+      font-size: 0.78rem;
+      opacity: 0.85;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 60px 0;
+      background: #f9fafb;
+    }
+
+    section:nth-of-type(even) {
+      background: #ffffff;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      text-align: center;
+      color: #6b7280;
+      margin-bottom: 30px;
+    }
+
+    /* CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 18px 16px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.05);
+      font-size: 0.9rem;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .card span {
+      font-size: 1.4rem;
+      margin-right: 6px;
+    }
+
+    /* STEPS */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 10px;
+    }
+
+    .step {
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 14px 12px;
+      border: 1px dashed #e5e7eb;
+      font-size: 0.9rem;
+    }
+
+    .step strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* ZONE + CONTACT */
+    .info-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 30px;
+      align-items: flex-start;
+    }
+
+    .info-block {
+      font-size: 0.95rem;
+    }
+
+    .info-block p {
+      margin-bottom: 8px;
+    }
+
+    .contact-box {
+      background: #f9fafb;
+      border-radius: 14px;
+      padding: 16px 14px;
+      border: 1px solid #e5e7eb;
+      font-size: 0.9rem;
+    }
+
+    .contact-box p {
+      margin-bottom: 6px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #111827;
+      color: #9ca3af;
+      font-size: 0.8rem;
+      padding: 18px 0;
+    }
+
+    footer .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      header {
+        position: static;
+      }
+
+      .hero {
+        padding-top: 40px;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">Rapid Auto Plus</div>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#process">Comment ça marche</a>
+        <a href="#zone">Zone</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact" class="btn-primary">Demander un devis</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div>
+          <div class="hero-tag">
+            <span></span>
+            <div>Remplacement de pare-brise à domicile</div>
+          </div>
+          <h1>
+            Remplacement de pare-brise à domicile à Versailles et alentours
+          </h1>
+          <p>
+            Rapid Auto Plus se déplace directement chez vous ou sur votre lieu
+            de travail pour remplacer votre pare-brise dans les meilleures
+            conditions, sans passage en garage.
+          </p>
+          <p class="hero-highlight">
+            Intervention professionnelle, matériel adapté, pose soignée et
+            immobilisation de votre véhicule réduite au minimum.
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn-primary">Demander un devis</a>
+            <a href="#contact" class="btn-outline">Être rappelé</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <h2>Interventions à partir de Versailles</h2>
+          <p>
+            Adresse de départ des interventions :
+            <br />
+            <strong>25 rue du Maréchal Foch<br />78000 Versailles</strong>
+          </p>
+          <p>
+            Nous intervenons principalement à Versailles et dans les communes
+            proches, selon la faisabilité technique et l’accès au véhicule.
+          </p>
+          <small>
+            Lors de votre demande, indiquez le modèle de votre véhicule et le
+            type de dommage constaté sur le pare-brise.
+          </small>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="container">
+        <h2 class="section-title">Nos services</h2>
+        <p class="section-subtitle">
+          Rapid Auto Plus est spécialisé dans le remplacement de pare-brise à
+          domicile, avec un service conçu pour vous éviter tout déplacement en
+          garage.
+        </p>
+
+        <div class="cards">
+          <div class="card">
+            <h3><span>🚘</span> Remplacement de pare-brise</h3>
+            <p>
+              Remplacement complet du pare-brise à votre domicile ou sur votre
+              lieu de travail, avec un vitrage conforme aux exigences
+              constructeur.
+            </p>
+          </div>
+          <div class="card">
+            <h3><span>✅</span> Contrôle et sécurisation</h3>
+            <p>
+              Vérification de l’étanchéité, de la fixation et de la visibilité
+              après intervention afin de garantir une conduite en toute
+              sécurité.
+            </p>
+          </div>
+          <div class="card">
+            <h3><span>📄</span> Accompagnement administratif</h3>
+            <p>
+              Conseils sur les démarches à effectuer auprès de votre assurance
+              bris de glace, selon les conditions prévues par votre contrat.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process">
+      <div class="container">
+        <h2 class="section-title">Comment ça se passe ?</h2>
+        <p class="section-subtitle">
+          Un processus simple pour programmer votre remplacement de pare-brise
+          à domicile étape par étape.
+        </p>
+
+        <div class="steps">
+          <div class="step">
+            <strong>1. Vous nous contactez</strong>
+            <p>
+              Par téléphone ou via le formulaire, vous indiquez le modèle de
+              votre véhicule et le dommage constaté sur le pare-brise.
+            </p>
+          </div>
+          <div class="step">
+            <strong>2. Devis et rendez-vous</strong>
+            <p>
+              Nous vous communiquons un prix indicatif et vous proposons un
+              créneau d’intervention selon vos disponibilités.
+            </p>
+          </div>
+          <div class="step">
+            <strong>3. Intervention à domicile</strong>
+            <p>
+              Le jour convenu, nous nous déplaçons à l’adresse indiquée avec le
+              matériel nécessaire pour remplacer votre pare-brise.
+            </p>
+          </div>
+          <div class="step">
+            <strong>4. Contrôle final</strong>
+            <p>
+              Nous vérifions l’étanchéité, la fixation et la propreté de la
+              zone de travail avant de vous restituer le véhicule.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ZONE -->
+    <section id="zone">
+      <div class="container info-grid">
+        <div class="info-block">
+          <h2 class="section-title" style="text-align:left;margin-bottom:8px;">
+            Zone d’intervention
+          </h2>
+          <p>
+            Rapid Auto Plus intervient principalement sur :
+          </p>
+          <p>
+            • Versailles (78000) et ses alentours proches<br />
+            • Secteur accessible au départ de
+            <strong>25 rue du Maréchal Foch, 78000 Versailles</strong>
+          </p>
+          <p>
+            Selon votre situation, une intervention pourra être étudiée au cas
+            par cas. N’hésitez pas à nous contacter pour savoir si nous pouvons
+            nous déplacer jusqu’à vous.
+          </p>
+        </div>
+
+        <div class="contact-box">
+          <p><strong>Adresse :</strong></p>
+          <p>
+            Rapid Auto Plus<br />
+            25 rue du Maréchal Foch<br />
+            78000 Versailles
+          </p>
+          <p style="margin-top:10px;"><strong>Téléphone :</strong></p>
+          <p>[Votre numéro ici]</p>
+          <p style="margin-top:10px;"><strong>Email :</strong></p>
+          <p>[Votre adresse e-mail ici]</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container info-grid">
+        <div class="info-block">
+          <h2 class="section-title" style="text-align:left;margin-bottom:8px;">
+            Demande de devis & contact
+          </h2>
+          <p>
+            Pour toute demande de remplacement de pare-brise à domicile, merci
+            de nous transmettre les informations suivantes :
+          </p>
+          <p>
+            • Vos nom et prénom<br />
+            • Votre numéro de téléphone<br />
+            • Le modèle et l’année de votre véhicule<br />
+            • Le type de dommage constaté (impact, fissure, pare-brise cassé)<br />
+            • Votre adresse d’intervention à Versailles ou alentours
+          </p>
+          <p style="margin-top:8px;">
+            Nous vous recontacterons dans les meilleurs délais pour vous
+            confirmer la faisabilité et vous proposer un rendez-vous.
+          </p>
+        </div>
+
+        <div class="contact-box">
+          <p><strong>Formulaire (exemple)</strong></p>
+          <p>
+            Si vous utilisez un formulaire (WordPress, autre outil, etc.),
+            configurez-le pour récupérer :
+          </p>
+          <p>
+            • Nom / Prénom<br />
+            • Téléphone<br />
+            • Modèle du véhicule<br />
+            • Message / Détail du dommage
+          </p>
+          <p style="margin-top:8px;">
+            Vous pouvez également indiquer une adresse e-mail ou un numéro
+            WhatsApp si votre client préfère ce mode de contact.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div>© Rapid Auto Plus – Remplacement de pare-brise à domicile</div>
+      <div>Adresse : 25 rue du Maréchal Foch, 78000 Versailles</div>
+    </div>
+  </footer>
+</body>
+</html>
