@@ -94,12 +94,34 @@
       font-weight: 600;
       transition: 0.2s;
       white-space: nowrap;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .btn-primary:hover,
     .btn-phone:hover {
       background: #dc2626;
       transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      border-radius: 999px;
+      padding: 8px 12px;
+      border: 1px solid #ffffff55;
+      color: #f9fafb;
+      background: transparent;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: #ffffff11;
+      border-color: #ffffffaa;
     }
 
     /* HERO */
@@ -148,6 +170,12 @@
       margin-bottom: 10px;
       opacity: 0.95;
       font-size: 0.95rem;
+    }
+
+    .hero-highlight {
+      opacity: 0.9;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
     }
 
     .hero-actions {
@@ -237,6 +265,48 @@
       font-size: 0.9rem;
     }
 
+    /* FORMULAIRE */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.9rem;
+    }
+
+    label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #374151;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 7px 9px;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      font-size: 0.85rem;
+      outline: none;
+      transition: 0.15s;
+      background: white;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: #ef4444;
+      box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.3);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .btn-submit {
+      margin-top: 4px;
+      align-self: flex-start;
+    }
+
     /* FOOTER */
     footer {
       background: #111827;
@@ -261,7 +331,7 @@
       transform: translate(0,0);
     }
 
-    /* 🔥 MOBILE FIX : tout tenir sur 1 ligne */
+    /* MOBILE */
     @media (max-width: 768px) {
       .nav-links {
         display: none;
@@ -352,7 +422,7 @@
       <aside class="hero-card fade-in-right">
         <h2>Intervention depuis Versailles</h2>
         <p><strong>25 rue du Maréchal Foch<br>78000 Versailles</strong></p>
-        <p>Déplacement selon faisabilité et accès au véhicule.</p>
+        <p>Déplacement dans Versailles et alentours selon faisabilité.</p>
       </aside>
 
     </div>
@@ -367,17 +437,17 @@
       <div class="cards">
         <div class="card fade-in">
           <h3>🚘 Remplacement de pare-brise</h3>
-          <p>Pare-brise adapté constructeur posé chez vous ou au travail.</p>
+          <p>Pare-brise conforme aux normes constructeur posé chez vous ou au travail.</p>
         </div>
 
         <div class="card fade-in">
           <h3>🔧 Contrôle & sécurité</h3>
-          <p>Vérification étanchéité, capteurs, caméras, maintien.</p>
+          <p>Vérification de l’étanchéité, des capteurs et de la visibilité.</p>
         </div>
 
         <div class="card fade-in">
           <h3>📄 Aide assurance</h3>
-          <p>Accompagnement selon votre contrat bris de glace.</p>
+          <p>Accompagnement pour vos démarches bris de glace selon votre contrat.</p>
         </div>
       </div>
 
@@ -387,17 +457,27 @@
   <!-- PROCESS -->
   <section id="process">
     <div class="container fade-in">
-
       <h2 class="section-title">Comment ça marche ?</h2>
       <p class="section-subtitle">Un process simple et rapide</p>
 
       <div class="steps">
-        <div class="step fade-in"><strong>1. Contact</strong>Modèle du véhicule + dommage.</div>
-        <div class="step fade-in"><strong>2. Devis</strong>Tarif + rendez-vous.</div>
-        <div class="step fade-in"><strong>3. Intervention</strong>Pose à domicile.</div>
-        <div class="step fade-in"><strong>4. Contrôle final</strong>Sécurité & finitions.</div>
+        <div class="step fade-in">
+          <strong>1. Contact</strong>
+          Modèle du véhicule + type de dommage.
+        </div>
+        <div class="step fade-in">
+          <strong>2. Devis</strong>
+          Tarif et proposition de rendez-vous.
+        </div>
+        <div class="step fade-in">
+          <strong>3. Intervention</strong>
+          Pose du pare-brise à domicile ou sur votre lieu de travail.
+        </div>
+        <div class="step fade-in">
+          <strong>4. Contrôle final</strong>
+          Sécurité, étanchéité et propreté de la zone.
+        </div>
       </div>
-
     </div>
   </section>
 
@@ -407,29 +487,35 @@
 
       <div>
         <h2 class="section-title" style="text-align:left;">Zone d’intervention</h2>
-        <p>Versailles (78000), Le Chesnay, Viroflay, Sèvres, Boulogne, et communes proches.</p>
-        <p><strong>Départ :</strong><br>25 rue du Maréchal Foch — Versailles</p>
+        <p>Interventions possibles à :</p>
+        <p>
+          • Versailles (78000)<br>
+          • Le Chesnay, Viroflay, Sèvres, Boulogne…<br>
+          • Autres communes proches selon faisabilité
+        </p>
+        <p><strong>Point de départ :</strong><br>25 rue du Maréchal Foch — 78000 Versailles</p>
       </div>
 
       <div class="contact-box fade-in-right">
-        <p><strong>Contact :</strong></p>
+        <p><strong>Contact rapide :</strong></p>
         <p>📞 07 57 82 38 68</p>
-        <p>Email : votre-email@exemple.com</p>
+        <p>Email : <a href="mailto:rapidautoplus@gmail.com">rapidautoplus@gmail.com</a></p>
       </div>
 
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- CONTACT AVEC FORMULAIRE -->
   <section id="contact">
     <div class="container info-grid fade-in">
 
       <div>
         <h2 class="section-title" style="text-align:left;">Demande de devis</h2>
-        <p>Merci d’indiquer :</p>
-        <p>
-          • Nom + prénom<br>
+        <p>Remplissez ce formulaire, nous vous rappelons rapidement :</p>
+        <p style="font-size:0.9rem;">
+          • Nom et prénom<br>
           • Téléphone<br>
+          • Email<br>
           • Modèle du véhicule<br>
           • Type de dommage<br>
           • Adresse d’intervention
@@ -437,9 +523,50 @@
       </div>
 
       <div class="contact-box fade-in-right">
-        <p><strong>Contact direct :</strong></p>
-        <p>📞 07 57 82 38 68</p>
-        <p>Email : votre-email@exemple.com</p>
+        <form action="mailto:rapidautoplus@gmail.com" method="POST" enctype="text/plain">
+          <div>
+            <label for="nom">Nom / Prénom</label>
+            <input type="text" id="nom" name="Nom" required>
+          </div>
+
+          <div>
+            <label for="tel">Téléphone</label>
+            <input type="tel" id="tel" name="Téléphone" required>
+          </div>
+
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="Email" required>
+          </div>
+
+          <div>
+            <label for="modele">Modèle du véhicule</label>
+            <input type="text" id="modele" name="Modèle du véhicule" required>
+          </div>
+
+          <div>
+            <label for="dommage">Type de dommage</label>
+            <select id="dommage" name="Type de dommage" required>
+              <option value="">Sélectionner...</option>
+              <option value="impact">Impact</option>
+              <option value="fissure">Fissure</option>
+              <option value="casse">Pare-brise cassé</option>
+              <option value="autre">Autre</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="adresse">Adresse d’intervention</label>
+            <textarea id="adresse" name="Adresse d’intervention" rows="2" required></textarea>
+          </div>
+
+          <div>
+            <label for="message">Message complémentaire (optionnel)</label>
+            <textarea id="message" name="Message" rows="3"></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary btn-submit">Envoyer la demande</button>
+        </form>
       </div>
 
     </div>
@@ -448,7 +575,7 @@
 </main>
 
 <footer>
-  © Rapid Auto Plus — Remplacement de pare-brise à domicile
+  © Rapid Auto Plus — Remplacement de pare-brise à domicile — Versailles
 </footer>
 
 <script>
