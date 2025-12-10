@@ -93,7 +93,6 @@
       font-size: 0.8rem;
       font-weight: 600;
       transition: 0.2s;
-      white-space: nowrap;
       border: none;
       cursor: pointer;
       display: inline-flex;
@@ -117,11 +116,28 @@
       font-weight: 500;
       cursor: pointer;
       transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .btn-outline:hover {
       background: #ffffff11;
       border-color: #ffffffaa;
+    }
+
+    /* Texte des boutons (desktop/mobile) */
+    .btn-icon-mobile {
+      display: none;
+      font-size: 0.9rem;
+    }
+
+    .btn-text-desktop {
+      display: inline;
+    }
+
+    .btn-text-mobile {
+      display: none;
     }
 
     /* HERO */
@@ -352,7 +368,7 @@
       transform: translate(0,0);
     }
 
-    /* MOBILE */
+    /* TABLETTE / MOBILE LARGE */
     @media (max-width: 768px) {
       .nav-links {
         display: none;
@@ -390,6 +406,29 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* MOBILE PETIT ÉCRAN : icône + texte court */
+    @media (max-width: 480px) {
+      .btn-text-desktop {
+        display: none;
+      }
+      .btn-icon-mobile {
+        display: inline;
+      }
+      .btn-text-mobile {
+        display: inline;
+      }
+
+      .btn-primary,
+      .btn-phone {
+        max-width: 160px;
+        justify-content: center;
+      }
+
+      .nav-right {
+        gap: 4px;
+      }
+    }
   </style>
 </head>
 
@@ -411,8 +450,16 @@
     </nav>
 
     <div class="nav-right">
-      <a href="tel:0757823868" class="btn-phone">📞 07 57 82 38 68</a>
-      <a href="#contact" class="btn-primary">Prendre un rendez-vous</a>
+      <a href="tel:0757823868" class="btn-phone">
+        📞
+        <span class="btn-text-desktop">07 57 82 38 68</span>
+        <span class="btn-text-mobile">Appeler</span>
+      </a>
+      <a href="#contact" class="btn-primary">
+        <span class="btn-icon-mobile">📅</span>
+        <span class="btn-text-desktop">Prendre un rendez-vous</span>
+        <span class="btn-text-mobile">Rendez-vous</span>
+      </a>
     </div>
 
   </div>
@@ -440,8 +487,16 @@
         <p class="hero-highlight">Pose soignée • Matériel professionnel • Immobilisation minimale du véhicule</p>
 
         <div class="hero-actions">
-          <a href="#contact" class="btn-primary">Prendre un rendez-vous</a>
-          <a href="tel:0757823868" class="btn-outline">Appeler maintenant</a>
+          <a href="#contact" class="btn-primary">
+            <span class="btn-icon-mobile">📅</span>
+            <span class="btn-text-desktop">Prendre un rendez-vous</span>
+            <span class="btn-text-mobile">Rendez-vous</span>
+          </a>
+          <a href="tel:0757823868" class="btn-outline">
+            📞
+            <span class="btn-text-desktop">Appeler maintenant</span>
+            <span class="btn-text-mobile">Appeler</span>
+          </a>
         </div>
       </div>
 
@@ -522,7 +577,7 @@
           • Le Chesnay, Viroflay, Sèvres, Boulogne…<br>
           • Autres communes proches selon faisabilité
         </p>
-        <p><strong>Point de départ :</strong><br>25 rue du Maréchchal Foch — 78000 Versailles</p>
+        <p><strong>Point de départ :</strong><br>25 rue du Maréchal Foch — 78000 Versailles</p>
       </div>
 
       <div class="contact-box fade-in-right">
@@ -604,7 +659,11 @@
             <textarea id="message" name="Message" rows="3"></textarea>
           </div>
 
-          <button type="submit" class="btn-primary btn-submit">Envoyer la demande de rendez-vous</button>
+          <button type="submit" class="btn-primary btn-submit">
+            <span class="btn-icon-mobile">📅</span>
+            <span class="btn-text-desktop">Envoyer la demande de rendez-vous</span>
+            <span class="btn-text-mobile">Envoyer</span>
+          </button>
         </form>
       </div>
 
