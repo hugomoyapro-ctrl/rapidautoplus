@@ -302,133 +302,6 @@
       font-size: 0.9rem;
     }
 
-    /* FORMULAIRE RENDEZ-VOUS */
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      font-size: 0.9rem;
-    }
-
-    label {
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: #374151;
-    }
-
-    input, textarea, select {
-      width: 100%;
-      padding: 7px 9px;
-      border-radius: 8px;
-      border: 1px solid #d1d5db;
-      font-size: 0.85rem;
-      outline: none;
-      transition: 0.15s;
-      background: white;
-    }
-
-    input:focus,
-    textarea:focus,
-    select:focus {
-      border-color: #ef4444;
-      box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.3);
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-
-    .btn-submit {
-      margin-top: 4px;
-      align-self: flex-start;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #111827;
-      color: #9ca3af;
-      text-align: center;
-      padding: 18px 0;
-      font-size: 0.85rem;
-    }
-
-    /* ANIMATIONS */
-    .fade-in,
-    .fade-in-right {
-      opacity: 0;
-      transition: 0.6s ease;
-    }
-
-    .fade-in { transform: translateY(18px); }
-    .fade-in-right { transform: translateX(24px); }
-
-    .visible {
-      opacity: 1;
-      transform: translate(0,0);
-    }
-
-    /* TABLETTE / MOBILE LARGE */
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-
-      .nav {
-        gap: 6px;
-      }
-
-      .nav-right {
-        flex-wrap: nowrap;
-        gap: 6px;
-      }
-
-      .btn-primary,
-      .btn-phone {
-        padding: 6px 10px;
-        font-size: 0.75rem;
-      }
-
-      .logo-icon {
-        width: 24px;
-        height: 24px;
-      }
-
-      .logo {
-        font-size: 0.9rem;
-      }
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .info-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* MOBILE PETIT ÉCRAN : icône + texte court */
-    @media (max-width: 480px) {
-      .btn-text-desktop {
-        display: none;
-      }
-      .btn-icon-mobile {
-        display: inline;
-      }
-      .btn-text-mobile {
-        display: inline;
-      }
-
-      .btn-primary,
-      .btn-phone {
-        max-width: 160px;
-        justify-content: center;
-      }
-
-      .nav-right {
-        gap: 4px;
-      }
-    }
   </style>
 </head>
 
@@ -482,7 +355,8 @@
           <div>Remplacement de pare-brise à domicile</div>
         </div>
 
-        <h1>Remplacement de pare-brise à domicile à Versailles</h1>
+        <h1>Intervention pare-brise à domicile — Versailles, Île-de-France et Eure-et-Loir (28)</h1>
+
         <p>Intervention rapide, professionnelle et directement à votre adresse, avec prise en charge possible par votre assurance.</p>
         <p class="hero-highlight">Pose soignée • Matériel professionnel • Immobilisation minimale du véhicule</p>
 
@@ -492,6 +366,7 @@
             <span class="btn-text-desktop">Prendre un rendez-vous</span>
             <span class="btn-text-mobile">Rendez-vous</span>
           </a>
+
           <a href="tel:0757823868" class="btn-outline">
             📞
             <span class="btn-text-desktop">Appeler maintenant</span>
@@ -503,7 +378,7 @@
       <aside class="hero-card fade-in-right">
         <h2>Intervention depuis Versailles</h2>
         <p><strong>25 rue du Maréchal Foch<br>78000 Versailles</strong></p>
-        <p>Déplacement dans Versailles et alentours selon faisabilité et accès au véhicule.</p>
+        <p>Déplacement dans toute l’Île-de-France et dans le 28 selon faisabilité.</p>
         <p style="font-size:0.78rem; opacity:0.85; margin-top:6px;">
           *Offre soumise à conditions, selon prise en charge de votre assurance bris de glace.
         </p>
@@ -580,7 +455,7 @@
         </p>
 
         <p style="margin-top:10px;">
-          Nous nous déplaçons directement à votre domicile, lieu de travail ou à l’adresse de votre choix, selon les conditions d’intervention du véhicule.
+          Nous nous déplaçons directement à votre domicile, lieu de travail ou à l’adresse de votre choix.
         </p>
 
         <p style="margin-top:14px;">
@@ -598,53 +473,49 @@
     </div>
   </section>
 
-  <!-- CONTACT / PRISE DE RENDEZ-VOUS -->
+  <!-- CONTACT -->
   <section id="contact">
     <div class="container info-grid fade-in">
 
       <div>
-        <h2 class="section-title" style="text-align:left;">Demande de prise de rendez-vous</h2>
-        <p>Remplissez ce formulaire pour une prise en charge rapide de votre pare-brise. Nous vous rappelons pour confirmer le rendez-vous et la prise en charge assurance.</p>
-        <p style="font-size:0.9rem; margin-top:6px;">
-          Dans la majorité des cas, la réparation est couverte par votre assurance bris de glace et le client ne paie rien.
-        </p>
+        <h2 class="section-title" style="text-align:left;">Demande de rendez-vous</h2>
+        <p>Remplissez le formulaire pour une prise en charge rapide. Nous vous rappelons pour confirmer le rendez-vous et la prise en charge assurance.</p>
       </div>
 
       <div class="contact-box fade-in-right">
         <form action="https://formsubmit.co/rapidautoplus@gmail.com" method="POST">
-          <!-- options FormSubmit -->
           <input type="hidden" name="_subject" value="Nouvelle demande de rendez-vous - Rapid Auto Plus">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_template" value="table">
 
           <div>
-            <label for="nom">Nom / Prénom</label>
-            <input type="text" id="nom" name="Nom" required>
+            <label>Nom / Prénom</label>
+            <input type="text" name="Nom" required>
           </div>
 
           <div>
-            <label for="tel">Téléphone</label>
-            <input type="tel" id="tel" name="Téléphone" required>
+            <label>Téléphone</label>
+            <input type="tel" name="Téléphone" required>
           </div>
 
           <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="Email" required>
+            <label>Email</label>
+            <input type="email" name="Email" required>
           </div>
 
           <div>
-            <label for="immat">Immatriculation du véhicule</label>
-            <input type="text" id="immat" name="Immatriculation" required>
+            <label>Immatriculation</label>
+            <input type="text" name="Immatriculation" required>
           </div>
 
           <div>
-            <label for="modele">Modèle du véhicule</label>
-            <input type="text" id="modele" name="Modèle du véhicule" required>
+            <label>Modèle du véhicule</label>
+            <input type="text" name="Modèle" required>
           </div>
 
           <div>
-            <label for="dommage">Type de dommage</label>
-            <select id="dommage" name="Type de dommage" required>
+            <label>Type de dommage</label>
+            <select name="Type de dommage" required>
               <option value="">Sélectionner...</option>
               <option value="pare-brise">Pare-brise</option>
               <option value="lunette-arriere">Lunette arrière</option>
@@ -653,18 +524,18 @@
           </div>
 
           <div>
-            <label for="date">Préférence de date / horaire</label>
-            <input type="text" id="date" name="Préférence de rendez-vous" placeholder="Ex : mardi matin, après-midi, etc.">
+            <label>Préférence de date</label>
+            <input type="text" name="Préférence date" placeholder="Ex : mardi matin, après-midi...">
           </div>
 
           <div>
-            <label for="adresse">Adresse d’intervention</label>
-            <textarea id="adresse" name="Adresse d’intervention" rows="2" required></textarea>
+            <label>Adresse d’intervention</label>
+            <textarea name="Adresse" rows="2" required></textarea>
           </div>
 
           <div>
-            <label for="message">Précisions supplémentaires (optionnel)</label>
-            <textarea id="message" name="Message" rows="3"></textarea>
+            <label>Message (optionnel)</label>
+            <textarea name="Message" rows="3"></textarea>
           </div>
 
           <button type="submit" class="btn-primary btn-submit">
@@ -672,6 +543,7 @@
             <span class="btn-text-desktop">Envoyer la demande de rendez-vous</span>
             <span class="btn-text-mobile">Envoyer</span>
           </button>
+
         </form>
       </div>
 
@@ -681,7 +553,7 @@
 </main>
 
 <footer>
-  © Rapid Auto Plus — Remplacement de pare-brise à domicile — Versailles
+  © Rapid Auto Plus — Remplacement de pare-brise à domicile — Versailles, Île-de-France & 28
 </footer>
 
 <script>
