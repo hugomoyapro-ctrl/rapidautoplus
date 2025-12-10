@@ -395,22 +395,30 @@
       }
     }
 
-    /* MOBILE */
+    /* 🌟 FIX MOBILE — BOUTONS QUI DÉPASSENT */
     @media (max-width: 480px) {
-      .btn-text-desktop {
-        display: none;
-      }
-      .btn-icon-mobile {
-        display: inline;
-      }
-      .btn-text-mobile {
-        display: inline;
+
+      .nav-right {
+        width: 100%;
+        display: flex;
+        gap: 6px;
       }
 
       .btn-primary,
       .btn-phone {
-        max-width: 160px;
-        justify-content: center;
+        flex: 1;
+        width: 100%;
+        padding: 7px 6px;
+        font-size: 0.75rem;
+        white-space: nowrap;
+      }
+
+      .btn-text-desktop {
+        display: none !important;
+      }
+
+      .btn-text-mobile {
+        display: inline !important;
       }
     }
   </style>
