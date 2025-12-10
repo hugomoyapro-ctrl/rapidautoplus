@@ -129,8 +129,8 @@
       padding: 70px 0 80px;
       background: linear-gradient(
           135deg,
-          rgba(15, 23, 42, 0.9),
-          rgba(30, 64, 175, 0.9)
+          rgba(15, 23, 42, 0.65),
+          rgba(30, 64, 175, 0.55)
         ),
         url("parebrise.png") center/cover no-repeat;
       color: white;
@@ -142,9 +142,30 @@
       gap: 40px;
     }
 
+    .hero-offer {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(239, 68, 68, 0.9);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-offer span {
+      background: #facc15;
+      color: #111827;
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: 999px;
+    }
+
     .hero-tag {
       display: inline-flex;
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(15, 23, 42, 0.7);
       padding: 4px 10px;
       border-radius: 999px;
       gap: 6px;
@@ -265,7 +286,7 @@
       font-size: 0.9rem;
     }
 
-    /* FORMULAIRE */
+    /* FORMULAIRE RENDEZ-VOUS */
     form {
       display: flex;
       flex-direction: column;
@@ -386,12 +407,12 @@
       <a href="#services">Services</a>
       <a href="#process">Comment ça marche</a>
       <a href="#zone">Zone</a>
-      <a href="#contact">Contact</a>
+      <a href="#contact">Rendez-vous</a>
     </nav>
 
     <div class="nav-right">
       <a href="tel:0757823868" class="btn-phone">📞 07 57 82 38 68</a>
-      <a href="#contact" class="btn-primary">Devis</a>
+      <a href="#contact" class="btn-primary">Prendre un rendez-vous</a>
     </div>
 
   </div>
@@ -404,17 +425,22 @@
     <div class="container hero-grid">
 
       <div>
+        <div class="hero-offer">
+          <span>OFFRE</span>
+          Jusqu’à 300 € offerts pour chaque remplacement de pare-brise*
+        </div>
+
         <div class="hero-tag">
           <span></span>
           <div>Remplacement de pare-brise à domicile</div>
         </div>
 
         <h1>Remplacement de pare-brise à domicile à Versailles</h1>
-        <p>Intervention rapide, professionnelle et directement à votre adresse.</p>
-        <p class="hero-highlight">Pose soignée • Matériel professionnel • Immobilisation minimale</p>
+        <p>Intervention rapide, professionnelle et directement à votre adresse, avec prise en charge possible par votre assurance.</p>
+        <p class="hero-highlight">Pose soignée • Matériel professionnel • Immobilisation minimale du véhicule</p>
 
         <div class="hero-actions">
-          <a href="#contact" class="btn-primary">Demander un devis</a>
+          <a href="#contact" class="btn-primary">Prendre un rendez-vous</a>
           <a href="tel:0757823868" class="btn-outline">Appeler maintenant</a>
         </div>
       </div>
@@ -422,7 +448,10 @@
       <aside class="hero-card fade-in-right">
         <h2>Intervention depuis Versailles</h2>
         <p><strong>25 rue du Maréchal Foch<br>78000 Versailles</strong></p>
-        <p>Déplacement dans Versailles et alentours selon faisabilité.</p>
+        <p>Déplacement dans Versailles et alentours selon faisabilité et accès au véhicule.</p>
+        <p style="font-size:0.78rem; opacity:0.85; margin-top:6px;">
+          *Offre soumise à conditions, selon prise en charge de votre assurance bris de glace.
+        </p>
       </aside>
 
     </div>
@@ -437,17 +466,17 @@
       <div class="cards">
         <div class="card fade-in">
           <h3>🚘 Remplacement de pare-brise</h3>
-          <p>Pare-brise conforme aux normes constructeur posé chez vous ou au travail.</p>
+          <p>Pare-brise conforme aux normes constructeur posé chez vous ou sur votre lieu de travail.</p>
         </div>
 
         <div class="card fade-in">
           <h3>🔧 Contrôle & sécurité</h3>
-          <p>Vérification de l’étanchéité, des capteurs et de la visibilité.</p>
+          <p>Vérification de l’étanchéité, des capteurs et de la visibilité avant restitution du véhicule.</p>
         </div>
 
         <div class="card fade-in">
-          <h3>📄 Aide assurance</h3>
-          <p>Accompagnement pour vos démarches bris de glace selon votre contrat.</p>
+          <h3>📄 Prise en charge assurance</h3>
+          <p>Accompagnement pour la prise en charge bris de glace avec votre assurance. Dans 90 % des cas, vous ne payez rien.</p>
         </div>
       </div>
 
@@ -458,24 +487,24 @@
   <section id="process">
     <div class="container fade-in">
       <h2 class="section-title">Comment ça marche ?</h2>
-      <p class="section-subtitle">Un process simple et rapide</p>
+      <p class="section-subtitle">Un process simple pour votre prise en charge</p>
 
       <div class="steps">
         <div class="step fade-in">
-          <strong>1. Contact</strong>
-          Modèle du véhicule + type de dommage.
+          <strong>1. Demande de rendez-vous</strong>
+          Vous remplissez le formulaire ou appelez directement.
         </div>
         <div class="step fade-in">
-          <strong>2. Devis</strong>
-          Tarif et proposition de rendez-vous.
+          <strong>2. Vérification assurance</strong>
+          Nous vérifions votre garantie bris de glace avec votre assurance.
         </div>
         <div class="step fade-in">
-          <strong>3. Intervention</strong>
-          Pose du pare-brise à domicile ou sur votre lieu de travail.
+          <strong>3. Intervention à domicile</strong>
+          Pose du pare-brise à votre adresse ou sur votre lieu de travail.
         </div>
         <div class="step fade-in">
           <strong>4. Contrôle final</strong>
-          Sécurité, étanchéité et propreté de la zone.
+          Sécurité, étanchéité et propreté de la zone de travail.
         </div>
       </div>
     </div>
@@ -505,20 +534,15 @@
     </div>
   </section>
 
-  <!-- CONTACT AVEC FORMULAIRE -->
+  <!-- CONTACT / PRISE DE RENDEZ-VOUS -->
   <section id="contact">
     <div class="container info-grid fade-in">
 
       <div>
-        <h2 class="section-title" style="text-align:left;">Demande de devis</h2>
-        <p>Remplissez ce formulaire, nous vous rappelons rapidement :</p>
-        <p style="font-size:0.9rem;">
-          • Nom et prénom<br>
-          • Téléphone<br>
-          • Email<br>
-          • Modèle du véhicule<br>
-          • Type de dommage<br>
-          • Adresse d’intervention
+        <h2 class="section-title" style="text-align:left;">Demande de prise de rendez-vous</h2>
+        <p>Remplissez ce formulaire pour une prise en charge rapide de votre pare-brise. Nous vous rappelons pour confirmer le rendez-vous et la prise en charge assurance.</p>
+        <p style="font-size:0.9rem; margin-top:6px;">
+          Dans la majorité des cas, la réparation est couverte par votre assurance bris de glace et le client ne paie rien.
         </p>
       </div>
 
@@ -540,6 +564,11 @@
           </div>
 
           <div>
+            <label for="immat">Immatriculation du véhicule</label>
+            <input type="text" id="immat" name="Immatriculation" required>
+          </div>
+
+          <div>
             <label for="modele">Modèle du véhicule</label>
             <input type="text" id="modele" name="Modèle du véhicule" required>
           </div>
@@ -556,16 +585,21 @@
           </div>
 
           <div>
+            <label for="date">Préférence de date / horaire</label>
+            <input type="text" id="date" name="Préférence de rendez-vous" placeholder="Ex : mardi matin, après-midi, etc.">
+          </div>
+
+          <div>
             <label for="adresse">Adresse d’intervention</label>
             <textarea id="adresse" name="Adresse d’intervention" rows="2" required></textarea>
           </div>
 
           <div>
-            <label for="message">Message complémentaire (optionnel)</label>
+            <label for="message">Précisions supplémentaires (optionnel)</label>
             <textarea id="message" name="Message" rows="3"></textarea>
           </div>
 
-          <button type="submit" class="btn-primary btn-submit">Envoyer la demande</button>
+          <button type="submit" class="btn-primary btn-submit">Envoyer la demande de rendez-vous</button>
         </form>
       </div>
 
