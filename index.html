@@ -302,6 +302,117 @@
       font-size: 0.9rem;
     }
 
+    /* FORMULAIRE ORIGINAL */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      font-size: 0.9rem;
+    }
+
+    label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      font-size: 0.9rem;
+      background: white;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: #ef4444;
+      box-shadow: 0 0 0 2px rgba(239,68,68,0.25);
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .btn-submit {
+      background: #ef4444;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-submit:hover {
+      background: #dc2626;
+      transform: translateY(-1px);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #111827;
+      color: #9ca3af;
+      text-align: center;
+      padding: 18px 0;
+      font-size: 0.85rem;
+    }
+
+    /* ANIMATIONS */
+    .fade-in,
+    .fade-in-right {
+      opacity: 0;
+      transition: 0.6s ease;
+    }
+
+    .fade-in { transform: translateY(18px); }
+    .fade-in-right { transform: translateX(24px); }
+
+    .visible {
+      opacity: 1;
+      transform: translate(0,0);
+    }
+
+    /* TABLETTE */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* MOBILE */
+    @media (max-width: 480px) {
+      .btn-text-desktop {
+        display: none;
+      }
+      .btn-icon-mobile {
+        display: inline;
+      }
+      .btn-text-mobile {
+        display: inline;
+      }
+
+      .btn-primary,
+      .btn-phone {
+        max-width: 160px;
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 
@@ -479,11 +590,13 @@
 
       <div>
         <h2 class="section-title" style="text-align:left;">Demande de rendez-vous</h2>
-        <p>Remplissez le formulaire pour une prise en charge rapide. Nous vous rappelons pour confirmer le rendez-vous et la prise en charge assurance.</p>
+        <p>Remplissez le formulaire pour une prise en charge rapide.</p>
       </div>
 
       <div class="contact-box fade-in-right">
+
         <form action="https://formsubmit.co/rapidautoplus@gmail.com" method="POST">
+
           <input type="hidden" name="_subject" value="Nouvelle demande de rendez-vous - Rapid Auto Plus">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_template" value="table">
@@ -530,21 +643,18 @@
 
           <div>
             <label>Adresse d’intervention</label>
-            <textarea name="Adresse" rows="2" required></textarea>
+            <textarea name="Adresse" required></textarea>
           </div>
 
           <div>
             <label>Message (optionnel)</label>
-            <textarea name="Message" rows="3"></textarea>
+            <textarea name="Message"></textarea>
           </div>
 
-          <button type="submit" class="btn-primary btn-submit">
-            <span class="btn-icon-mobile">📅</span>
-            <span class="btn-text-desktop">Envoyer la demande de rendez-vous</span>
-            <span class="btn-text-mobile">Envoyer</span>
-          </button>
+          <button type="submit" class="btn-submit">Envoyer la demande</button>
 
         </form>
+
       </div>
 
     </div>
