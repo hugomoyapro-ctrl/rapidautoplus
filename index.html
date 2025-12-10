@@ -70,12 +70,6 @@
       white-space: nowrap;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 16px;
-      font-size: 0.9rem;
-    }
-
     .nav-right {
       display: flex;
       align-items: center;
@@ -166,6 +160,11 @@
       border-radius: 999px;
     }
 
+    .hero-separator {
+      opacity: 0.85;
+      margin: 0 6px;
+    }
+
     .hero-tag {
       display: inline-flex;
       background: rgba(15, 23, 42, 0.7);
@@ -186,7 +185,30 @@
     .hero h1 {
       font-size: clamp(1.9rem, 3vw, 2.4rem);
       margin-bottom: 12px;
-      line-height: 1.3;
+      line-height: 1.25;
+    }
+
+    .badge-assurance-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.6em;
+      font-weight: 600;
+      background: rgba(34, 197, 94, 0.16);
+      color: #bbf7d0;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-left: 8px;
+      border: 1px solid rgba(74, 222, 128, 0.6);
+      vertical-align: middle;
+    }
+
+    .badge-assurance-inline span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.35);
     }
 
     .hero p {
@@ -218,7 +240,7 @@
       font-size: 0.9rem;
     }
 
-    /* SECTIONS GÉNÉRIQUES */
+    /* SECTIONS */
     section {
       padding: 60px 0;
     }
@@ -275,7 +297,7 @@
       font-size: 0.9rem;
     }
 
-    /* ZONE & CONTACT LAYOUT */
+    /* ZONE & CONTACT */
     .info-grid {
       display: grid;
       grid-template-columns: minmax(0,1.2fr) minmax(0,1fr);
@@ -337,12 +359,27 @@
       border: none;
       cursor: pointer;
       transition: 0.2s;
-      align-self: flex-start;
     }
 
     .btn-submit:hover {
       background: #dc2626;
       transform: translateY(-1px);
+    }
+
+    .form-message {
+      margin-top: 6px;
+      font-size: 0.8rem;
+      display: none;
+    }
+
+    .form-message.success {
+      display: block;
+      color: #16a34a;
+    }
+
+    .form-message.error {
+      display: block;
+      color: #dc2626;
     }
 
     /* FOOTER */
@@ -354,15 +391,25 @@
       font-size: 0.85rem;
     }
 
-    /* RESPONSIVE TABLETTE */
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
+    /* ANIMATIONS */
+    .fade-in,
+    .fade-in-right {
+      opacity: 0;
+      transition: 0.6s ease;
+    }
 
+    .fade-in { transform: translateY(18px); }
+    .fade-in-right { transform: translateX(24px); }
+
+    .visible {
+      opacity: 1;
+      transform: translate(0,0);
+    }
+
+    /* TABLETTE */
+    @media (max-width: 768px) {
       .hero-grid {
         grid-template-columns: 1fr;
-        gap: 24px;
       }
 
       .info-grid {
@@ -370,9 +417,8 @@
       }
     }
 
-    /* RESPONSIVE MOBILE (header + boutons) */
+    /* MOBILE HEADER + CTA */
     @media (max-width: 480px) {
-
       header {
         padding: 8px 0;
       }
@@ -401,7 +447,7 @@
 
       .btn-primary,
       .btn-phone {
-        padding: 6px 10px;
+        padding: 6px 8px;
         font-size: 0.72rem;
         white-space: nowrap;
         flex: 0 1 auto;
@@ -422,7 +468,6 @@
 
 <header>
   <div class="container nav">
-
     <div class="logo-area">
       <img src="logo-rapid-auto.jpg" class="logo-icon" alt="Logo Rapid Auto Plus">
       <a href="#top" class="logo">RAPID AUTO PLUS</a>
@@ -432,20 +477,21 @@
       <a href="tel:0757823868" class="btn-phone">📞 Appeler</a>
       <a href="#contact" class="btn-primary">📅 Rendez-vous</a>
     </div>
-
   </div>
 </header>
 
-<main>
+<main id="top">
 
   <!-- HERO -->
-  <section class="hero" id="top">
+  <section class="hero fade-in">
     <div class="container hero-grid">
 
       <div>
         <div class="hero-offer">
           <span>OFFRE</span>
-          Jusqu’à 300 € offerts pour chaque remplacement de pare-brise*
+          Jusqu’à 300 € offerts
+          <span class="hero-separator">•</span>
+          Franchise offerte*
         </div>
 
         <div class="hero-tag">
@@ -453,18 +499,24 @@
           <div>Remplacement de pare-brise à domicile</div>
         </div>
 
-        <h1>Intervention pare-brise à domicile — Versailles, Île-de-France et Eure-et-Loir (28)</h1>
+        <h1>
+          Intervention pare-brise à domicile — Versailles, Île-de-France & Eure-et-Loir (28)
+          <span class="badge-assurance-inline">
+            <span></span>
+            Agréé assurance
+          </span>
+        </h1>
 
         <p>Intervention rapide, professionnelle et directement à votre adresse, avec prise en charge possible par votre assurance.</p>
         <p class="hero-highlight">Pose soignée • Matériel professionnel • Immobilisation minimale du véhicule</p>
 
         <div class="hero-actions">
-          <a href="#contact" class="btn-primary">📅 Rendez-vous</a>
-          <a href="tel:0757823868" class="btn-outline">📞 Appeler</a>
+          <a href="#contact" class="btn-primary">📅 Prendre un rendez-vous</a>
+          <a href="tel:0757823868" class="btn-outline">📞 Appeler maintenant</a>
         </div>
       </div>
 
-      <aside class="hero-card">
+      <aside class="hero-card fade-in-right">
         <h2>Intervention depuis Versailles</h2>
         <p><strong>25 rue du Maréchal Foch<br>78000 Versailles</strong></p>
         <p>Déplacement dans toute l’Île-de-France et dans le 28 selon faisabilité.</p>
@@ -478,22 +530,22 @@
 
   <!-- SERVICES -->
   <section id="services">
-    <div class="container">
+    <div class="container fade-in">
       <h2 class="section-title">Nos services</h2>
       <p class="section-subtitle">Spécialiste du remplacement de pare-brise</p>
 
       <div class="cards">
-        <div class="card">
+        <div class="card fade-in">
           <h3>🚘 Remplacement de pare-brise</h3>
           <p>Pare-brise conforme aux normes constructeur posé chez vous ou sur votre lieu de travail.</p>
         </div>
 
-        <div class="card">
+        <div class="card fade-in">
           <h3>🔧 Contrôle & sécurité</h3>
           <p>Vérification de l’étanchéité, des capteurs et de la visibilité avant restitution du véhicule.</p>
         </div>
 
-        <div class="card">
+        <div class="card fade-in">
           <h3>📄 Prise en charge assurance</h3>
           <p>Accompagnement pour la prise en charge bris de glace avec votre assurance. Dans 90 % des cas, vous ne payez rien.</p>
         </div>
@@ -504,24 +556,24 @@
 
   <!-- PROCESS -->
   <section id="process">
-    <div class="container">
+    <div class="container fade-in">
       <h2 class="section-title">Comment ça marche ?</h2>
       <p class="section-subtitle">Un process simple pour votre prise en charge</p>
 
       <div class="steps">
-        <div class="step">
+        <div class="step fade-in">
           <strong>1. Demande de rendez-vous</strong><br>
           Vous remplissez le formulaire ou appelez directement.
         </div>
-        <div class="step">
+        <div class="step fade-in">
           <strong>2. Vérification assurance</strong><br>
           Nous vérifions votre garantie bris de glace avec votre assurance.
         </div>
-        <div class="step">
+        <div class="step fade-in">
           <strong>3. Intervention à domicile</strong><br>
           Pose du pare-brise à votre adresse ou sur votre lieu de travail.
         </div>
-        <div class="step">
+        <div class="step fade-in">
           <strong>4. Contrôle final</strong><br>
           Sécurité, étanchéité et propreté de la zone de travail.
         </div>
@@ -531,7 +583,7 @@
 
   <!-- ZONE -->
   <section id="zone">
-    <div class="container info-grid">
+    <div class="container info-grid fade-in">
 
       <div>
         <h2 class="section-title" style="text-align:left;">Zone d’intervention</h2>
@@ -553,7 +605,7 @@
         </p>
       </div>
 
-      <div class="contact-box">
+      <div class="contact-box fade-in-right">
         <p><strong>Contact rapide :</strong></p>
         <p>📞 07 57 82 38 68</p>
         <p>Email : <a href="mailto:rapidautoplus@gmail.com">rapidautoplus@gmail.com</a></p>
@@ -564,15 +616,16 @@
 
   <!-- CONTACT -->
   <section id="contact">
-    <div class="container info-grid">
+    <div class="container info-grid fade-in">
 
       <div>
         <h2 class="section-title" style="text-align:left;">Demande de rendez-vous</h2>
-        <p>Remplissez le formulaire pour une prise en charge rapide. Nous vous rappelons pour confirmer le rendez-vous et la prise en charge assurance.</p>
+        <p>Remplissez le formulaire pour une prise en charge rapide.</p>
       </div>
 
-      <div class="contact-box">
-        <form action="https://formsubmit.co/rapidautoplus@gmail.com" method="POST">
+      <div class="contact-box fade-in-right">
+
+        <form id="contact-form" action="https://formsubmit.co/rapidautoplus@gmail.com" method="POST">
           <input type="hidden" name="_subject" value="Nouvelle demande de rendez-vous - Rapid Auto Plus">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_template" value="table">
@@ -628,7 +681,10 @@
           </div>
 
           <button type="submit" class="btn-submit">Envoyer la demande</button>
+
+          <div id="form-message" class="form-message"></div>
         </form>
+
       </div>
 
     </div>
@@ -639,6 +695,61 @@
 <footer>
   © Rapid Auto Plus — Remplacement de pare-brise à domicile — Versailles, Île-de-France & 28
 </footer>
+
+<script>
+  // Animations "fade-in"
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".fade-in, .fade-in-right").forEach(el => {
+      const obs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          el.classList.add("visible");
+          obs.disconnect();
+        }
+      }, { threshold: 0.2 });
+
+      obs.observe(el);
+    });
+
+    // Envoi AJAX du formulaire pour éviter la redirection FormSubmit / erreurs
+    const form = document.getElementById("contact-form");
+    const messageBox = document.getElementById("form-message");
+    const submitBtn = form.querySelector(".btn-submit");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      messageBox.textContent = "";
+      messageBox.className = "form-message";
+
+      const originalText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Envoi en cours...";
+
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { "Accept": "application/json" }
+        });
+
+        if (res.ok) {
+          form.reset();
+          messageBox.textContent = "Merci, votre demande a bien été envoyée. Vous serez recontacté rapidement.";
+          messageBox.className = "form-message success";
+        } else {
+          messageBox.textContent = "Une erreur est survenue lors de l’envoi. Vous pouvez aussi appeler le 07 57 82 38 68.";
+          messageBox.className = "form-message error";
+        }
+      } catch (err) {
+        messageBox.textContent = "Impossible d’envoyer le formulaire pour le moment. Vérifiez votre connexion ou appelez le 07 57 82 38 68.";
+        messageBox.className = "form-message error";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
