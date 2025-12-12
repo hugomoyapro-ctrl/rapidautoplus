@@ -13,6 +13,15 @@
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#111827">
 
+  <!-- ✅ GOOGLE ADS TAG -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17799257107"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17799257107');
+  </script>
+
   <style>
     * {
       margin: 0;
@@ -741,6 +750,15 @@
         });
 
         if (res.ok) {
+          /* ✅ Conversion Google Ads (formulaire envoyé) */
+          if (typeof gtag === "function") {
+            gtag('event', 'conversion', {
+              'send_to': 'AW-17799257107/CqpwCMvjp9AbEJO4rKdC',
+              'value': 1.0,
+              'currency': 'EUR'
+            });
+          }
+
           form.reset();
           messageBox.textContent = "Merci, votre demande a bien été envoyée. Vous serez recontacté rapidement.";
           messageBox.className = "form-message success";
