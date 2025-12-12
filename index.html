@@ -1,755 +1,510 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rapid Auto Plus - Remplacement de pare-brise à domicile</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#e10600" />
+  <meta name="color-scheme" content="light" />
+
+  <title>Rapid Auto Plus – Remplacement Pare-Brise à domicile</title>
+  <meta name="description" content="Remplacement & réparation de pare-brise à domicile 🚗💨 Intervention rapide 7j/7 (8h–22h) à Versailles et alentours. Devis gratuit, prise en charge assurance." />
+
+  <!-- Favicons (à la racine) -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Rapid Auto Plus – Remplacement Pare-Brise à domicile" />
+  <meta property="og:description" content="Intervention rapide 7j/7 (8h–22h) 🚗💨 Devis gratuit, prise en charge assurance." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.rapidautoplus.fr/" />
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    :root{
+      --bg:#0b0f14;
+      --card:#0f1620;
+      --text:#eaf0f7;
+      --muted:#a9b5c4;
+      --accent:#e10600;
+      --accent2:#ff3b30;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1120px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(225,6,0,.35), transparent 60%),
+        radial-gradient(1200px 700px at 90% 10%, rgba(255,59,48,.20), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.45;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    header{
+      position:sticky; top:0; z-index:30;
+      backdrop-filter: blur(12px);
+      background: rgba(11,15,20,.60);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px;
+      padding:14px 24px;
+      max-width:var(--max);
+      margin:0 auto;
+    }
+    .brand{display:flex; align-items:center; gap:10px; min-width:0}
+    .logo{
+      width:42px; height:42px; border-radius:12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display:grid; place-items:center;
+      box-shadow: var(--shadow);
+      flex:0 0 auto;
+    }
+    .logo svg{width:24px; height:24px}
+    .brand-title{font-weight:800; letter-spacing:.2px}
+    .brand-sub{color:var(--muted); font-size:12.5px; margin-top:2px}
+    .brand-text{display:flex; flex-direction:column; min-width:0}
+    .actions{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .btn{
+      appearance:none; border:1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:12px;
+      font-weight:700;
+      text-decoration:none;
+      display:inline-flex; align-items:center; gap:8px;
+      transition:transform .12s ease, background .12s ease, border-color .12s ease;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.10)}
+    .btn.primary{
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-color: transparent;
+    }
+    .btn.primary:hover{filter:brightness(1.05)}
+    .hero{
+      padding:34px 0 10px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .card{
+      background: rgba(15,22,32,.70);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero-card{padding:22px}
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(28px, 3.4vw, 44px);
+      line-height:1.08;
+      letter-spacing:-.6px;
+    }
+    .lead{
+      margin:0 0 18px;
+      color: var(--muted);
+      font-size: 16.5px;
+      max-width: 60ch;
+    }
+    .badges{display:flex; flex-wrap:wrap; gap:10px; margin:16px 0 0}
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      color: #eaf0f7;
+      font-weight:700;
+      font-size:13.5px;
+    }
+    .badge span{color:var(--muted); font-weight:600}
+    .aside{padding:18px}
+    .aside h2{
+      margin:0 0 10px;
+      font-size:18px;
+      letter-spacing:-.2px;
+    }
+    .list{margin:0; padding:0; list-style:none; display:grid; gap:10px}
+    .item{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:12px;
+      border-radius:14px;
+      background: rgba(255,255,255,.04);
+      border:1px solid var(--border);
+    }
+    .dot{
+      width:10px; height:10px; border-radius:99px;
+      background: var(--accent2);
+      margin-top:6px;
+      flex:0 0 auto;
+    }
+    .item b{display:block}
+    .item small{color:var(--muted)}
+    .section{padding:18px 0}
+    .section h3{
+      margin:0 0 10px;
+      font-size:22px;
+      letter-spacing:-.2px;
+    }
+    .two{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:18px;
+    }
+    .padded{padding:18px}
+    .services{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+      margin-top:10px;
+    }
+    .svc{
+      padding:14px;
+      border-radius:16px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+    }
+    .svc b{display:block; margin-bottom:6px}
+    .svc p{margin:0; color:var(--muted); font-size:14px}
+    .banner{
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      padding:16px 18px;
+      border-radius: var(--radius);
+      border:1px solid rgba(225,6,0,.35);
+      background: linear-gradient(135deg, rgba(225,6,0,.22), rgba(255,59,48,.08));
+    }
+    .banner b{font-size:16px}
+    .banner span{color:var(--muted)}
+    .cover{
+      overflow:hidden;
+      border-radius: var(--radius);
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      position:relative;
+      min-height: 220px;
+    }
+    .cover img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      opacity:.95;
+    }
+    .cover .overlay{
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.70));
+    }
+    .cover .text{
+      position:absolute; left:16px; right:16px; bottom:14px;
+      display:flex; gap:10px; flex-wrap:wrap; align-items:flex-end; justify-content:space-between;
+    }
+    .cover .text .left{
+      display:flex; flex-direction:column; gap:4px;
+      max-width: 70ch;
+    }
+    .cover .text .left .t1{font-weight:900; font-size:20px}
+    .cover .text .left .t2{color:rgba(255,255,255,.75); font-weight:600; font-size:13px}
+    form{display:grid; gap:10px; margin-top:8px}
+    .row{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
+    input, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      outline:none;
+      font-size:14.5px;
+    }
+    textarea{min-height:110px; resize:vertical}
+    input:focus, textarea:focus{border-color: rgba(225,6,0,.55)}
+    .help{color:var(--muted); font-size:13px; margin:6px 0 0}
+    .toast{
+      display:none;
+      margin-top:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(34,197,94,.35);
+      background: rgba(34,197,94,.12);
+      color:#dcfce7;
+      font-weight:700;
+    }
+    .toast.err{
+      border-color: rgba(239,68,68,.35);
+      background: rgba(239,68,68,.12);
+      color:#fee2e2;
+    }
+    footer{
+      border-top:1px solid var(--border);
+      margin-top:26px;
+      padding:18px 0 30px;
+      color:var(--muted);
+      font-size:13px;
     }
 
-    body {
-      background: #f3f4f6;
-      color: #111827;
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 16px;
-    }
-
-    /* HEADER */
-    header {
-      background: #111827;
-      color: white;
-      padding: 10px 0;
-      position: sticky;
-      top: 0;
-      z-index: 50;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      width: 100%;
-    }
-
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-shrink: 0;
-    }
-
-    .logo-icon {
-      width: 30px;
-      height: 30px;
-      border-radius: 6px;
-      object-fit: cover;
-    }
-
-    .logo {
-      font-weight: 700;
-      font-size: 1rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-shrink: 0;
-      white-space: nowrap;
-    }
-
-    .btn-primary,
-    .btn-phone {
-      background: #ef4444;
-      color: white;
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      transition: 0.2s;
-      border: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      white-space: nowrap;
-    }
-
-    .btn-primary:hover,
-    .btn-phone:hover {
-      background: #dc2626;
-      transform: translateY(-1px);
-    }
-
-    .btn-outline {
-      border-radius: 999px;
-      padding: 8px 12px;
-      border: 1px solid #ffffff55;
-      color: #f9fafb;
-      background: transparent;
-      font-size: 0.8rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .btn-outline:hover {
-      background: #ffffff11;
-      border-color: #ffffffaa;
-    }
-
-    /* HERO */
-    .hero {
-      padding: 70px 0 80px;
-      background: linear-gradient(
-          135deg,
-          rgba(15, 23, 42, 0.65),
-          rgba(30, 64, 175, 0.55)
-        ),
-        url("parebrise.png") center/cover no-repeat;
-      color: white;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-      gap: 40px;
-    }
-
-    .hero-offer {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(239, 68, 68, 0.9);
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-bottom: 10px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-    }
-
-    .hero-offer span {
-      background: #facc15;
-      color: #111827;
-      font-size: 0.7rem;
-      padding: 2px 6px;
-      border-radius: 999px;
-    }
-
-    .hero-separator {
-      opacity: 0.85;
-      margin: 0 6px;
-    }
-
-    .hero-tag {
-      display: inline-flex;
-      background: rgba(15, 23, 42, 0.7);
-      padding: 4px 10px;
-      border-radius: 999px;
-      gap: 6px;
-      font-size: 0.8rem;
-      margin-bottom: 10px;
-    }
-
-    .hero-tag span {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #22c55e;
-    }
-
-    .hero h1 {
-      font-size: clamp(1.9rem, 3vw, 2.4rem);
-      margin-bottom: 12px;
-      line-height: 1.25;
-    }
-
-    .badge-assurance-inline {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.6em;
-      font-weight: 600;
-      background: rgba(34, 197, 94, 0.16);
-      color: #bbf7d0;
-      padding: 4px 10px;
-      border-radius: 999px;
-      margin-left: 8px;
-      border: 1px solid rgba(74, 222, 128, 0.6);
-      vertical-align: middle;
-    }
-
-    .badge-assurance-inline span {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.35);
-    }
-
-    .hero p {
-      max-width: 520px;
-      margin-bottom: 10px;
-      opacity: 0.95;
-      font-size: 0.95rem;
-    }
-
-    .hero-highlight {
-      opacity: 0.9;
-      margin-bottom: 14px;
-      font-size: 0.9rem;
-    }
-
-    .hero-actions {
-      margin-top: 14px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .hero-card {
-      background: rgba(15, 23, 42, 0.9);
-      padding: 18px 16px;
-      border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.35);
-      font-size: 0.9rem;
-    }
-
-    /* SECTIONS */
-    section {
-      padding: 60px 0;
-    }
-
-    section:nth-of-type(even) {
-      background: white;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 1.4rem;
-      margin-bottom: 6px;
-    }
-
-    .section-subtitle {
-      text-align: center;
-      color: #6b7280;
-      margin-bottom: 20px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 16px;
-      padding: 18px;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.05);
-      font-size: 0.9rem;
-    }
-
-    .card h3 {
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-    }
-
-    .step {
-      border: 1px dashed #ddd;
-      padding: 14px;
-      border-radius: 12px;
-      background: #f9fafb;
-      font-size: 0.9rem;
-    }
-
-    /* ZONE & CONTACT */
-    .info-grid {
-      display: grid;
-      grid-template-columns: minmax(0,1.2fr) minmax(0,1fr);
-      gap: 30px;
-    }
-
-    .contact-box {
-      padding: 16px;
-      background: #f9fafb;
-      border-radius: 14px;
-      border: 1px solid #e5e7eb;
-      font-size: 0.9rem;
-    }
-
-    /* FORMULAIRE */
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      font-size: 0.9rem;
-    }
-
-    label {
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 4px;
-      display: block;
-    }
-
-    input, textarea, select {
-      width: 100%;
-      padding: 10px;
-      border-radius: 10px;
-      border: 1px solid #d1d5db;
-      font-size: 0.9rem;
-      background: white;
-      outline: none;
-      transition: 0.2s;
-    }
-
-    input:focus,
-    textarea:focus,
-    select:focus {
-      border-color: #ef4444;
-      box-shadow: 0 0 0 2px rgba(239,68,68,0.25);
-    }
-
-    textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
-
-    .btn-submit {
-      background: #ef4444;
-      color: white;
-      padding: 10px 18px;
-      border-radius: 10px;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .btn-submit:hover {
-      background: #dc2626;
-      transform: translateY(-1px);
-    }
-
-    .form-message {
-      margin-top: 6px;
-      font-size: 0.8rem;
-      display: none;
-    }
-
-    .form-message.success {
-      display: block;
-      color: #16a34a;
-    }
-
-    .form-message.error {
-      display: block;
-      color: #dc2626;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #111827;
-      color: #9ca3af;
-      text-align: center;
-      padding: 18px 0;
-      font-size: 0.85rem;
-    }
-
-    /* ANIMATIONS */
-    .fade-in,
-    .fade-in-right {
-      opacity: 0;
-      transition: 0.6s ease;
-    }
-
-    .fade-in { transform: translateY(18px); }
-    .fade-in-right { transform: translateX(24px); }
-
-    .visible {
-      opacity: 1;
-      transform: translate(0,0);
-    }
-
-    /* TABLETTE */
-    @media (max-width: 768px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .info-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* MOBILE HEADER + CTA */
-    @media (max-width: 480px) {
-      header {
-        padding: 8px 0;
-      }
-
-      .nav {
-        flex-wrap: wrap;
-        gap: 6px;
-      }
-
-      .logo {
-        font-size: 0.9rem;
-      }
-
-      .logo-icon {
-        width: 26px;
-        height: 26px;
-      }
-
-      .nav-right {
-        margin-left: auto;
-        display: flex;
-        flex-direction: row;
-        gap: 6px;
-        flex-shrink: 1;
-      }
-
-      .btn-primary,
-      .btn-phone {
-        padding: 6px 8px;
-        font-size: 0.72rem;
-        white-space: nowrap;
-        flex: 0 1 auto;
-      }
-
-      .hero {
-        padding-top: 60px;
-      }
-
-      .hero h1 {
-        font-size: 1.6rem;
-      }
+    /* Mobile */
+    @media (max-width: 920px){
+      .grid{grid-template-columns: 1fr}
+      .two{grid-template-columns: 1fr}
+      .services{grid-template-columns: 1fr}
+      .row{grid-template-columns: 1fr}
+      .actions{justify-content:flex-start}
+      .nav{padding:12px 16px}
+      .wrap{padding:18px 16px}
+      .cover{min-height: 200px}
     }
   </style>
 </head>
 
 <body>
-
-<header>
-  <div class="container nav">
-    <div class="logo-area">
-      <img src="logo-rapid-auto.jpg" class="logo-icon" alt="Logo Rapid Auto Plus">
-      <a href="#top" class="logo">RAPID AUTO PLUS</a>
-    </div>
-
-    <div class="nav-right">
-      <a href="tel:0757823868" class="btn-phone">📞 Appeler</a>
-      <a href="#contact" class="btn-primary">📅 Rendez-vous</a>
-    </div>
-  </div>
-</header>
-
-<main id="top">
-
-  <!-- HERO -->
-  <section class="hero fade-in">
-    <div class="container hero-grid">
-
-      <div>
-        <div class="hero-offer">
-          <span>OFFRE</span>
-          Jusqu’à 300 € offerts
-          <span class="hero-separator">•</span>
-          Franchise offerte*
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M4 16.5c.6-2.8 3.4-7 8-7s7.4 4.2 8 7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <path d="M7.5 16.5h9" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <path d="M9.2 12.2l1.2-2.2h3.2l1.2 2.2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </div>
-
-        <div class="hero-tag">
-          <span></span>
-          <div>Remplacement de pare-brise à domicile</div>
-        </div>
-
-        <h1>
-          Intervention pare-brise à domicile — Île-de-France & Eure-et-Loir (28)
-          <span class="badge-assurance-inline">
-            <span></span>
-            Agréé assurance
-          </span>
-        </h1>
-
-        <p>Intervention rapide, professionnelle et directement à votre adresse, avec prise en charge possible par votre assurance.</p>
-        <p class="hero-highlight">Pose soignée • Matériel professionnel • Immobilisation minimale du véhicule</p>
-
-        <div class="hero-actions">
-          <a href="#contact" class="btn-primary">📅 Prendre un rendez-vous</a>
-          <a href="tel:0757823868" class="btn-outline">📞 Appeler maintenant</a>
+        <div class="brand-text">
+          <div class="brand-title">Rapid Auto Plus</div>
+          <div class="brand-sub">Remplacement & réparation pare-brise 🚗💨 (à domicile)</div>
         </div>
       </div>
 
-      <aside class="hero-card fade-in-right">
-        <h2>Intervention depuis Versailles</h2>
-        <p><strong>25 rue du Maréchal Foch<br>78000 Versailles</strong></p>
-        <p>Déplacement dans toute l’Île-de-France et dans le 28 selon faisabilité.</p>
-        <p style="font-size:0.78rem; opacity:0.85; margin-top:6px;">
-          *Offre soumise à conditions, selon prise en charge de votre assurance bris de glace.
-        </p>
-      </aside>
-
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="container fade-in">
-      <h2 class="section-title">Nos services</h2>
-      <p class="section-subtitle">Spécialiste du remplacement de pare-brise</p>
-
-      <div class="cards">
-        <div class="card fade-in">
-          <h3>🚘 Remplacement de pare-brise</h3>
-          <p>Pare-brise conforme aux normes constructeur posé chez vous ou sur votre lieu de travail.</p>
-        </div>
-
-        <div class="card fade-in">
-          <h3>🔧 Contrôle & sécurité</h3>
-          <p>Vérification de l’étanchéité, des capteurs et de la visibilité avant restitution du véhicule.</p>
-        </div>
-
-        <div class="card fade-in">
-          <h3>📄 Prise en charge assurance</h3>
-          <p>Accompagnement pour la prise en charge bris de glace avec votre assurance. Dans 90 % des cas, vous ne payez rien.</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- PROCESS -->
-  <section id="process">
-    <div class="container fade-in">
-      <h2 class="section-title">Comment ça marche ?</h2>
-      <p class="section-subtitle">Un process simple pour votre prise en charge</p>
-
-      <div class="steps">
-        <div class="step fade-in">
-          <strong>1. Demande de rendez-vous</strong><br>
-          Vous remplissez le formulaire ou appelez directement.
-        </div>
-        <div class="step fade-in">
-          <strong>2. Vérification assurance</strong><br>
-          Nous vérifions votre garantie bris de glace avec votre assurance.
-        </div>
-        <div class="step fade-in">
-          <strong>3. Intervention à domicile</strong><br>
-          Pose du pare-brise à votre adresse ou sur votre lieu de travail.
-        </div>
-        <div class="step fade-in">
-          <strong>4. Contrôle final</strong><br>
-          Sécurité, étanchéité et propreté de la zone de travail.
-        </div>
+      <div class="actions">
+        <a class="btn" href="tel:+33757823868">📞 Appeler</a>
+        <a class="btn" href="mailto:rapidautoplus@gmail.com">✉️ Email</a>
+        <a class="btn primary" href="#devis">📩 Devis gratuit</a>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- ZONE -->
-  <section id="zone">
-    <div class="container info-grid fade-in">
+  <main class="wrap">
+    <section class="hero">
+      <div class="grid">
+        <div class="card hero-card">
+          <h1>Remplacement pare-brise <span style="color:var(--accent2)">à domicile</span> 🏠🚗</h1>
+          <p class="lead">
+            Intervention rapide <b>7j/7</b> (08h–22h) à Versailles et alentours.
+            📍 Déplacement chez vous / sur votre lieu de travail, avec prise en charge assurance.
+          </p>
 
-      <div>
-        <h2 class="section-title" style="text-align:left;">Zone d’intervention</h2>
-        <p><strong>Basé à Versailles (78000)</strong>, nous intervenons :</p>
+          <div class="banner" style="margin-top:14px">
+            <div>
+              <b>Devis gratuit & intervention rapide ✅</b><br />
+              <span>Appelez maintenant ou envoyez votre demande en 30 secondes.</span>
+            </div>
+            <a class="btn primary" href="#devis">Demander un devis</a>
+          </div>
 
-        <p>
-          • Dans <strong>toute l’Île-de-France</strong> 🌍<br>
-          • Dans le <strong>28 – Eure-et-Loir</strong> (selon disponibilité)<br>
-          • Toutes communes proches et accessibles autour de Versailles
-        </p>
+          <div class="badges">
+            <div class="badge">⏱️ <b>Rapide</b> <span>réponse immédiate</span></div>
+            <div class="badge">🛡️ <b>Assurance</b> <span>accompagnement</span></div>
+            <div class="badge">📍 <b>Versailles</b> <span>& alentours</span></div>
+            <div class="badge">🗓️ <b>7j/7</b> <span>08h–22h</span></div>
+          </div>
+        </div>
 
-        <p style="margin-top:10px;">
-          Nous nous déplaçons directement à votre domicile, lieu de travail ou à l’adresse de votre choix.
+        <aside class="card aside">
+          <h2>Infos pratiques</h2>
+          <ul class="list">
+            <li class="item">
+              <span class="dot"></span>
+              <div>
+                <b>Horaires</b>
+                <small>08:00 – 22:00 • 7j/7</small>
+              </div>
+            </li>
+            <li class="item">
+              <span class="dot"></span>
+              <div>
+                <b>Téléphone</b>
+                <small><a href="tel:+33757823868">07 57 82 38 68</a></small>
+              </div>
+            </li>
+            <li class="item">
+              <span class="dot"></span>
+              <div>
+                <b>Email</b>
+                <small><a href="mailto:rapidautoplus@gmail.com">rapidautoplus@gmail.com</a></small>
+              </div>
+            </li>
+            <li class="item">
+              <span class="dot"></span>
+              <div>
+                <b>Adresse</b>
+                <small>25 rue du Maréchal Foch, 78000 Versailles</small>
+              </div>
+            </li>
+          </ul>
+
+          <p class="help" style="margin-top:12px">
+            ⚠️ <b>Service à domicile uniquement</b> : on se déplace chez vous (pas de boutique ouverte au public).
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="two">
+        <div class="card padded">
+          <h3>Nos services 🔧</h3>
+          <div class="services">
+            <div class="svc"><b>Remplacement pare-brise</b><p>Montage propre et sécurisé.</p></div>
+            <div class="svc"><b>Réparation impact</b><p>Quand c’est réparable, on vous le dit.</p></div>
+            <div class="svc"><b>Déplacement à domicile</b><p>Maison / bureau / parking.</p></div>
+          </div>
+          <p class="help">✅ Devis gratuit • 📞 Réponse rapide • 🛡️ Prise en charge assurance</p>
+        </div>
+
+        <div class="card padded">
+          <h3>Avant / Après ✨</h3>
+          <div class="cover" aria-label="Exemple avant/après">
+            <!-- Mets ici ton image de couverture avant/après si tu veux -->
+            <!-- Exemple : <img src="avant-apres.jpg" alt="Avant après pare-brise"> -->
+            <img src="parebrise.png" alt="Avant après pare-brise" onerror="this.style.display='none'; this.parentElement.style.minHeight='140px';" />
+            <div class="overlay"></div>
+            <div class="text">
+              <div class="left">
+                <div class="t1">Résultat propre, rapide et sécurisé ✅</div>
+                <div class="t2">Intervention à domicile • 7j/7 • 08h–22h</div>
+              </div>
+              <a class="btn primary" href="#devis">📩 Devis gratuit</a>
+            </div>
+          </div>
+          <p class="help">Astuce : la photo de couverture idéale = voiture + pare-brise + logo (propre & lumineux).</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="devis">
+      <div class="card padded">
+        <h3>Demander un devis 📩</h3>
+        <p class="help" style="margin-top:0">
+          Remplis ce formulaire → tu restes sur la page et tu vois un message “envoyé ✅”.
         </p>
 
-        <p style="margin-top:14px;">
-          <strong>Adresse de départ :</strong><br>
-          25 rue du Maréchal Foch — 78000 Versailles
-        </p>
-      </div>
-
-      <div class="contact-box fade-in-right">
-        <p><strong>Contact rapide :</strong></p>
-        <p>📞 07 57 82 38 68</p>
-        <p>Email : <a href="mailto:rapidautoplus@gmail.com">rapidautoplus@gmail.com</a></p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container info-grid fade-in">
-
-      <div>
-        <h2 class="section-title" style="text-align:left;">Demande de rendez-vous</h2>
-        <p>Remplissez le formulaire pour une prise en charge rapide.</p>
-      </div>
-
-      <div class="contact-box fade-in-right">
-
-        <form id="contact-form" action="https://formsubmit.co/rapidautoplus@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="Nouvelle demande de rendez-vous - Rapid Auto Plus">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-
-          <div>
-            <label>Nom / Prénom</label>
-            <input type="text" name="Nom" required>
+        <form id="contactForm" novalidate>
+          <div class="row">
+            <input name="name" type="text" placeholder="Votre nom" autocomplete="name" required />
+            <input name="phone" type="tel" placeholder="Votre téléphone" autocomplete="tel" required />
           </div>
-
-          <div>
-            <label>Téléphone</label>
-            <input type="tel" name="Téléphone" required>
+          <div class="row">
+            <input name="email" type="email" placeholder="Votre email (optionnel)" autocomplete="email" />
+            <input name="city" type="text" placeholder="Ville / secteur (ex: Versailles)" autocomplete="address-level2" />
           </div>
+          <textarea name="message" placeholder="Expliquez votre besoin (impact, remplacement, modèle véhicule, etc.)" required></textarea>
 
-          <div>
-            <label>Email</label>
-            <input type="email" name="Email" required>
-          </div>
+          <button class="btn primary" type="submit">Envoyer ✅</button>
 
-          <div>
-            <label>Immatriculation</label>
-            <input type="text" name="Immatriculation" required>
-          </div>
+          <div id="toastOk" class="toast">✅ Message envoyé ! On vous recontacte rapidement.</div>
+          <div id="toastErr" class="toast err">❌ Impossible d’envoyer pour le moment. Essayez par téléphone : 07 57 82 38 68</div>
 
-          <div>
-            <label>Modèle du véhicule</label>
-            <input type="text" name="Modèle" required>
-          </div>
-
-          <div>
-            <label>Type de dommage</label>
-            <select name="Type de dommage" required>
-              <option value="">Sélectionner...</option>
-              <option value="pare-brise">Pare-brise</option>
-              <option value="lunette-arriere">Lunette arrière</option>
-              <option value="carreau">Carreau / Vitre latérale</option>
-            </select>
-          </div>
-
-          <div>
-            <label>Préférence de date</label>
-            <input type="text" name="Préférence date" placeholder="Ex : mardi matin, après-midi...">
-          </div>
-
-          <div>
-            <label>Adresse d’intervention</label>
-            <textarea name="Adresse" required></textarea>
-          </div>
-
-          <div>
-            <label>Message (optionnel)</label>
-            <textarea name="Message"></textarea>
-          </div>
-
-          <button type="submit" class="btn-submit">Envoyer la demande</button>
-
-          <div id="form-message" class="form-message"></div>
+          <p class="help">
+            En cas de souci, vous pouvez aussi envoyer un email : <a href="mailto:rapidautoplus@gmail.com">rapidautoplus@gmail.com</a>
+          </p>
         </form>
-
       </div>
+    </section>
 
-    </div>
-  </section>
+    <footer>
+      <div>
+        © <span id="year"></span> Rapid Auto Plus — Remplacement pare-brise à domicile 🏠🚗 • 7j/7 08h–22h • Versailles (78000)
+      </div>
+    </footer>
+  </main>
 
-</main>
+  <script>
+    // Année footer
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-<footer>
-  © Rapid Auto Plus — Remplacement de pare-brise à domicile — Versailles, Île-de-France & 28
-</footer>
+    // Formulaire: envoi AJAX (évite la "page après" et évite l'erreur visuelle)
+    const form = document.getElementById("contactForm");
+    const toastOk = document.getElementById("toastOk");
+    const toastErr = document.getElementById("toastErr");
 
-<script>
-  // Animations "fade-in"
-  document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".fade-in, .fade-in-right").forEach(el => {
-      const obs = new IntersectionObserver(entries => {
-        if (entries[0].isIntersecting) {
-          el.classList.add("visible");
-          obs.disconnect();
-        }
-      }, { threshold: 0.2 });
-
-      obs.observe(el);
-    });
-
-    // Envoi AJAX du formulaire pour éviter la redirection FormSubmit / erreurs
-    const form = document.getElementById("contact-form");
-    const messageBox = document.getElementById("form-message");
-    const submitBtn = form.querySelector(".btn-submit");
+    function show(el){
+      el.style.display = "block";
+      setTimeout(() => { el.style.display = "none"; }, 5000);
+    }
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
+      toastOk.style.display = "none";
+      toastErr.style.display = "none";
 
-      messageBox.textContent = "";
-      messageBox.className = "form-message";
+      // Validation simple
+      const fd = new FormData(form);
+      const name = (fd.get("name") || "").trim();
+      const phone = (fd.get("phone") || "").trim();
+      const message = (fd.get("message") || "").trim();
 
-      const originalText = submitBtn.textContent;
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Envoi en cours...";
+      if(!name || !phone || !message){
+        show(toastErr);
+        return;
+      }
 
-      try {
-        const res = await fetch(form.action, {
+      // ✅ Endpoint FormSubmit AJAX (envoie vers ton email)
+      // Si tu préfères un autre service (Formspree / Netlify), dis-moi et je te change l’URL.
+      const endpoint = "https://formsubmit.co/ajax/rapidautoplus@gmail.com";
+
+      const payload = {
+        name,
+        phone,
+        email: (fd.get("email") || "").trim(),
+        city: (fd.get("city") || "").trim(),
+        message,
+        _subject: "Nouveau devis - Rapid Auto Plus",
+        _captcha: "false"
+      };
+
+      try{
+        const res = await fetch(endpoint, {
           method: "POST",
-          body: new FormData(form),
-          headers: { "Accept": "application/json" }
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify(payload)
         });
 
-        if (res.ok) {
-          form.reset();
-          messageBox.textContent = "Merci, votre demande a bien été envoyée. Vous serez recontacté rapidement.";
-          messageBox.className = "form-message success";
-        } else {
-          messageBox.textContent = "Une erreur est survenue lors de l’envoi. Vous pouvez aussi appeler le 07 57 82 38 68.";
-          messageBox.className = "form-message error";
-        }
-      } catch (err) {
-        messageBox.textContent = "Impossible d’envoyer le formulaire pour le moment. Vérifiez votre connexion ou appelez le 07 57 82 38 68.";
-        messageBox.className = "form-message error";
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
+        if(!res.ok) throw new Error("HTTP " + res.status);
+
+        form.reset();
+        show(toastOk);
+      }catch(err){
+        // Fallback: ouvre le mail si l'ajax est bloqué
+        show(toastErr);
+
+        const mailto =
+          "mailto:rapidautoplus@gmail.com" +
+          "?subject=" + encodeURIComponent("Nouveau devis - Rapid Auto Plus") +
+          "&body=" + encodeURIComponent(
+            "Nom: " + name + "\n" +
+            "Téléphone: " + phone + "\n" +
+            "Email: " + payload.email + "\n" +
+            "Ville: " + payload.city + "\n\n" +
+            "Message:\n" + message
+          );
+
+        // Ne force pas l'ouverture, mais laisse une option au user (clic)
+        console.warn("Envoi AJAX échoué, fallback mailto prêt :", mailto);
       }
     });
-  });
-</script>
-
+  </script>
 </body>
 </html>
