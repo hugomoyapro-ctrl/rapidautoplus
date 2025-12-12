@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rapid Auto Plus - Remplacement de pare-brise à domicile</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Rapid Auto Plus – Remplacement de pare-brise à domicile</title>
+  <meta name="description" content="Rapid Auto Plus – Remplacement et réparation de pare-brise à domicile. Intervention 7j/7 de 8h à 22h à Versailles et alentours.">
+
+  <!-- FAVICONS / LOGOS -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#ef4444">
 
   <style>
     * {
@@ -45,19 +55,17 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      width: 100%;
     }
 
     .logo-area {
       display: flex;
       align-items: center;
-      gap: 6px;
-      flex-shrink: 0;
+      gap: 8px;
     }
 
     .logo-icon {
-      width: 30px;
-      height: 30px;
+      width: 34px;
+      height: 34px;
       border-radius: 6px;
       object-fit: cover;
     }
@@ -65,33 +73,163 @@
     .logo {
       font-weight: 700;
       font-size: 1rem;
-      letter-spacing: 0.05em;
       text-transform: uppercase;
       white-space: nowrap;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 16px;
-      font-size: 0.9rem;
-    }
-
     .nav-right {
       display: flex;
-      align-items: center;
       gap: 8px;
-      flex-shrink: 0;
       white-space: nowrap;
     }
 
-    .btn-primary,
-    .btn-phone {
+    .btn {
       background: #ef4444;
       color: white;
-      padding: 8px 12px;
+      padding: 8px 14px;
       border-radius: 999px;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 600;
-      transition: 0.2s;
       border: none;
       cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      background: #111827;
+      color: white;
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto 24px;
+      opacity: 0.9;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 50px 0;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .service {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    /* FORM */
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    input, textarea {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      font-size: 0.9rem;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    footer {
+      background: #111827;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo-area">
+      <img src="logo-rapid-auto.jpg" alt="Rapid Auto Plus" class="logo-icon">
+      <div class="logo">Rapid Auto Plus</div>
+    </div>
+    <div class="nav-right">
+      <a href="tel:0757823868" class="btn">📞 07 57 82 38 68</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Remplacement de pare-brise à domicile</h1>
+    <p>
+      Intervention exclusivement à domicile ou sur votre lieu de travail.  
+      Service professionnel 7j/7 de 8h à 22h à Versailles et alentours.
+    </p>
+    <a href="#contact" class="btn">Demander un devis</a>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Nos services</h2>
+    <div class="services">
+      <div class="service">Remplacement de pare-brise</div>
+      <div class="service">Réparation d’impact</div>
+      <div class="service">Intervention à domicile</div>
+      <div class="service">Prise en charge assurance</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <h2>Contact & devis</h2>
+    <form action="https://formsubmit.co/rapidautoplus@gmail.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_subject" value="Nouvelle demande – Rapid Auto Plus">
+
+      <input type="text" name="Nom" placeholder="Votre nom" required>
+      <input type="tel" name="Téléphone" placeholder="Votre téléphone" required>
+      <input type="email" name="Email" placeholder="Votre email">
+      <textarea name="Message" placeholder="Votre demande" required></textarea>
+
+      <button class="btn" type="submit">Envoyer</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  © 2025 Rapid Auto Plus – 25 rue du Maréchal Foch, 78000 Versailles
+</footer>
+
+</body>
+</html>
