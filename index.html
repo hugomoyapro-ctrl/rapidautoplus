@@ -70,6 +70,7 @@
       align-items: center;
       gap: 6px;
       flex-shrink: 0;
+      min-width: 0;
     }
 
     .logo-icon {
@@ -85,6 +86,40 @@
       letter-spacing: 0.05em;
       text-transform: uppercase;
       white-space: nowrap;
+    }
+
+    /* ✅ NAV CENTER (Pare-brise / Dépannage) */
+    .nav-center{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-shrink:0;
+      white-space:nowrap;
+    }
+    .nav-link{
+      border-radius: 999px;
+      padding: 8px 14px;         /* ✅ taille identique */
+      border: 1px solid #ffffff55;
+      color: #f9fafb;
+      background: transparent;
+      font-size: 0.8rem;         /* ✅ taille identique */
+      font-weight: 600;          /* ✅ même épaisseur */
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .nav-link:hover {
+      background: #ffffff11;
+      border-color: #ffffffaa;
+    }
+    .nav-link.active{
+      background: #ffffff18;
+      border-color: #ffffffcc;
+      font-weight: 600;
     }
 
     .nav-right {
@@ -434,7 +469,7 @@
       }
     }
 
-    /* MOBILE HEADER + CTA */
+    /* ✅ MOBILE HEADER : logo+texte à gauche, nav-center centré dessous, boutons centrés dessous */
     @media (max-width: 480px) {
       header {
         padding: 8px 0;
@@ -442,32 +477,42 @@
 
       .nav {
         flex-wrap: wrap;
-        gap: 6px;
+        gap: 8px;
+      }
+
+      /* ligne 1 : logo à gauche */
+      .logo-area {
+        width: 100%;
+        justify-content: flex-start;
+        min-width: 0;
       }
 
       .logo {
-        font-size: 0.9rem;
+        white-space: normal; /* ✅ pas coupé */
+        overflow: visible;
+        text-overflow: unset;
+        max-width: 100%;
+        line-height: 1.1;
+        text-align: left;
       }
 
-      .logo-icon {
-        width: 26px;
-        height: 26px;
+      /* ligne 2 : nav center au milieu */
+      .nav-center{
+        width: 100%;
+        justify-content: center;
       }
 
+      /* ligne 3 : boutons rouges au milieu */
       .nav-right {
-        margin-left: auto;
-        display: flex;
-        flex-direction: row;
-        gap: 6px;
-        flex-shrink: 1;
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
       }
 
       .btn-primary,
       .btn-phone {
-        padding: 6px 8px;
-        font-size: 0.72rem;
-        white-space: nowrap;
-        flex: 0 1 auto;
+        padding: 6px 10px;
+        font-size: 0.75rem;
       }
 
       .hero {
@@ -489,6 +534,12 @@
       <img src="logo-rapid-auto.jpg" class="logo-icon" alt="Logo Rapid Auto Plus">
       <a href="#top" class="logo">RAPID AUTO PLUS</a>
     </div>
+
+    <!-- ✅ Boutons au milieu -->
+    <nav class="nav-center" aria-label="Navigation principale">
+      <a class="nav-link active" href="index.html">Pare-brise</a>
+      <a class="nav-link" href="depannage.html">Dépannage</a>
+    </nav>
 
     <div class="nav-right">
       <a href="tel:0757823868" class="btn-phone">📞 Appeler</a>
