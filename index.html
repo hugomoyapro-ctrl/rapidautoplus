@@ -13,7 +13,8 @@
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#111827">
 
-  <!-- ✅ GOOGLE TAG (GA4) -->
+  <!-- ✅ GOOGLE ADS TAG -->
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CNFN6SX78Q"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -98,12 +99,12 @@
     }
     .nav-link{
       border-radius: 999px;
-      padding: 8px 14px;
+      padding: 8px 14px;         /* ✅ taille identique */
       border: 1px solid #ffffff55;
       color: #f9fafb;
       background: transparent;
-      font-size: 0.8rem;
-      font-weight: 600;
+      font-size: 0.8rem;         /* ✅ taille identique */
+      font-weight: 600;          /* ✅ même épaisseur */
       cursor: pointer;
       transition: 0.2s;
       display: inline-flex;
@@ -418,18 +419,95 @@
       transform: translateY(-1px);
     }
 
-    /* ✅ bloc pièces jointes */
-    .pj-box{
-      background:#fef2f2;
-      border:1px solid #fecaca;
-      padding:16px;
-      border-radius:14px;
+    .form-message {
+      margin-top: 6px;
+      font-size: 0.8rem;
+      display: none;
     }
-    .pj-title{
-      font-weight:800;
+
+    .form-message.success {
+      display: block;
+      color: #16a34a;
+    }
+
+    .form-message.error {
+      display: block;
+      color: #dc2626;
+    }
+
+    /* ✅ “ONGLET” PJ (info) */
+    .pj-tab{
+      margin-top:14px;
+      border-radius:14px;
+      border:1px solid rgba(239,68,68,0.25);
+      overflow:hidden;
+      background:#fff;
+    }
+    .pj-tab-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:12px 14px;
+      background:rgba(239,68,68,0.08);
+      cursor:pointer;
+      user-select:none;
+    }
+    .pj-tab-head strong{
       color:#b91c1c;
+      font-size:0.92rem;
+    }
+    .pj-tab-head span{
+      font-size:0.9rem;
+      opacity:0.75;
+    }
+    .pj-tab-body{
+      padding:14px;
+      display:none;
+      font-size:0.9rem;
+      color:#111827;
+    }
+    .pj-tab-body p{
       margin-bottom:10px;
-      display:block;
+      color:#374151;
+    }
+    .pj-list{
+      margin:8px 0 12px 18px;
+      color:#111827;
+    }
+    .pj-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:10px;
+    }
+    .btn-mini{
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:0.8rem;
+      font-weight:600;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      border:1px solid transparent;
+      cursor:pointer;
+      transition:.2s;
+      white-space:nowrap;
+    }
+    .btn-mini.red{
+      background:#ef4444;
+      color:white;
+    }
+    .btn-mini.red:hover{ background:#dc2626; transform:translateY(-1px); }
+    .btn-mini.outline{
+      background:transparent;
+      color:#ef4444;
+      border-color:rgba(239,68,68,0.45);
+    }
+    .btn-mini.outline:hover{
+      background:rgba(239,68,68,0.08);
+      border-color:rgba(239,68,68,0.7);
+      transform:translateY(-1px);
     }
 
     /* FOOTER */
@@ -462,12 +540,14 @@
       .info-grid { grid-template-columns: 1fr; }
     }
 
-    /* MOBILE HEADER (comme ton original) */
+    /* ✅ MOBILE HEADER : logo+texte à gauche, nav-center centré dessous, boutons centrés dessous */
     @media (max-width: 480px) {
       header { padding: 8px 0; }
+
       .nav { flex-wrap: wrap; gap: 8px; }
 
       .logo-area { width: 100%; justify-content: flex-start; min-width: 0; }
+
       .logo {
         white-space: normal;
         overflow: visible;
@@ -478,7 +558,12 @@
       }
 
       .nav-center{ width: 100%; justify-content: center; }
-      .nav-right { width: 100%; justify-content: center; gap: 10px; }
+
+      .nav-right {
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+      }
 
       .btn-primary,
       .btn-phone {
@@ -488,6 +573,8 @@
 
       .hero { padding-top: 60px; }
       .hero h1 { font-size: 1.6rem; }
+
+      .pj-tab-head span{ display:none; } /* plus clean sur mobile */
     }
   </style>
 </head>
@@ -501,6 +588,7 @@
       <a href="#top" class="logo">RAPID AUTO PLUS</a>
     </div>
 
+    <!-- ✅ Boutons au milieu -->
     <nav class="nav-center" aria-label="Navigation principale">
       <a class="nav-link active" href="index.html">Pare-brise</a>
       <a class="nav-link" href="depannage.html">Dépannage</a>
@@ -654,42 +742,43 @@
       <div>
         <h2 class="section-title" style="text-align:left;">Demande de rendez-vous</h2>
         <p>Remplissez le formulaire pour une prise en charge rapide.</p>
-        <p style="margin-top:10px; color:#6b7280;">
-          <strong>Pièces obligatoires :</strong> assurance + carte grise + photo de l’impact.
-        </p>
       </div>
 
       <div class="contact-box fade-in-right">
 
-        <!-- ✅ FORMSpree + PIÈCES JOINTES OBLIGATOIRES -->
-        <form action="https://formspree.io/f/mlgbqvky" method="POST" enctype="multipart/form-data">
+        <!-- ✅ FormSubmit gratuit (identique) -->
+        <form id="contact-form" action="https://formsubmit.co/rapidautoplus@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Nouvelle demande de rendez-vous - Rapid Auto Plus">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+
           <div>
-            <label>Nom / Prénom *</label>
+            <label>Nom / Prénom</label>
             <input type="text" name="Nom" required>
           </div>
 
           <div>
-            <label>Téléphone *</label>
+            <label>Téléphone</label>
             <input type="tel" name="Téléphone" required>
           </div>
 
           <div>
-            <label>Email *</label>
+            <label>Email</label>
             <input type="email" name="Email" required>
           </div>
 
           <div>
-            <label>Immatriculation *</label>
+            <label>Immatriculation</label>
             <input type="text" name="Immatriculation" required>
           </div>
 
           <div>
-            <label>Modèle du véhicule *</label>
+            <label>Modèle du véhicule</label>
             <input type="text" name="Modèle" required>
           </div>
 
           <div>
-            <label>Type de dommage *</label>
+            <label>Type de dommage</label>
             <select name="Type de dommage" required>
               <option value="">Sélectionner...</option>
               <option value="pare-brise">Pare-brise</option>
@@ -704,7 +793,7 @@
           </div>
 
           <div>
-            <label>Adresse d’intervention *</label>
+            <label>Adresse d’intervention</label>
             <textarea name="Adresse" required></textarea>
           </div>
 
@@ -713,27 +802,43 @@
             <textarea name="Message"></textarea>
           </div>
 
-          <div class="pj-box">
-            <span class="pj-title">📎 Pièces jointes obligatoires</span>
+          <button type="submit" class="btn-submit">Envoyer la demande</button>
 
-            <div style="margin-bottom:12px;">
-              <label>Assurance (PDF / photo) *</label>
-              <input type="file" name="Assurance" accept="image/*,.pdf" required>
-            </div>
+          <div id="form-message" class="form-message"></div>
+        </form>
 
-            <div style="margin-bottom:12px;">
-              <label>Carte grise (PDF / photo) *</label>
-              <input type="file" name="Carte grise" accept="image/*,.pdf" required>
-            </div>
-
-            <div>
-              <label>Photo de l’impact *</label>
-              <input type="file" name="Photo impact" accept="image/*" required>
-            </div>
+        <!-- ✅ “Onglet” PJ ajouté (gratuit) -->
+        <div class="pj-tab" id="pj-tab">
+          <div class="pj-tab-head" id="pj-toggle" role="button" aria-expanded="false" tabindex="0">
+            <strong>📎 Envoyer les photos / documents</strong>
+            <span>WhatsApp / SMS / Email</span>
           </div>
 
-          <button type="submit" class="btn-submit">📩 Envoyer la demande</button>
-        </form>
+          <div class="pj-tab-body" id="pj-body">
+            <p>
+              Pour établir le devis plus rapidement, merci de nous transmettre <strong>après votre demande</strong> :
+            </p>
+
+            <ul class="pj-list">
+              <li>• Photo de l’impact</li>
+              <li>• Carte grise</li>
+              <li>• Attestation d’assurance</li>
+            </ul>
+
+            <p>
+              Vous pouvez les envoyer <strong>par téléphone (WhatsApp / SMS)</strong> ou <strong>par email</strong>.
+            </p>
+
+            <div class="pj-actions">
+              <a class="btn-mini red" href="tel:0757823868">📞 Envoyer par téléphone</a>
+              <a class="btn-mini outline" href="mailto:rapidautoplus@gmail.com?subject=Pi%C3%A8ces%20jointes%20-%20Rapid%20Auto%20Plus&body=Bonjour%2C%0A%0AVoici%20les%20documents%20pour%20mon%20devis%20%3A%20assurance%20%2F%20carte%20grise%20%2F%20photo%20impact.%0A%0AMerci.">✉️ Envoyer par email</a>
+            </div>
+
+            <p style="margin-top:10px; font-size:0.85rem; color:#6b7280;">
+              Astuce : indiquez votre <strong>immatriculation</strong> dans le message pour qu’on retrouve votre demande.
+            </p>
+          </div>
+        </div>
 
       </div>
 
@@ -758,6 +863,72 @@
       }, { threshold: 0.2 });
 
       obs.observe(el);
+    });
+
+    // Envoi AJAX du formulaire (comme ton code d’origine)
+    const form = document.getElementById("contact-form");
+    const messageBox = document.getElementById("form-message");
+    const submitBtn = form.querySelector(".btn-submit");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      messageBox.textContent = "";
+      messageBox.className = "form-message";
+
+      const originalText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Envoi en cours...";
+
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { "Accept": "application/json" }
+        });
+
+        if (res.ok) {
+          // ✅ Conversion (garde ton event existant)
+          if (typeof gtag === "function") {
+            gtag('event', 'conversion', {
+              'send_to': 'AW-17799257107/CqpwCMvjp9AbEJO4rKdC',
+              'value': 1.0,
+              'currency': 'EUR'
+            });
+          }
+
+          form.reset();
+          messageBox.textContent = "Merci, votre demande a bien été envoyée. Vous serez recontacté rapidement.";
+          messageBox.className = "form-message success";
+        } else {
+          messageBox.textContent = "Une erreur est survenue lors de l’envoi. Vous pouvez aussi appeler le 07 57 82 38 68.";
+          messageBox.className = "form-message error";
+        }
+      } catch (err) {
+        messageBox.textContent = "Impossible d’envoyer le formulaire pour le moment. Vérifiez votre connexion ou appelez le 07 57 82 38 68.";
+        messageBox.className = "form-message error";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }
+    });
+
+    // Toggle “onglet” PJ
+    const toggle = document.getElementById("pj-toggle");
+    const body = document.getElementById("pj-body");
+
+    function togglePJ(){
+      const isOpen = body.style.display === "block";
+      body.style.display = isOpen ? "none" : "block";
+      toggle.setAttribute("aria-expanded", String(!isOpen));
+    }
+
+    toggle.addEventListener("click", togglePJ);
+    toggle.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        togglePJ();
+      }
     });
   });
 </script>
