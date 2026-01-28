@@ -36,7 +36,10 @@
       line-height: 1.6;
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     .container {
       max-width: 1100px;
@@ -209,7 +212,10 @@
       border-radius: 999px;
     }
 
-    .hero-separator { opacity: 0.85; margin: 0 6px; }
+    .hero-separator {
+      opacity: 0.85;
+      margin: 0 6px;
+    }
 
     .hero-tag {
       display: inline-flex;
@@ -287,8 +293,13 @@
     }
 
     /* SECTIONS */
-    section { padding: 60px 0; }
-    section:nth-of-type(even) { background: white; }
+    section {
+      padding: 60px 0;
+    }
+
+    section:nth-of-type(even) {
+      background: white;
+    }
 
     .section-title {
       text-align: center;
@@ -407,14 +418,19 @@
       transform: translateY(-1px);
     }
 
-    .form-message {
-      margin-top: 6px;
-      font-size: 0.8rem;
-      display: none;
+    /* ✅ bloc pièces jointes */
+    .pj-box{
+      background:#fef2f2;
+      border:1px solid #fecaca;
+      padding:16px;
+      border-radius:14px;
     }
-
-    .form-message.success { display: block; color: #16a34a; }
-    .form-message.error { display: block; color: #dc2626; }
+    .pj-title{
+      font-weight:800;
+      color:#b91c1c;
+      margin-bottom:10px;
+      display:block;
+    }
 
     /* FOOTER */
     footer {
@@ -431,9 +447,14 @@
       opacity: 0;
       transition: 0.6s ease;
     }
+
     .fade-in { transform: translateY(18px); }
     .fade-in-right { transform: translateX(24px); }
-    .visible { opacity: 1; transform: translate(0,0); }
+
+    .visible {
+      opacity: 1;
+      transform: translate(0,0);
+    }
 
     /* TABLETTE */
     @media (max-width: 768px) {
@@ -441,7 +462,7 @@
       .info-grid { grid-template-columns: 1fr; }
     }
 
-    /* ✅ MOBILE HEADER : logo+texte à gauche, nav-center centré dessous, boutons centrés dessous */
+    /* MOBILE HEADER (comme ton original) */
     @media (max-width: 480px) {
       header { padding: 8px 0; }
       .nav { flex-wrap: wrap; gap: 8px; }
@@ -459,7 +480,12 @@
       .nav-center{ width: 100%; justify-content: center; }
       .nav-right { width: 100%; justify-content: center; gap: 10px; }
 
-      .btn-primary, .btn-phone { padding: 6px 10px; font-size: 0.75rem; }
+      .btn-primary,
+      .btn-phone {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+      }
+
       .hero { padding-top: 60px; }
       .hero h1 { font-size: 1.6rem; }
     }
@@ -628,125 +654,85 @@
       <div>
         <h2 class="section-title" style="text-align:left;">Demande de rendez-vous</h2>
         <p>Remplissez le formulaire pour une prise en charge rapide.</p>
-        <p style="margin-top:10px; color:#6b7280; font-size:0.9rem;">
-          Vous pouvez joindre directement vos documents dans l’onglet “Pièces jointes”.
+        <p style="margin-top:10px; color:#6b7280;">
+          <strong>Pièces obligatoires :</strong> assurance + carte grise + photo de l’impact.
         </p>
       </div>
 
       <div class="contact-box fade-in-right">
 
-        <!-- ✅ Netlify Forms (gratuit sur Netlify) + PJ + onglets -->
-        <form
-          name="rapid-auto-plus"
-          method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          enctype="multipart/form-data"
-          id="contact-form"
-          action="/merci.html"
-        >
-          <input type="hidden" name="form-name" value="rapid-auto-plus">
-          <p style="display:none;">
-            <label>Ne pas remplir: <input name="bot-field" /></label>
-          </p>
-
-          <!-- Onglets -->
-          <div style="display:flex; gap:10px; margin-bottom:10px;">
-            <button type="button" id="tab-infos" class="btn-submit" style="padding:10px 14px; flex:1;">
-              Infos
-            </button>
-            <button type="button" id="tab-pj" class="btn-outline" style="padding:10px 14px; flex:1;">
-              Pièces jointes
-            </button>
+        <!-- ✅ FORMSpree + PIÈCES JOINTES OBLIGATOIRES -->
+        <form action="https://formspree.io/f/mlgbqvky" method="POST" enctype="multipart/form-data">
+          <div>
+            <label>Nom / Prénom *</label>
+            <input type="text" name="Nom" required>
           </div>
 
-          <!-- Panneau INFOS -->
-          <div id="panel-infos">
-            <div>
-              <label>Nom / Prénom</label>
-              <input type="text" name="Nom" required>
-            </div>
-
-            <div>
-              <label>Téléphone</label>
-              <input type="tel" name="Téléphone" required>
-            </div>
-
-            <div>
-              <label>Email</label>
-              <input type="email" name="Email" required>
-            </div>
-
-            <div>
-              <label>Immatriculation</label>
-              <input type="text" name="Immatriculation" required>
-            </div>
-
-            <div>
-              <label>Modèle du véhicule</label>
-              <input type="text" name="Modèle" required>
-            </div>
-
-            <div>
-              <label>Type de dommage</label>
-              <select name="Type de dommage" required>
-                <option value="">Sélectionner...</option>
-                <option value="pare-brise">Pare-brise</option>
-                <option value="lunette-arriere">Lunette arrière</option>
-                <option value="carreau">Carreau / Vitre latérale</option>
-              </select>
-            </div>
-
-            <div>
-              <label>Préférence de date</label>
-              <input type="text" name="Préférence date" placeholder="Ex : mardi matin, après-midi...">
-            </div>
-
-            <div>
-              <label>Adresse d’intervention</label>
-              <textarea name="Adresse" required></textarea>
-            </div>
-
-            <div>
-              <label>Message (optionnel)</label>
-              <textarea name="Message"></textarea>
-            </div>
+          <div>
+            <label>Téléphone *</label>
+            <input type="tel" name="Téléphone" required>
           </div>
 
-          <!-- Panneau PJ -->
-          <div id="panel-pj" style="display:none;">
-            <div style="padding:12px;border:1px solid #e5e7eb;border-radius:12px;background:#f9fafb;margin-bottom:12px;">
-              <strong>📎 Documents à joindre</strong>
-              <p style="margin-top:6px;font-size:0.88rem;color:#374151;">
-                Merci d’ajouter : <br>
-                • Attestation d’assurance <br>
-                • Carte grise <br>
-                • Photo de l’impact
-              </p>
-              <p style="margin-top:8px;font-size:0.78rem;color:#6b7280;">
-                Formats acceptés : images (JPG/PNG) et PDF.
-              </p>
+          <div>
+            <label>Email *</label>
+            <input type="email" name="Email" required>
+          </div>
+
+          <div>
+            <label>Immatriculation *</label>
+            <input type="text" name="Immatriculation" required>
+          </div>
+
+          <div>
+            <label>Modèle du véhicule *</label>
+            <input type="text" name="Modèle" required>
+          </div>
+
+          <div>
+            <label>Type de dommage *</label>
+            <select name="Type de dommage" required>
+              <option value="">Sélectionner...</option>
+              <option value="pare-brise">Pare-brise</option>
+              <option value="lunette-arriere">Lunette arrière</option>
+              <option value="carreau">Carreau / Vitre latérale</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Préférence de date</label>
+            <input type="text" name="Préférence date" placeholder="Ex : mardi matin, après-midi...">
+          </div>
+
+          <div>
+            <label>Adresse d’intervention *</label>
+            <textarea name="Adresse" required></textarea>
+          </div>
+
+          <div>
+            <label>Message (optionnel)</label>
+            <textarea name="Message"></textarea>
+          </div>
+
+          <div class="pj-box">
+            <span class="pj-title">📎 Pièces jointes obligatoires</span>
+
+            <div style="margin-bottom:12px;">
+              <label>Assurance (PDF / photo) *</label>
+              <input type="file" name="Assurance" accept="image/*,.pdf" required>
             </div>
 
-            <div>
-              <label>Attestation d’assurance (PDF / photo)</label>
-              <input type="file" name="Attestation assurance" accept="image/*,.pdf" required>
-            </div>
-
-            <div>
-              <label>Carte grise (PDF / photo)</label>
+            <div style="margin-bottom:12px;">
+              <label>Carte grise (PDF / photo) *</label>
               <input type="file" name="Carte grise" accept="image/*,.pdf" required>
             </div>
 
             <div>
-              <label>Photo de l’impact</label>
+              <label>Photo de l’impact *</label>
               <input type="file" name="Photo impact" accept="image/*" required>
             </div>
           </div>
 
-          <button type="submit" class="btn-submit">Envoyer la demande</button>
-
-          <div id="form-message" class="form-message"></div>
+          <button type="submit" class="btn-submit">📩 Envoyer la demande</button>
         </form>
 
       </div>
@@ -761,8 +747,8 @@
 </footer>
 
 <script>
+  // Animations "fade-in"
   document.addEventListener("DOMContentLoaded", () => {
-    // Animations fade-in
     document.querySelectorAll(".fade-in, .fade-in-right").forEach(el => {
       const obs = new IntersectionObserver(entries => {
         if (entries[0].isIntersecting) {
@@ -770,40 +756,9 @@
           obs.disconnect();
         }
       }, { threshold: 0.2 });
+
       obs.observe(el);
     });
-
-    // Onglets formulaire
-    const tabInfos = document.getElementById("tab-infos");
-    const tabPj = document.getElementById("tab-pj");
-    const panelInfos = document.getElementById("panel-infos");
-    const panelPj = document.getElementById("panel-pj");
-
-    function setTab(which){
-      if(which === "infos"){
-        panelInfos.style.display = "block";
-        panelPj.style.display = "none";
-        tabInfos.className = "btn-submit";
-        tabPj.className = "btn-outline";
-      } else {
-        panelInfos.style.display = "none";
-        panelPj.style.display = "block";
-        tabInfos.className = "btn-outline";
-        tabPj.className = "btn-submit";
-      }
-    }
-    tabInfos.addEventListener("click", () => setTab("infos"));
-    tabPj.addEventListener("click", () => setTab("pj"));
-
-    // Petit message si l’utilisateur n’a pas rempli les PJ mais essaie d’envoyer (facultatif)
-    const form = document.getElementById("contact-form");
-    const msg = document.getElementById("form-message");
-    if(form && msg){
-      form.addEventListener("invalid", (e) => {
-        msg.textContent = "Merci de compléter les champs obligatoires, y compris les pièces jointes dans l’onglet dédié.";
-        msg.className = "form-message error";
-      }, true);
-    }
   });
 </script>
 
