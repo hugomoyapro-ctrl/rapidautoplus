@@ -8,7 +8,7 @@
   <!-- ✅ FAVICONS / LOGOS (à la racine du repo) -->
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="16x16.png" href="favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#111827">
@@ -99,12 +99,12 @@
     }
     .nav-link{
       border-radius: 999px;
-      padding: 8px 14px;         /* ✅ taille identique */
+      padding: 8px 14px;
       border: 1px solid #ffffff55;
       color: #f9fafb;
       background: transparent;
-      font-size: 0.8rem;         /* ✅ taille identique */
-      font-weight: 600;          /* ✅ même épaisseur */
+      font-size: 0.8rem;
+      font-weight: 600;
       cursor: pointer;
       transition: 0.2s;
       display: inline-flex;
@@ -435,7 +435,7 @@
       color: #dc2626;
     }
 
-    /* ✅ “ONGLET” PJ (info) */
+    /* ✅ “ONGLET” PJ (info) — OUVERT DIRECT */
     .pj-tab{
       margin-top:14px;
       border-radius:14px;
@@ -463,7 +463,7 @@
     }
     .pj-tab-body{
       padding:14px;
-      display:none;
+      display:block; /* ✅ OUVERT DIRECT */
       font-size:0.9rem;
       color:#111827;
     }
@@ -543,7 +543,6 @@
     /* ✅ MOBILE HEADER : logo+texte à gauche, nav-center centré dessous, boutons centrés dessous */
     @media (max-width: 480px) {
       header { padding: 8px 0; }
-
       .nav { flex-wrap: wrap; gap: 8px; }
 
       .logo-area { width: 100%; justify-content: flex-start; min-width: 0; }
@@ -574,7 +573,7 @@
       .hero { padding-top: 60px; }
       .hero h1 { font-size: 1.6rem; }
 
-      .pj-tab-head span{ display:none; } /* plus clean sur mobile */
+      .pj-tab-head span{ display:none; }
     }
   </style>
 </head>
@@ -746,7 +745,6 @@
 
       <div class="contact-box fade-in-right">
 
-        <!-- ✅ FormSubmit gratuit (identique) -->
         <form id="contact-form" action="https://formsubmit.co/rapidautoplus@gmail.com" method="POST">
           <input type="hidden" name="_subject" value="Nouvelle demande de rendez-vous - Rapid Auto Plus">
           <input type="hidden" name="_captcha" value="false">
@@ -807,9 +805,9 @@
           <div id="form-message" class="form-message"></div>
         </form>
 
-        <!-- ✅ “Onglet” PJ ajouté (gratuit) -->
+        <!-- ✅ Onglet PJ (OUVERT DIRECT) -->
         <div class="pj-tab" id="pj-tab">
-          <div class="pj-tab-head" id="pj-toggle" role="button" aria-expanded="false" tabindex="0">
+          <div class="pj-tab-head" id="pj-toggle" role="button" aria-expanded="true" tabindex="0">
             <strong>📎 Envoyer les photos / documents</strong>
             <span>WhatsApp / SMS / Email</span>
           </div>
@@ -831,7 +829,7 @@
 
             <div class="pj-actions">
               <a class="btn-mini red" href="tel:0757823868">📞 Envoyer par téléphone</a>
-              <a class="btn-mini outline" href="mailto:rapidautoplus@gmail.com?subject=Pi%C3%A8ces%20jointes%20-%20Rapid%20Auto%20Plus&body=Bonjour%2C%0A%0AVoici%20les%20documents%20pour%20mon%20devis%20%3A%20assurance%20%2F%20carte%20grise%20%2F%20photo%20impact.%0A%0AMerci.">✉️ Envoyer par email</a>
+              <a class="btn-mini outline" href="mailto:rapidautoplus@gmail.com?subject=Pi%C3%A8ces%20jointes%20-%20Rapid%20Auto%20Plus&body=Bonjour%2C%0A%0AVoici%20les%20documents%20pour%20mon%20devis%20%3A%20assurance%20%2F%20carte%20grise%20%2F%20photo%20impact.%0A%0AMon%20immatriculation%20%3A%20%0A%0AMerci.">✉️ Envoyer par email</a>
             </div>
 
             <p style="margin-top:10px; font-size:0.85rem; color:#6b7280;">
@@ -865,7 +863,7 @@
       obs.observe(el);
     });
 
-    // Envoi AJAX du formulaire (comme ton code d’origine)
+    // Envoi AJAX du formulaire pour éviter la redirection FormSubmit / erreurs
     const form = document.getElementById("contact-form");
     const messageBox = document.getElementById("form-message");
     const submitBtn = form.querySelector(".btn-submit");
@@ -888,7 +886,7 @@
         });
 
         if (res.ok) {
-          // ✅ Conversion (garde ton event existant)
+          /* ✅ Conversion Google Ads (formulaire envoyé) */
           if (typeof gtag === "function") {
             gtag('event', 'conversion', {
               'send_to': 'AW-17799257107/CqpwCMvjp9AbEJO4rKdC',
@@ -900,6 +898,14 @@
           form.reset();
           messageBox.textContent = "Merci, votre demande a bien été envoyée. Vous serez recontacté rapidement.";
           messageBox.className = "form-message success";
+
+          // ✅ Ouvrir / garder ouvert l’onglet PJ après envoi
+          const pjBody = document.getElementById("pj-body");
+          const pjToggle = document.getElementById("pj-toggle");
+          if (pjBody && pjToggle) {
+            pjBody.style.display = "block";
+            pjToggle.setAttribute("aria-expanded", "true");
+          }
         } else {
           messageBox.textContent = "Une erreur est survenue lors de l’envoi. Vous pouvez aussi appeler le 07 57 82 38 68.";
           messageBox.className = "form-message error";
@@ -913,7 +919,7 @@
       }
     });
 
-    // Toggle “onglet” PJ
+    // Toggle (optionnel) : on peut fermer/réouvrir quand même
     const toggle = document.getElementById("pj-toggle");
     const body = document.getElementById("pj-body");
 
@@ -923,13 +929,15 @@
       toggle.setAttribute("aria-expanded", String(!isOpen));
     }
 
-    toggle.addEventListener("click", togglePJ);
-    toggle.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        togglePJ();
-      }
-    });
+    if (toggle && body) {
+      toggle.addEventListener("click", togglePJ);
+      toggle.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          togglePJ();
+        }
+      });
+    }
   });
 </script>
 
