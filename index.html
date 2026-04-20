@@ -517,8 +517,29 @@
       padding:16px;
       box-shadow:0 12px 30px rgba(0,0,0,.35);
       display:none;
-      max-width:720px;
+      max-width:760px;
       margin:auto;
+    }
+
+    .cookie-top{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:10px;
+    }
+
+    .cookie-logo{
+      width:42px;
+      height:42px;
+      border-radius:8px;
+      object-fit:cover;
+      flex-shrink:0;
+    }
+
+    .cookie-title{
+      font-size:1rem;
+      font-weight:700;
+      color:#fff;
     }
 
     .cookie-banner p{
@@ -532,6 +553,7 @@
       display:flex;
       flex-wrap:wrap;
       gap:10px;
+      margin-top:10px;
     }
 
     .cookie-btn{
@@ -561,6 +583,50 @@
 
     .cookie-btn.reject:hover{
       background:rgba(255,255,255,.08);
+    }
+
+    .cookie-btn.customize{
+      background:#fff;
+      color:#111827;
+    }
+
+    .cookie-btn.customize:hover{
+      background:#f3f4f6;
+    }
+
+    .cookie-link{
+      color:#fca5a5;
+      text-decoration:underline;
+    }
+
+    .cookie-settings{
+      display:none;
+      margin-top:14px;
+      padding-top:14px;
+      border-top:1px solid rgba(255,255,255,.12);
+    }
+
+    .cookie-option{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      margin-bottom:12px;
+      color:#e5e7eb;
+      font-size:0.9rem;
+    }
+
+    .cookie-option input{
+      width:auto;
+      margin-top:3px;
+    }
+
+    .cookie-option strong{
+      color:#fff;
+      display:block;
+    }
+
+    .cookie-save{
+      margin-top:8px;
     }
 
     /* FOOTER */
@@ -656,6 +722,10 @@
         padding:14px;
       }
 
+      .cookie-actions{
+        flex-direction:column;
+      }
+
       .cookie-btn{
         width:100%;
       }
@@ -686,7 +756,6 @@
 
 <main id="top">
 
-  <!-- HERO -->
   <section class="hero fade-in">
     <div class="container hero-grid">
 
@@ -732,7 +801,6 @@
     </div>
   </section>
 
-  <!-- SERVICES -->
   <section id="services">
     <div class="container fade-in">
       <h2 class="section-title">Nos services</h2>
@@ -758,7 +826,6 @@
     </div>
   </section>
 
-  <!-- PROCESS -->
   <section id="process">
     <div class="container fade-in">
       <h2 class="section-title">Comment ça marche ?</h2>
@@ -785,7 +852,6 @@
     </div>
   </section>
 
-  <!-- ZONE -->
   <section id="zone">
     <div class="container info-grid fade-in">
 
@@ -828,7 +894,6 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact">
     <div class="container info-grid fade-in">
 
@@ -899,7 +964,6 @@
           <div id="form-message" class="form-message"></div>
         </form>
 
-        <!-- ✅ Encadré PJ -->
         <div class="pj-tab">
           <div class="pj-tab-head">
             <strong>📎 Envoyer les documents (après la demande)</strong>
@@ -941,13 +1005,51 @@
 
 <!-- ✅ COOKIE BANNER -->
 <div id="cookie-banner" class="cookie-banner">
+  <div class="cookie-top">
+    <img src="logo-rapid-auto.jpg" alt="Logo Rapid Auto Plus" class="cookie-logo">
+    <div class="cookie-title">Gestion des cookies</div>
+  </div>
+
   <p>
     Nous utilisons des cookies pour mesurer l’audience et améliorer les performances publicitaires.
-    Vous pouvez accepter ou refuser le suivi.
+    Vous pouvez accepter, refuser ou personnaliser votre choix.
+    <a href="politique-confidentialite.html" class="cookie-link">Voir la politique de confidentialité</a>.
   </p>
+
   <div class="cookie-actions">
-    <button id="cookie-accept" class="cookie-btn accept">Accepter</button>
+    <button id="cookie-accept" class="cookie-btn accept">Accepter tout</button>
     <button id="cookie-reject" class="cookie-btn reject">Refuser</button>
+    <button id="cookie-customize" class="cookie-btn customize">Personnaliser</button>
+  </div>
+
+  <div id="cookie-settings" class="cookie-settings">
+    <label class="cookie-option">
+      <input type="checkbox" checked disabled>
+      <span>
+        <strong>Cookies essentiels</strong>
+        Nécessaires au fonctionnement du site.
+      </span>
+    </label>
+
+    <label class="cookie-option">
+      <input type="checkbox" id="consent-analytics">
+      <span>
+        <strong>Mesure d’audience</strong>
+        Permet de mesurer les visites et l’utilisation du site.
+      </span>
+    </label>
+
+    <label class="cookie-option">
+      <input type="checkbox" id="consent-ads">
+      <span>
+        <strong>Cookies publicitaires</strong>
+        Permet de mesurer les campagnes publicitaires et conversions.
+      </span>
+    </label>
+
+    <div class="cookie-actions cookie-save">
+      <button id="cookie-save-preferences" class="cookie-btn accept">Enregistrer mes choix</button>
+    </div>
   </div>
 </div>
 
@@ -1013,45 +1115,62 @@
     const banner = document.getElementById("cookie-banner");
     const acceptBtn = document.getElementById("cookie-accept");
     const rejectBtn = document.getElementById("cookie-reject");
+    const customizeBtn = document.getElementById("cookie-customize");
+    const settingsBox = document.getElementById("cookie-settings");
+    const saveBtn = document.getElementById("cookie-save-preferences");
+    const analyticsCheckbox = document.getElementById("consent-analytics");
+    const adsCheckbox = document.getElementById("consent-ads");
 
-    const consent = localStorage.getItem("cookie_consent");
+    const savedConsent = localStorage.getItem("cookie_consent_preferences");
 
-    function grantConsent() {
+    function applyConsent(preferences) {
+      const analyticsGranted = preferences.analytics ? 'granted' : 'denied';
+      const adsGranted = preferences.ads ? 'granted' : 'denied';
+
       gtag('consent', 'update', {
-        'ad_storage': 'granted',
-        'analytics_storage': 'granted',
-        'ad_user_data': 'granted',
-        'ad_personalization': 'granted'
+        'analytics_storage': analyticsGranted,
+        'ad_storage': adsGranted,
+        'ad_user_data': adsGranted,
+        'ad_personalization': adsGranted
       });
     }
 
-    function denyConsent() {
-      gtag('consent', 'update', {
-        'ad_storage': 'denied',
-        'analytics_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied'
-      });
+    function saveConsent(preferences) {
+      localStorage.setItem("cookie_consent_preferences", JSON.stringify(preferences));
+      applyConsent(preferences);
+      banner.style.display = "none";
     }
 
-    if (!consent) {
+    if (!savedConsent) {
       banner.style.display = "block";
-    } else if (consent === "accepted") {
-      grantConsent();
     } else {
-      denyConsent();
+      const preferences = JSON.parse(savedConsent);
+      analyticsCheckbox.checked = !!preferences.analytics;
+      adsCheckbox.checked = !!preferences.ads;
+      applyConsent(preferences);
     }
 
     acceptBtn.addEventListener("click", () => {
-      localStorage.setItem("cookie_consent", "accepted");
-      grantConsent();
-      banner.style.display = "none";
+      analyticsCheckbox.checked = true;
+      adsCheckbox.checked = true;
+      saveConsent({ analytics: true, ads: true });
     });
 
     rejectBtn.addEventListener("click", () => {
-      localStorage.setItem("cookie_consent", "rejected");
-      denyConsent();
-      banner.style.display = "none";
+      analyticsCheckbox.checked = false;
+      adsCheckbox.checked = false;
+      saveConsent({ analytics: false, ads: false });
+    });
+
+    customizeBtn.addEventListener("click", () => {
+      settingsBox.style.display = settingsBox.style.display === "block" ? "none" : "block";
+    });
+
+    saveBtn.addEventListener("click", () => {
+      saveConsent({
+        analytics: analyticsCheckbox.checked,
+        ads: adsCheckbox.checked
+      });
     });
   });
 </script>
