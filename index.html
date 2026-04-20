@@ -13,14 +13,22 @@
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#111827">
 
-  <!-- ✅ GOOGLE ADS TAG -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CNFN6SX78Q"></script>
+  <!-- ✅ GOOGLE TAG + CONSENT MODE -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'analytics_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied'
+    });
+
     gtag('js', new Date());
     gtag('config', 'G-CNFN6SX78Q');
   </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CNFN6SX78Q"></script>
 
   <style>
     * {
@@ -88,7 +96,6 @@
       white-space: nowrap;
     }
 
-    /* ✅ NAV CENTER (Pare-brise / Dépannage) */
     .nav-center{
       display:flex;
       align-items:center;
@@ -96,6 +103,7 @@
       flex-shrink:0;
       white-space:nowrap;
     }
+
     .nav-link{
       border-radius: 999px;
       padding: 8px 14px;
@@ -112,10 +120,12 @@
       white-space: nowrap;
       line-height: 1;
     }
+
     .nav-link:hover {
       background: #ffffff11;
       border-color: #ffffffaa;
     }
+
     .nav-link.active{
       background: #ffffff18;
       border-color: #ffffffcc;
@@ -434,7 +444,7 @@
       color: #dc2626;
     }
 
-    /* ✅ PJ encadré (simple, ouvert direct) */
+    /* ✅ PJ encadré */
     .pj-tab{
       margin-top:14px;
       border-radius:14px;
@@ -494,6 +504,65 @@
       transform:translateY(-1px);
     }
 
+    /* ✅ COOKIE BANNER */
+    .cookie-banner{
+      position:fixed;
+      left:16px;
+      right:16px;
+      bottom:16px;
+      z-index:9999;
+      background:#111827;
+      color:white;
+      border-radius:16px;
+      padding:16px;
+      box-shadow:0 12px 30px rgba(0,0,0,.35);
+      display:none;
+      max-width:720px;
+      margin:auto;
+    }
+
+    .cookie-banner p{
+      font-size:0.9rem;
+      line-height:1.5;
+      color:#e5e7eb;
+      margin-bottom:12px;
+    }
+
+    .cookie-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .cookie-btn{
+      border:none;
+      border-radius:999px;
+      padding:10px 14px;
+      font-size:0.85rem;
+      font-weight:600;
+      cursor:pointer;
+      transition:.2s;
+    }
+
+    .cookie-btn.accept{
+      background:#ef4444;
+      color:white;
+    }
+
+    .cookie-btn.accept:hover{
+      background:#dc2626;
+    }
+
+    .cookie-btn.reject{
+      background:transparent;
+      color:white;
+      border:1px solid rgba(255,255,255,.25);
+    }
+
+    .cookie-btn.reject:hover{
+      background:rgba(255,255,255,.08);
+    }
+
     /* FOOTER */
     footer {
       background: #111827;
@@ -518,7 +587,6 @@
       transform: translate(0,0);
     }
 
-    /* TABLETTE */
     @media (max-width: 768px) {
       .hero-grid {
         grid-template-columns: 1fr;
@@ -529,7 +597,6 @@
       }
     }
 
-    /* ✅ MOBILE HEADER : logo+texte à gauche, nav-center centré dessous, boutons centrés dessous */
     @media (max-width: 480px) {
       header {
         padding: 8px 0;
@@ -581,6 +648,17 @@
       }
 
       .pj-tab-head span{ display:none; }
+
+      .cookie-banner{
+        left:10px;
+        right:10px;
+        bottom:10px;
+        padding:14px;
+      }
+
+      .cookie-btn{
+        width:100%;
+      }
     }
   </style>
 </head>
@@ -861,8 +939,19 @@
   © Rapid Auto Plus — Remplacement de pare-brise en centre ou à domicile — Les Clayes-sous-Bois & Yvelines (78)
 </footer>
 
+<!-- ✅ COOKIE BANNER -->
+<div id="cookie-banner" class="cookie-banner">
+  <p>
+    Nous utilisons des cookies pour mesurer l’audience et améliorer les performances publicitaires.
+    Vous pouvez accepter ou refuser le suivi.
+  </p>
+  <div class="cookie-actions">
+    <button id="cookie-accept" class="cookie-btn accept">Accepter</button>
+    <button id="cookie-reject" class="cookie-btn reject">Refuser</button>
+  </div>
+</div>
+
 <script>
-  // Animations "fade-in"
   document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".fade-in, .fade-in-right").forEach(el => {
       const obs = new IntersectionObserver(entries => {
@@ -875,7 +964,6 @@
       obs.observe(el);
     });
 
-    // Envoi AJAX du formulaire pour éviter la redirection FormSubmit / erreurs
     const form = document.getElementById("contact-form");
     const messageBox = document.getElementById("form-message");
     const submitBtn = form.querySelector(".btn-submit");
@@ -920,6 +1008,50 @@
         submitBtn.disabled = false;
         submitBtn.textContent = originalText;
       }
+    });
+
+    const banner = document.getElementById("cookie-banner");
+    const acceptBtn = document.getElementById("cookie-accept");
+    const rejectBtn = document.getElementById("cookie-reject");
+
+    const consent = localStorage.getItem("cookie_consent");
+
+    function grantConsent() {
+      gtag('consent', 'update', {
+        'ad_storage': 'granted',
+        'analytics_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted'
+      });
+    }
+
+    function denyConsent() {
+      gtag('consent', 'update', {
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied'
+      });
+    }
+
+    if (!consent) {
+      banner.style.display = "block";
+    } else if (consent === "accepted") {
+      grantConsent();
+    } else {
+      denyConsent();
+    }
+
+    acceptBtn.addEventListener("click", () => {
+      localStorage.setItem("cookie_consent", "accepted");
+      grantConsent();
+      banner.style.display = "none";
+    });
+
+    rejectBtn.addEventListener("click", () => {
+      localStorage.setItem("cookie_consent", "rejected");
+      denyConsent();
+      banner.style.display = "none";
     });
   });
 </script>
