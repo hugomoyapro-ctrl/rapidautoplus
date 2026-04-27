@@ -44,7 +44,6 @@
       --green:#22c55e;
       --shadow:0 10px 30px rgba(2,6,23,.08);
       --shadow-lg:0 20px 50px rgba(2,6,23,.16);
-      --radius:20px;
     }
 
     * {
@@ -215,6 +214,78 @@
       background: rgba(255,255,255,.1);
       border-color: rgba(255,255,255,.34);
       transform: translateY(-1px);
+    }
+
+    /* ✅ BURGER MENU */
+    .menu-toggle{
+      display:none;
+      width:44px;
+      height:44px;
+      border:none;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:12px;
+      cursor:pointer;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      gap:5px;
+    }
+
+    .menu-toggle span{
+      width:18px;
+      height:2px;
+      background:#fff;
+      border-radius:999px;
+      transition:.25s;
+    }
+
+    .menu-toggle.active span:nth-child(1){
+      transform:translateY(7px) rotate(45deg);
+    }
+    .menu-toggle.active span:nth-child(2){
+      opacity:0;
+    }
+    .menu-toggle.active span:nth-child(3){
+      transform:translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-menu{
+      display:none;
+      background:rgba(15,23,42,.96);
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+
+    .mobile-menu.open{
+      display:block;
+    }
+
+    .mobile-menu-inner{
+      display:flex;
+      flex-direction:column;
+      padding:14px 18px 18px;
+      gap:10px;
+    }
+
+    .mobile-link{
+      color:#fff;
+      padding:12px 14px;
+      border-radius:12px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.07);
+      font-weight:600;
+      font-size:.92rem;
+    }
+
+    .mobile-link:hover{
+      background:rgba(255,255,255,.08);
+    }
+
+    .mobile-menu-actions{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top:8px;
     }
 
     /* QUICK LINKS */
@@ -589,6 +660,8 @@
       background:
         radial-gradient(circle at left bottom, rgba(239,68,68,.06), transparent 22%),
         #fff;
+      padding-top:50px;
+      padding-bottom:60px;
     }
 
     .section-title {
@@ -679,6 +752,59 @@
 
     .contact-box p + p{
       margin-top:4px;
+    }
+
+    /* ✅ CONTACT SECTION PLUS ÉQUILIBRÉE */
+    .contact-grid{
+      display:grid;
+      grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+      gap:30px;
+      align-items:start;
+    }
+
+    .contact-side-card{
+      background:linear-gradient(180deg,#ffffff,#fbfdff);
+      border:1px solid #e5e7eb;
+      border-radius:20px;
+      padding:24px;
+      box-shadow:0 10px 30px rgba(2,6,23,.08);
+      position:sticky;
+      top:100px;
+    }
+
+    .contact-side-list{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .contact-side-item{
+      padding:14px 14px;
+      border-radius:16px;
+      background:#f8fafc;
+      border:1px solid #e5e7eb;
+    }
+
+    .contact-side-item strong{
+      display:block;
+      margin-bottom:4px;
+      font-size:.95rem;
+      color:#111827;
+    }
+
+    .contact-side-item span{
+      display:block;
+      color:#6b7280;
+      font-size:.88rem;
+      line-height:1.5;
+    }
+
+    .contact-side-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
     }
 
     /* FORMULAIRE */
@@ -1064,11 +1190,21 @@
     }
 
     @media (max-width: 768px) {
+      .desktop-nav,
+      .desktop-actions{
+        display:none;
+      }
+
+      .menu-toggle{
+        display:flex;
+      }
+
       .hero-grid,
       .info-grid,
       .offers-grid,
       .trust-grid,
-      .footer-grid {
+      .footer-grid,
+      .contact-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1079,6 +1215,10 @@
       .hero-meta{
         grid-template-columns:1fr 1fr;
       }
+
+      .contact-side-card{
+        position:static;
+      }
     }
 
     @media (max-width: 480px) {
@@ -1087,13 +1227,10 @@
       }
 
       .nav {
-        flex-wrap: wrap;
         gap: 8px;
       }
 
       .logo-area {
-        width: 100%;
-        justify-content: flex-start;
         min-width: 0;
       }
 
@@ -1104,18 +1241,6 @@
         max-width: 100%;
         line-height: 1.1;
         text-align: left;
-      }
-
-      .nav-center{
-        width: 100%;
-        justify-content: center;
-        flex-wrap:wrap;
-      }
-
-      .nav-right {
-        width: 100%;
-        justify-content: center;
-        gap: 10px;
       }
 
       .btn-primary,
@@ -1165,16 +1290,39 @@
       <a href="#top" class="logo">RAPID AUTO PLUS</a>
     </div>
 
-    <nav class="nav-center" aria-label="Navigation principale">
+    <button class="menu-toggle" id="menu-toggle" aria-label="Ouvrir le menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav-center desktop-nav" aria-label="Navigation principale">
       <a class="nav-link active" href="index.html">Pare-brise</a>
       <a class="nav-link" href="depannage.html">Dépannage</a>
       <a class="nav-link" href="#offres">Offres</a>
       <a class="nav-link" href="#services">Services</a>
     </nav>
 
-    <div class="nav-right">
+    <div class="nav-right desktop-actions">
       <a href="tel:0757823868" class="btn-phone">📞 Appeler</a>
       <a href="#contact" class="btn-primary">📅 Rendez-vous</a>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="container mobile-menu-inner">
+      <a class="mobile-link" href="index.html">Pare-brise</a>
+      <a class="mobile-link" href="depannage.html">Dépannage</a>
+      <a class="mobile-link" href="#offres">Offres</a>
+      <a class="mobile-link" href="#services">Services</a>
+      <a class="mobile-link" href="#process">Comment ça marche</a>
+      <a class="mobile-link" href="#zone">Zone d’intervention</a>
+      <a class="mobile-link" href="#contact">Prendre rendez-vous</a>
+
+      <div class="mobile-menu-actions">
+        <a href="tel:0757823868" class="btn-phone">📞 Appeler</a>
+        <a href="#contact" class="btn-primary">📅 Rendez-vous</a>
+      </div>
     </div>
   </div>
 </header>
@@ -1420,11 +1568,41 @@
   </section>
 
   <section id="contact">
-    <div class="container info-grid fade-in">
+    <div class="container contact-grid fade-in">
 
-      <div class="contact-box">
+      <div class="contact-side-card">
+        <div class="section-kicker" style="margin:0 0 12px 0;"><span class="dot"></span> Prise en charge rapide</div>
         <h2 class="section-title" style="text-align:left; margin-bottom:12px;">Demande de rendez-vous</h2>
-        <p>Remplissez le formulaire pour une prise en charge rapide, en centre ou à domicile.</p>
+        <p style="margin-bottom:18px;">
+          Remplissez le formulaire pour une prise en charge rapide, en centre ou à domicile.
+        </p>
+
+        <div class="contact-side-list">
+          <div class="contact-side-item">
+            <strong>📍 En centre ou à domicile</strong>
+            <span>Choisissez la solution la plus pratique pour vous.</span>
+          </div>
+
+          <div class="contact-side-item">
+            <strong>📄 Assurance simplifiée</strong>
+            <span>Nous vous accompagnons pour la prise en charge bris de glace.</span>
+          </div>
+
+          <div class="contact-side-item">
+            <strong>⏰ 7j/7 de 09:30 à 19:30</strong>
+            <span>Nous restons disponibles tous les jours.</span>
+          </div>
+
+          <div class="contact-side-item">
+            <strong>🎁 Offres en cours</strong>
+            <span>Jusqu’à 300€ offerts ou 4 pneus offerts selon conditions.</span>
+          </div>
+        </div>
+
+        <div class="contact-side-buttons">
+          <a href="tel:0757823868" class="btn-phone">📞 Appeler maintenant</a>
+          <a href="mailto:rapidautoplus@gmail.com" class="btn-mini outline">✉️ Envoyer un email</a>
+        </div>
       </div>
 
       <div class="contact-box fade-in-right">
@@ -1626,6 +1804,21 @@
       }, { threshold: 0.15 });
 
       obs.observe(el);
+    });
+
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuToggle.addEventListener("click", () => {
+      menuToggle.classList.toggle("active");
+      mobileMenu.classList.toggle("open");
+    });
+
+    document.querySelectorAll(".mobile-link").forEach(link => {
+      link.addEventListener("click", () => {
+        menuToggle.classList.remove("active");
+        mobileMenu.classList.remove("open");
+      });
     });
 
     const form = document.getElementById("contact-form");
