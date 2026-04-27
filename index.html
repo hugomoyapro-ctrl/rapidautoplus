@@ -72,7 +72,6 @@
       padding:0 18px;
     }
 
-    /* HEADER */
     header{
       background:rgba(15,23,42,.82);
       backdrop-filter:blur(14px);
@@ -205,7 +204,6 @@
       transform:translateY(-1px);
     }
 
-    /* BURGER MENU */
     .menu-toggle{
       display:none;
       width:44px;
@@ -269,7 +267,6 @@
       margin-top:8px;
     }
 
-    /* HERO */
     .hero{
       padding:86px 0 96px;
       background:
@@ -1992,8 +1989,11 @@
 
         if (res.ok) {
           if (typeof gtag === "function") {
-            // Nouvelle conversion Google Ads à ajouter ici
-            // quand tu auras le nouveau send_to du compte AW-18106837037
+            gtag('event', 'conversion', {
+              'send_to': 'AW-18106837037/2l5JCIfW0KMcEK3QgbpD',
+              'value': 1.0,
+              'currency': 'EUR'
+            });
           }
 
           form.reset();
