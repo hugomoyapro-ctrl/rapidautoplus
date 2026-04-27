@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rapid Auto Plus - Remplacement de pare-brise en centre ou à domicile</title>
 
-  <!-- ✅ FAVICONS / LOGOS (à la racine du repo) -->
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -31,6 +30,23 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CNFN6SX78Q"></script>
 
   <style>
+    :root{
+      --bg:#f3f4f6;
+      --surface:#ffffff;
+      --surface-soft:#f8fafc;
+      --text:#111827;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+      --dark:#0f172a;
+      --dark-2:#111827;
+      --red:#ef4444;
+      --red-dark:#dc2626;
+      --green:#22c55e;
+      --shadow:0 10px 30px rgba(2,6,23,.08);
+      --shadow-lg:0 20px 50px rgba(2,6,23,.16);
+      --radius:20px;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -38,9 +54,16 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
+    html{
+      scroll-behavior:smooth;
+    }
+
     body {
-      background: #f3f4f6;
-      color: #111827;
+      background:
+        radial-gradient(circle at top left, rgba(239,68,68,.06), transparent 28%),
+        radial-gradient(circle at top right, rgba(59,130,246,.07), transparent 30%),
+        var(--bg);
+      color: var(--text);
       line-height: 1.6;
     }
 
@@ -49,49 +72,57 @@
       text-decoration: none;
     }
 
+    img{
+      max-width:100%;
+    }
+
     .container {
-      max-width: 1100px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 0 16px;
+      padding: 0 18px;
     }
 
     /* HEADER */
     header {
-      background: #111827;
+      background: rgba(15, 23, 42, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       color: white;
       padding: 10px 0;
       position: sticky;
       top: 0;
-      z-index: 50;
+      z-index: 70;
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
 
     .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 14px;
       width: 100%;
     }
 
     .logo-area {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 10px;
       flex-shrink: 0;
       min-width: 0;
     }
 
     .logo-icon {
-      width: 30px;
-      height: 30px;
-      border-radius: 6px;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
       object-fit: cover;
+      box-shadow: 0 6px 16px rgba(0,0,0,.25);
     }
 
     .logo {
-      font-weight: 700;
+      font-weight: 800;
       font-size: 1rem;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       white-space: nowrap;
     }
@@ -106,11 +137,11 @@
 
     .nav-link{
       border-radius: 999px;
-      padding: 8px 14px;
-      border: 1px solid #ffffff55;
+      padding: 9px 15px;
+      border: 1px solid rgba(255,255,255,.16);
       color: #f9fafb;
       background: transparent;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 600;
       cursor: pointer;
       transition: 0.2s;
@@ -122,14 +153,14 @@
     }
 
     .nav-link:hover {
-      background: #ffffff11;
-      border-color: #ffffffaa;
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.3);
+      transform: translateY(-1px);
     }
 
     .nav-link.active{
-      background: #ffffff18;
-      border-color: #ffffffcc;
-      font-weight: 600;
+      background: rgba(255,255,255,.12);
+      border-color: rgba(255,255,255,.34);
     }
 
     .nav-right {
@@ -142,125 +173,184 @@
 
     .btn-primary,
     .btn-phone {
-      background: #ef4444;
+      background: linear-gradient(135deg, var(--red), #f87171);
       color: white;
-      padding: 8px 12px;
+      padding: 9px 14px;
       border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      transition: 0.2s;
+      font-size: 0.82rem;
+      font-weight: 700;
+      transition: 0.22s;
       border: none;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 6px;
       white-space: nowrap;
+      box-shadow: 0 8px 22px rgba(239,68,68,.26);
     }
 
     .btn-primary:hover,
     .btn-phone:hover {
-      background: #dc2626;
+      background: linear-gradient(135deg, var(--red-dark), #ef4444);
       transform: translateY(-1px);
     }
 
     .btn-outline {
       border-radius: 999px;
-      padding: 8px 12px;
-      border: 1px solid #ffffff55;
+      padding: 9px 14px;
+      border: 1px solid rgba(255,255,255,.18);
       color: #f9fafb;
-      background: transparent;
-      font-size: 0.8rem;
-      font-weight: 500;
+      background: rgba(255,255,255,.04);
+      font-size: 0.82rem;
+      font-weight: 600;
       cursor: pointer;
       transition: 0.2s;
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      white-space: nowrap;
     }
 
     .btn-outline:hover {
-      background: #ffffff11;
-      border-color: #ffffffaa;
+      background: rgba(255,255,255,.1);
+      border-color: rgba(255,255,255,.34);
+      transform: translateY(-1px);
+    }
+
+    /* QUICK LINKS */
+    .quick-links-wrap{
+      margin-top:-18px;
+      position:relative;
+      z-index:3;
+    }
+
+    .quick-links{
+      background: rgba(255,255,255,.8);
+      backdrop-filter: blur(12px);
+      border:1px solid rgba(255,255,255,.7);
+      box-shadow: var(--shadow);
+      border-radius: 20px;
+      padding: 12px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+    }
+
+    .quick-link{
+      padding:10px 14px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid var(--border);
+      font-size:.88rem;
+      font-weight:600;
+      color:#1f2937;
+      transition:.2s;
+      box-shadow: 0 4px 12px rgba(15,23,42,.04);
+    }
+
+    .quick-link:hover{
+      border-color:#fecaca;
+      color:#b91c1c;
+      transform:translateY(-1px);
     }
 
     /* HERO */
     .hero {
-      padding: 70px 0 80px;
-      background: linear-gradient(
-          135deg,
-          rgba(15, 23, 42, 0.65),
-          rgba(30, 64, 175, 0.55)
-        ),
+      padding: 86px 0 96px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.18), transparent 24%),
+        radial-gradient(circle at 80% 10%, rgba(239,68,68,.25), transparent 22%),
+        linear-gradient(135deg, rgba(15,23,42,.82), rgba(30,41,59,.72), rgba(30,64,175,.45)),
         url("parebrise.png") center/cover no-repeat;
       color: white;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:auto -120px -160px auto;
+      width:360px;
+      height:360px;
+      border-radius:50%;
+      background: radial-gradient(circle, rgba(239,68,68,.26), transparent 70%);
+      pointer-events:none;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-      gap: 40px;
+      grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+      gap: 34px;
+      align-items:start;
     }
 
     .hero-offer {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(239, 68, 68, 0.9);
-      padding: 6px 12px;
+      background: rgba(239, 68, 68, 0.96);
+      padding: 7px 13px;
       border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-bottom: 10px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
     }
 
     .hero-offer span {
       background: #facc15;
       color: #111827;
-      font-size: 0.7rem;
-      padding: 2px 6px;
+      font-size: 0.72rem;
+      padding: 2px 7px;
       border-radius: 999px;
     }
 
     .hero-separator {
       opacity: 0.85;
-      margin: 0 6px;
+      margin: 0 4px;
     }
 
     .hero-tag {
       display: inline-flex;
-      background: rgba(15, 23, 42, 0.7);
-      padding: 4px 10px;
+      align-items:center;
+      background: rgba(15, 23, 42, 0.58);
+      border:1px solid rgba(255,255,255,.12);
+      padding: 5px 11px;
       border-radius: 999px;
-      gap: 6px;
-      font-size: 0.8rem;
-      margin-bottom: 10px;
+      gap: 8px;
+      font-size: 0.82rem;
+      margin-bottom: 14px;
+      backdrop-filter: blur(8px);
     }
 
     .hero-tag span {
-      width: 8px;
-      height: 8px;
+      width: 9px;
+      height: 9px;
       border-radius: 999px;
       background: #22c55e;
+      box-shadow: 0 0 0 5px rgba(34,197,94,.18);
     }
 
     .hero h1 {
-      font-size: clamp(1.9rem, 3vw, 2.4rem);
-      margin-bottom: 12px;
-      line-height: 1.25;
+      font-size: clamp(2rem, 4vw, 3.05rem);
+      margin-bottom: 14px;
+      line-height: 1.1;
+      letter-spacing: -.02em;
     }
 
     .badge-assurance-inline {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.6em;
-      font-weight: 600;
+      font-size: 0.34em;
+      font-weight: 700;
       background: rgba(34, 197, 94, 0.16);
       color: #bbf7d0;
-      padding: 4px 10px;
+      padding: 8px 11px;
       border-radius: 999px;
-      margin-left: 8px;
+      margin-left: 10px;
       border: 1px solid rgba(74, 222, 128, 0.6);
       vertical-align: middle;
     }
@@ -270,58 +360,177 @@
       height: 8px;
       border-radius: 999px;
       background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.35);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
     }
 
     .hero p {
-      max-width: 520px;
+      max-width: 620px;
       margin-bottom: 10px;
-      opacity: 0.95;
-      font-size: 0.95rem;
+      opacity: 0.96;
+      font-size: 1rem;
+      color:#e5e7eb;
     }
 
     .hero-highlight {
-      opacity: 0.9;
-      margin-bottom: 14px;
-      font-size: 0.9rem;
+      opacity: 0.92;
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+      color:#f8fafc;
     }
 
     .hero-actions {
-      margin-top: 14px;
+      margin-top: 18px;
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
     }
 
     .hero-card {
-      background: rgba(15, 23, 42, 0.9);
-      padding: 18px 16px;
-      border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.35);
-      font-size: 0.9rem;
+      background: linear-gradient(180deg, rgba(15,23,42,.86), rgba(15,23,42,.72));
+      padding: 20px 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.28);
+      font-size: 0.92rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-card h2{
+      font-size:1.08rem;
+      margin-bottom:8px;
+    }
+
+    .hero-meta{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+      margin-top:16px;
+    }
+
+    .hero-meta .meta-box{
+      background: rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      padding:12px;
+    }
+
+    .hero-meta .meta-box strong{
+      display:block;
+      font-size:.86rem;
+      color:#fff;
+      margin-bottom:2px;
+    }
+
+    .hero-meta .meta-box span{
+      font-size:.82rem;
+      color:#cbd5e1;
+    }
+
+    /* TRUST BAR */
+    .trust-strip{
+      padding: 0 0 12px;
+      margin-top:-30px;
+      position:relative;
+      z-index:5;
+    }
+
+    .trust-grid{
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap:14px;
+    }
+
+    .trust-item{
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+      border:1px solid rgba(255,255,255,.7);
+      border-radius:18px;
+      padding:16px 14px;
+      box-shadow: var(--shadow);
+      text-align:center;
+    }
+
+    .trust-item strong{
+      display:block;
+      font-size:1rem;
+      color:#111827;
+      margin-bottom:4px;
+    }
+
+    .trust-item span{
+      color:var(--muted);
+      font-size:.86rem;
     }
 
     /* OFFRES */
+    #offres{
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,.65)),
+        radial-gradient(circle at top, rgba(239,68,68,.08), transparent 34%);
+    }
+
+    .section-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin:0 auto 10px;
+      padding:7px 12px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid var(--border);
+      color:#b91c1c;
+      font-size:.8rem;
+      font-weight:700;
+      box-shadow: 0 6px 18px rgba(15,23,42,.06);
+    }
+
+    .section-kicker .dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--red);
+      box-shadow: 0 0 0 5px rgba(239,68,68,.12);
+    }
+
     .offers-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0,1fr));
       gap: 24px;
-      margin-top: 24px;
+      margin-top: 28px;
     }
 
     .offer-card {
-      background: white;
-      border-radius: 18px;
+      background: linear-gradient(180deg, #fff, #fafafa);
+      border-radius: 24px;
       overflow: hidden;
       border: 1px solid #e5e7eb;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
-      transition: 0.25s ease;
+      box-shadow: var(--shadow);
+      transition: 0.28s ease;
     }
 
     .offer-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 32px rgba(0,0,0,0.12);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .offer-image-wrap{
+      position:relative;
+      overflow:hidden;
+    }
+
+    .offer-badge{
+      position:absolute;
+      top:14px;
+      left:14px;
+      background:rgba(15,23,42,.82);
+      color:#fff;
+      padding:7px 10px;
+      border-radius:999px;
+      font-size:.75rem;
+      font-weight:700;
+      z-index:2;
+      border:1px solid rgba(255,255,255,.1);
+      backdrop-filter: blur(8px);
     }
 
     .offer-card img {
@@ -329,21 +538,26 @@
       display: block;
       aspect-ratio: 1 / 1;
       object-fit: cover;
+      transition: transform .45s ease;
+    }
+
+    .offer-card:hover img{
+      transform: scale(1.03);
     }
 
     .offer-body {
-      padding: 16px;
+      padding: 18px;
     }
 
     .offer-body h3 {
-      font-size: 1.05rem;
-      margin-bottom: 6px;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
     }
 
     .offer-body p {
-      font-size: 0.92rem;
+      font-size: 0.93rem;
       color: #4b5563;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     .offer-actions {
@@ -354,59 +568,97 @@
 
     /* SECTIONS */
     section {
-      padding: 60px 0;
+      padding: 70px 0;
     }
 
-    section:nth-of-type(even) {
-      background: white;
+    #services{
+      background: linear-gradient(180deg, rgba(255,255,255,.8), rgba(248,250,252,.95));
+    }
+
+    #process{
+      background:#fff;
+    }
+
+    #zone{
+      background:
+        radial-gradient(circle at right top, rgba(59,130,246,.07), transparent 22%),
+        linear-gradient(180deg, #f8fafc, #ffffff);
+    }
+
+    #contact{
+      background:
+        radial-gradient(circle at left bottom, rgba(239,68,68,.06), transparent 22%),
+        #fff;
     }
 
     .section-title {
       text-align: center;
-      font-size: 1.4rem;
-      margin-bottom: 6px;
+      font-size: clamp(1.55rem, 2.2vw, 2rem);
+      margin-bottom: 8px;
+      letter-spacing:-.02em;
     }
 
     .section-subtitle {
       text-align: center;
-      color: #6b7280;
-      margin-bottom: 20px;
+      color: var(--muted);
+      margin-bottom: 22px;
+      max-width: 760px;
+      margin-left:auto;
+      margin-right:auto;
     }
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 20px;
     }
 
     .card {
-      background: white;
-      border-radius: 16px;
-      padding: 18px;
+      background: linear-gradient(180deg, #ffffff, #fbfdff);
+      border-radius: 20px;
+      padding: 20px;
       border: 1px solid #e5e7eb;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.05);
-      font-size: 0.9rem;
+      box-shadow: var(--shadow);
+      font-size: 0.95rem;
+      transition:.25s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-4px);
+      box-shadow: var(--shadow-lg);
     }
 
     .card h3 {
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
+      font-size:1rem;
     }
 
     .steps {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
     }
 
     .step {
-      border: 1px dashed #ddd;
-      padding: 14px;
-      border-radius: 12px;
-      background: #f9fafb;
-      font-size: 0.9rem;
+      border: 1px solid #e5e7eb;
+      padding: 18px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #f9fafb, #ffffff);
+      font-size: 0.94rem;
+      box-shadow: 0 8px 18px rgba(15,23,42,.04);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .step::before{
+      content:"";
+      position:absolute;
+      inset:0 auto 0 0;
+      width:4px;
+      background:linear-gradient(180deg, var(--red), #f97316);
     }
 
     /* ZONE & CONTACT */
@@ -417,11 +669,16 @@
     }
 
     .contact-box {
-      padding: 16px;
-      background: #f9fafb;
-      border-radius: 14px;
+      padding: 20px;
+      background: linear-gradient(180deg, #ffffff, #fbfbfc);
+      border-radius: 20px;
       border: 1px solid #e5e7eb;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box p + p{
+      margin-top:4px;
     }
 
     /* FORMULAIRE */
@@ -429,22 +686,23 @@
       display: flex;
       flex-direction: column;
       gap: 14px;
-      font-size: 0.9rem;
+      font-size: 0.94rem;
     }
 
     label {
-      font-size: 0.85rem;
-      font-weight: 600;
+      font-size: 0.86rem;
+      font-weight: 700;
       margin-bottom: 4px;
       display: block;
+      color:#111827;
     }
 
     input, textarea, select {
       width: 100%;
-      padding: 10px;
-      border-radius: 10px;
+      padding: 11px 12px;
+      border-radius: 12px;
       border: 1px solid #d1d5db;
-      font-size: 0.9rem;
+      font-size: 0.94rem;
       background: white;
       outline: none;
       transition: 0.2s;
@@ -454,33 +712,34 @@
     textarea:focus,
     select:focus {
       border-color: #ef4444;
-      box-shadow: 0 0 0 2px rgba(239,68,68,0.25);
+      box-shadow: 0 0 0 4px rgba(239,68,68,0.12);
     }
 
     textarea {
-      min-height: 90px;
+      min-height: 96px;
       resize: vertical;
     }
 
     .btn-submit {
-      background: #ef4444;
+      background: linear-gradient(135deg, var(--red), #f87171);
       color: white;
-      padding: 10px 18px;
-      border-radius: 10px;
-      font-weight: 600;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
       border: none;
       cursor: pointer;
       transition: 0.2s;
+      box-shadow: 0 10px 20px rgba(239,68,68,.18);
     }
 
     .btn-submit:hover {
-      background: #dc2626;
+      background: linear-gradient(135deg, var(--red-dark), #ef4444);
       transform: translateY(-1px);
     }
 
     .form-message {
       margin-top: 6px;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       display: none;
     }
 
@@ -496,31 +755,49 @@
 
     /* ✅ PJ encadré */
     .pj-tab{
-      margin-top:14px;
-      border-radius:14px;
-      border:1px solid rgba(239,68,68,0.25);
+      margin-top:16px;
+      border-radius:18px;
+      border:1px solid rgba(239,68,68,0.18);
       overflow:hidden;
       background:#fff;
+      box-shadow: var(--shadow);
     }
+
     .pj-tab-head{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:10px;
-      padding:12px 14px;
-      background:rgba(239,68,68,0.08);
+      padding:14px 16px;
+      background:linear-gradient(180deg, rgba(239,68,68,0.09), rgba(239,68,68,0.03));
     }
-    .pj-tab-head strong{ color:#b91c1c; font-size:0.92rem; }
-    .pj-tab-head span{ font-size:0.9rem; opacity:0.75; }
+
+    .pj-tab-head strong{
+      color:#b91c1c;
+      font-size:0.96rem;
+    }
+
+    .pj-tab-head span{
+      font-size:0.9rem;
+      opacity:0.75;
+    }
 
     .pj-tab-body{
-      padding:14px;
+      padding:16px;
       display:block;
-      font-size:0.9rem;
+      font-size:0.92rem;
       color:#111827;
     }
-    .pj-tab-body p{ margin-bottom:10px; color:#374151; }
-    .pj-list{ margin:8px 0 12px 18px; color:#111827; }
+
+    .pj-tab-body p{
+      margin-bottom:10px;
+      color:#374151;
+    }
+
+    .pj-list{
+      margin:8px 0 12px 18px;
+      color:#111827;
+    }
 
     .pj-actions{
       display:flex;
@@ -528,11 +805,12 @@
       gap:10px;
       margin-top:10px;
     }
+
     .btn-mini{
       border-radius:999px;
-      padding:8px 12px;
-      font-size:0.8rem;
-      font-weight:600;
+      padding:9px 13px;
+      font-size:0.82rem;
+      font-weight:700;
       display:inline-flex;
       align-items:center;
       gap:6px;
@@ -541,16 +819,27 @@
       transition:.2s;
       white-space:nowrap;
     }
-    .btn-mini.red{ background:#ef4444; color:white; }
-    .btn-mini.red:hover{ background:#dc2626; transform:translateY(-1px); }
+
+    .btn-mini.red{
+      background:linear-gradient(135deg, var(--red), #f87171);
+      color:white;
+      box-shadow: 0 8px 18px rgba(239,68,68,.18);
+    }
+
+    .btn-mini.red:hover{
+      background:linear-gradient(135deg, var(--red-dark), #ef4444);
+      transform:translateY(-1px);
+    }
+
     .btn-mini.outline{
       background:transparent;
       color:#ef4444;
-      border-color:rgba(239,68,68,0.45);
+      border-color:rgba(239,68,68,0.32);
     }
+
     .btn-mini.outline:hover{
-      background:rgba(239,68,68,0.08);
-      border-color:rgba(239,68,68,0.7);
+      background:rgba(239,68,68,0.06);
+      border-color:rgba(239,68,68,0.6);
       transform:translateY(-1px);
     }
 
@@ -563,12 +852,13 @@
       z-index:9999;
       background:#111827;
       color:white;
-      border-radius:16px;
+      border-radius:18px;
       padding:16px;
       box-shadow:0 12px 30px rgba(0,0,0,.35);
       display:none;
       max-width:760px;
       margin:auto;
+      border:1px solid rgba(255,255,255,.08);
     }
 
     .cookie-top{
@@ -611,7 +901,7 @@
       border-radius:999px;
       padding:10px 14px;
       font-size:0.85rem;
-      font-weight:600;
+      font-weight:700;
       cursor:pointer;
       transition:.2s;
     }
@@ -681,33 +971,113 @@
 
     /* FOOTER */
     footer {
-      background: #111827;
-      color: #9ca3af;
-      text-align: center;
-      padding: 18px 0;
-      font-size: 0.85rem;
+      background:
+        radial-gradient(circle at top, rgba(239,68,68,.12), transparent 18%),
+        #0f172a;
+      color: #cbd5e1;
+      padding: 0;
+      font-size: 0.9rem;
+    }
+
+    .footer-inner{
+      padding: 42px 0 18px;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .9fr .9fr;
+      gap:26px;
+      margin-bottom:24px;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+    }
+
+    .footer-brand img{
+      width:42px;
+      height:42px;
+      border-radius:10px;
+      object-fit:cover;
+    }
+
+    .footer-title{
+      color:#fff;
+      font-weight:800;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      margin-bottom:8px;
+    }
+
+    .footer-col h4{
+      color:#fff;
+      margin-bottom:10px;
+      font-size:1rem;
+    }
+
+    .footer-links{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .footer-links a{
+      color:#cbd5e1;
+      transition:.2s;
+    }
+
+    .footer-links a:hover{
+      color:#fff;
+      transform:translateX(2px);
+    }
+
+    .footer-bottom{
+      border-top:1px solid rgba(255,255,255,.08);
+      padding:16px 0;
+      text-align:center;
+      color:#94a3b8;
+      font-size:.84rem;
     }
 
     /* ANIMATIONS */
     .fade-in,
     .fade-in-right {
       opacity: 0;
-      transition: 0.6s ease;
+      transition: 0.65s ease;
     }
 
-    .fade-in { transform: translateY(18px); }
-    .fade-in-right { transform: translateX(24px); }
+    .fade-in { transform: translateY(20px); }
+    .fade-in-right { transform: translateX(26px); }
 
     .visible {
       opacity: 1;
       transform: translate(0,0);
     }
 
+    @media (max-width: 900px) {
+      .trust-grid,
+      .footer-grid{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
     @media (max-width: 768px) {
       .hero-grid,
       .info-grid,
-      .offers-grid {
+      .offers-grid,
+      .trust-grid,
+      .footer-grid {
         grid-template-columns: 1fr;
+      }
+
+      .quick-links{
+        justify-content:flex-start;
+      }
+
+      .hero-meta{
+        grid-template-columns:1fr 1fr;
       }
     }
 
@@ -739,6 +1109,7 @@
       .nav-center{
         width: 100%;
         justify-content: center;
+        flex-wrap:wrap;
       }
 
       .nav-right {
@@ -749,16 +1120,20 @@
 
       .btn-primary,
       .btn-phone {
-        padding: 6px 10px;
-        font-size: 0.75rem;
+        padding: 7px 11px;
+        font-size: 0.76rem;
       }
 
       .hero {
-        padding-top: 60px;
+        padding-top: 68px;
       }
 
       .hero h1 {
-        font-size: 1.6rem;
+        font-size: 1.9rem;
+      }
+
+      .hero-meta{
+        grid-template-columns:1fr;
       }
 
       .pj-tab-head span{ display:none; }
@@ -793,6 +1168,8 @@
     <nav class="nav-center" aria-label="Navigation principale">
       <a class="nav-link active" href="index.html">Pare-brise</a>
       <a class="nav-link" href="depannage.html">Dépannage</a>
+      <a class="nav-link" href="#offres">Offres</a>
+      <a class="nav-link" href="#services">Services</a>
     </nav>
 
     <div class="nav-right">
@@ -844,22 +1221,81 @@
         <p style="font-size:0.78rem; opacity:0.85; margin-top:6px;">
           *Offre soumise à conditions, selon prise en charge de votre assurance bris de glace.
         </p>
+
+        <div class="hero-meta">
+          <div class="meta-box">
+            <strong>Horaires</strong>
+            <span>7j/7 · 09:30 à 19:30</span>
+          </div>
+          <div class="meta-box">
+            <strong>Service</strong>
+            <span>Centre + domicile</span>
+          </div>
+          <div class="meta-box">
+            <strong>Assurances</strong>
+            <span>Toutes assurances</span>
+          </div>
+          <div class="meta-box">
+            <strong>Avantages</strong>
+            <span>0 avance de frais</span>
+          </div>
+        </div>
       </aside>
 
     </div>
   </section>
 
-  <!-- ✅ OFFRES DU MOMENT -->
+  <div class="quick-links-wrap">
+    <div class="container">
+      <div class="quick-links fade-in">
+        <a href="#offres" class="quick-link">🔥 Nos offres</a>
+        <a href="#services" class="quick-link">🛠️ Nos services</a>
+        <a href="#process" class="quick-link">📋 Comment ça marche</a>
+        <a href="#zone" class="quick-link">📍 Zone d’intervention</a>
+        <a href="#contact" class="quick-link">📅 Prendre rendez-vous</a>
+        <a href="depannage.html" class="quick-link">🚗 Dépannage</a>
+        <a href="politique-confidentialite.html" class="quick-link">🔒 Confidentialité</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="trust-strip">
+    <div class="container">
+      <div class="trust-grid fade-in">
+        <div class="trust-item">
+          <strong>Toutes assurances</strong>
+          <span>Prise en charge simplifiée</span>
+        </div>
+        <div class="trust-item">
+          <strong>0 avance de frais</strong>
+          <span>Selon contrat d’assurance</span>
+        </div>
+        <div class="trust-item">
+          <strong>Franchise offerte*</strong>
+          <span>Selon conditions</span>
+        </div>
+        <div class="trust-item">
+          <strong>7j/7</strong>
+          <span>De 09:30 à 19:30</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="offres">
-    <div class="container fade-in">
+    <div class="container fade-in" style="text-align:center;">
+      <div class="section-kicker"><span class="dot"></span> Offres exclusives</div>
       <h2 class="section-title">Nos offres du moment</h2>
-      <p class="section-subtitle">Profitez de nos avantages exclusifs sur le remplacement de pare-brise</p>
+      <p class="section-subtitle">Profitez de nos avantages exclusifs sur le remplacement de pare-brise avec prise en charge assurance, franchise offerte et offres promotionnelles.</p>
 
       <div class="offers-grid">
         <div class="offer-card fade-in">
-          <a href="offre-300.jpg" target="_blank">
-            <img src="offre-300.jpg" alt="Offre Rapid Auto Plus - 100€ à 300€ offerts">
-          </a>
+          <div class="offer-image-wrap">
+            <span class="offer-badge">Offre pare-brise</span>
+            <a href="offre-300.jpg" target="_blank">
+              <img src="offre-300.jpg" alt="Offre Rapid Auto Plus - 100€ à 300€ offerts">
+            </a>
+          </div>
           <div class="offer-body">
             <h3>100€ à 300€ offerts</h3>
             <p>Selon conditions, avec toutes assurances, 0 avance de frais et franchise offerte.</p>
@@ -871,14 +1307,17 @@
         </div>
 
         <div class="offer-card fade-in">
-          <a href="offre-4-pneus.jpg" target="_blank">
-            <img src="offre-4-pneus.jpg" alt="Offre Rapid Auto Plus - 4 pneus offerts">
-          </a>
+          <div class="offer-image-wrap">
+            <span class="offer-badge">Offre bonus</span>
+            <a href="offre-4-pneus.jpg" target="_blank">
+              <img src="offre-4-pneus.jpg" alt="Offre Rapid Auto Plus - 4 pneus offerts">
+            </a>
+          </div>
           <div class="offer-body">
             <h3>4 pneus offerts</h3>
             <p>Pour 1 pare-brise remplacé, selon conditions. Offre valable avec prise en charge assurance.</p>
             <div class="offer-actions">
-              <a href="#contact" class="btn-primary">📅 Profiter de l’offre</a>
+              <a href="#contact" class="btn-primary">📅 Demander l’offre</a>
               <a href="tel:0757823868" class="btn-outline">📞 Appeler</a>
             </div>
           </div>
@@ -888,9 +1327,10 @@
   </section>
 
   <section id="services">
-    <div class="container fade-in">
+    <div class="container fade-in" style="text-align:center;">
+      <div class="section-kicker"><span class="dot"></span> Savoir-faire</div>
       <h2 class="section-title">Nos services</h2>
-      <p class="section-subtitle">Spécialiste du remplacement de pare-brise en centre ou à domicile</p>
+      <p class="section-subtitle">Spécialiste du remplacement de pare-brise en centre ou à domicile, avec pose soignée, contrôle sécurité et accompagnement assurance.</p>
 
       <div class="cards">
         <div class="card fade-in">
@@ -908,14 +1348,14 @@
           <p>Accompagnement pour la prise en charge bris de glace avec votre assurance. Dans 90 % des cas, vous ne payez rien.</p>
         </div>
       </div>
-
     </div>
   </section>
 
   <section id="process">
-    <div class="container fade-in">
+    <div class="container fade-in" style="text-align:center;">
+      <div class="section-kicker"><span class="dot"></span> Process simple</div>
       <h2 class="section-title">Comment ça marche ?</h2>
-      <p class="section-subtitle">Un process simple pour votre prise en charge</p>
+      <p class="section-subtitle">Un process clair, rapide et rassurant pour votre prise en charge, en centre ou à domicile.</p>
 
       <div class="steps">
         <div class="step fade-in">
@@ -940,33 +1380,33 @@
 
   <section id="zone">
     <div class="container info-grid fade-in">
-
-      <div>
-        <h2 class="section-title" style="text-align:left;">Centre & zone d’intervention</h2>
+      <div class="contact-box">
+        <h2 class="section-title" style="text-align:left; margin-bottom:12px;">Centre & zone d’intervention</h2>
         <p><strong>Rapid Auto Plus vous accueille dans son centre aux Clayes-sous-Bois (78340)</strong> et intervient également à domicile selon votre localisation.</p>
 
-        <p style="margin-top:10px;">
+        <p style="margin-top:14px;">
           <strong>Au centre :</strong><br>
           11 bis rue des Dames — 78340 Les Clayes-sous-Bois
         </p>
 
-        <p style="margin-top:10px;">
+        <p style="margin-top:14px;">
           <strong>À domicile :</strong><br>
           • Aux <strong>Clayes-sous-Bois</strong> et dans les <strong>Yvelines (78)</strong><br>
           • À votre domicile ou sur votre lieu de travail
         </p>
 
-        <p style="margin-top:10px;">
+        <p style="margin-top:14px;">
           Lors de votre demande, vous pouvez choisir un <strong>rendez-vous en centre</strong> ou une <strong>intervention à domicile</strong>.
         </p>
       </div>
 
       <div class="contact-box fade-in-right">
-        <p><strong>Contact rapide :</strong></p>
-        <p>📞 07 57 82 38 68</p>
-        <p>Email : <a href="mailto:rapidautoplus@gmail.com">rapidautoplus@gmail.com</a></p>
+        <h2 class="section-title" style="text-align:left; margin-bottom:12px;">Contact rapide</h2>
+        <p>📞 <strong>07 57 82 38 68</strong></p>
+        <p>✉️ <a href="mailto:rapidautoplus@gmail.com">rapidautoplus@gmail.com</a></p>
 
-        <hr style="margin:12px 0; border:none; border-top:1px solid #e5e7eb;">
+        <hr style="margin:14px 0; border:none; border-top:1px solid #e5e7eb;">
+
         <p><strong>Horaires :</strong></p>
         <p>Lundi : 09:30 – 19:30</p>
         <p>Mardi : 09:30 – 19:30</p>
@@ -976,15 +1416,14 @@
         <p>Samedi : 09:30 – 19:30</p>
         <p>Dimanche : 09:30 – 19:30</p>
       </div>
-
     </div>
   </section>
 
   <section id="contact">
     <div class="container info-grid fade-in">
 
-      <div>
-        <h2 class="section-title" style="text-align:left;">Demande de rendez-vous</h2>
+      <div class="contact-box">
+        <h2 class="section-title" style="text-align:left; margin-bottom:12px;">Demande de rendez-vous</h2>
         <p>Remplissez le formulaire pour une prise en charge rapide, en centre ou à domicile.</p>
       </div>
 
@@ -1046,7 +1485,6 @@
           </div>
 
           <button type="submit" class="btn-submit">Envoyer la demande</button>
-
           <div id="form-message" class="form-message"></div>
         </form>
 
@@ -1086,7 +1524,45 @@
 </main>
 
 <footer>
-  © Rapid Auto Plus — Remplacement de pare-brise en centre ou à domicile — Les Clayes-sous-Bois & Yvelines (78)
+  <div class="container footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="logo-rapid-auto.jpg" alt="Logo Rapid Auto Plus">
+          <div>
+            <div class="footer-title">Rapid Auto Plus</div>
+            <p style="color:#cbd5e1; max-width:420px;">
+              Remplacement de pare-brise en centre ou à domicile aux Clayes-sous-Bois et dans les Yvelines (78).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Liens rapides</h4>
+        <div class="footer-links">
+          <a href="#top">Accueil</a>
+          <a href="#offres">Nos offres</a>
+          <a href="#services">Nos services</a>
+          <a href="#contact">Prendre rendez-vous</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Liens annexes</h4>
+        <div class="footer-links">
+          <a href="#zone">Zone d’intervention</a>
+          <a href="depannage.html">Page dépannage</a>
+          <a href="politique-confidentialite.html">Politique de confidentialité</a>
+          <a href="tel:0757823868">Nous appeler</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © Rapid Auto Plus — Remplacement de pare-brise en centre ou à domicile — Les Clayes-sous-Bois & Yvelines (78)
+  </div>
 </footer>
 
 <!-- ✅ COOKIE BANNER -->
@@ -1147,7 +1623,7 @@
           el.classList.add("visible");
           obs.disconnect();
         }
-      }, { threshold: 0.2 });
+      }, { threshold: 0.15 });
 
       obs.observe(el);
     });
