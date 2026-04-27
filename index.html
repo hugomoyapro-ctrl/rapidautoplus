@@ -71,6 +71,7 @@
       padding:0 18px;
     }
 
+    /* HEADER */
     header{
       background:rgba(15,23,42,.82);
       backdrop-filter:blur(14px);
@@ -203,6 +204,7 @@
       transform:translateY(-1px);
     }
 
+    /* BURGER MENU */
     .menu-toggle{
       display:none;
       width:44px;
@@ -255,6 +257,10 @@
       font-size:.92rem;
     }
 
+    .mobile-link:hover{
+      background:rgba(255,255,255,.08);
+    }
+
     .mobile-menu-actions{
       display:flex;
       flex-direction:column;
@@ -262,6 +268,7 @@
       margin-top:8px;
     }
 
+    /* HERO */
     .hero{
       padding:86px 0 96px;
       background:
@@ -281,7 +288,7 @@
       width:360px;
       height:360px;
       border-radius:50%;
-      background:radial-gradient(circle, rgba(239,68,68,.26), transparent 70%);
+      background: radial-gradient(circle, rgba(239,68,68,.26), transparent 70%);
       pointer-events:none;
     }
 
@@ -313,7 +320,10 @@
       border-radius:999px;
     }
 
-    .hero-separator{ opacity:.85; margin:0 4px; }
+    .hero-separator{
+      opacity:.85;
+      margin:0 4px;
+    }
 
     .hero-tag{
       display:inline-flex;
@@ -398,7 +408,10 @@
       backdrop-filter:blur(12px);
     }
 
-    .hero-card h2{ font-size:1.08rem; margin-bottom:8px; }
+    .hero-card h2{
+      font-size:1.08rem;
+      margin-bottom:8px;
+    }
 
     .hero-meta{
       display:grid;
@@ -426,10 +439,12 @@
       color:#cbd5e1;
     }
 
+    /* ✅ FIX SUPERPOSITION */
     .quick-links-wrap{
-      margin-top:-18px;
+      margin-top:0;
       position:relative;
       z-index:3;
+      padding-top:24px;
     }
 
     .quick-links{
@@ -443,6 +458,7 @@
       flex-wrap:wrap;
       gap:10px;
       justify-content:center;
+      margin-bottom:18px;
     }
 
     .quick-link{
@@ -464,10 +480,10 @@
     }
 
     .trust-strip{
-      padding:0 0 12px;
-      margin-top:-30px;
+      padding:24px 0 12px;
+      margin-top:0;
       position:relative;
-      z-index:5;
+      z-index:2;
     }
 
     .trust-grid{
@@ -498,7 +514,9 @@
       font-size:.86rem;
     }
 
-    section{ padding:70px 0; }
+    section{
+      padding:70px 0;
+    }
 
     #offres{
       background:
@@ -510,7 +528,9 @@
       background:linear-gradient(180deg, rgba(255,255,255,.8), rgba(248,250,252,.95));
     }
 
-    #process{ background:#fff; }
+    #process{
+      background:#fff;
+    }
 
     #zone{
       background:
@@ -608,14 +628,19 @@
 
     .offer-card img{
       width:100%;
+      display:block;
       aspect-ratio:1 / 1;
       object-fit:cover;
       transition:transform .45s ease;
     }
 
-    .offer-card:hover img{ transform:scale(1.03); }
+    .offer-card:hover img{
+      transform:scale(1.03);
+    }
 
-    .offer-body{ padding:18px; }
+    .offer-body{
+      padding:18px;
+    }
 
     .offer-body h3{
       font-size:1.1rem;
@@ -703,6 +728,10 @@
       box-shadow:var(--shadow);
     }
 
+    .contact-box p + p{
+      margin-top:4px;
+    }
+
     .contact-grid{
       display:grid;
       grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
@@ -755,7 +784,6 @@
       margin-top:18px;
     }
 
-    /* FORMULAIRE PREMIUM */
     .form-shell{
       display:flex;
       flex-direction:column;
@@ -1102,15 +1130,27 @@
       color:#fff;
     }
 
+    .cookie-btn.accept:hover{
+      background:#dc2626;
+    }
+
     .cookie-btn.reject{
       background:transparent;
       color:#fff;
       border:1px solid rgba(255,255,255,.25);
     }
 
+    .cookie-btn.reject:hover{
+      background:rgba(255,255,255,.08);
+    }
+
     .cookie-btn.customize{
       background:#fff;
       color:#111827;
+    }
+
+    .cookie-btn.customize:hover{
+      background:#f3f4f6;
     }
 
     .cookie-link{
@@ -1144,7 +1184,9 @@
       display:block;
     }
 
-    .cookie-save{ margin-top:8px; }
+    .cookie-save{
+      margin-top:8px;
+    }
 
     footer{
       background:
@@ -1155,7 +1197,9 @@
       font-size:.9rem;
     }
 
-    .footer-inner{ padding:42px 0 18px; }
+    .footer-inner{
+      padding:42px 0 18px;
+    }
 
     .footer-grid{
       display:grid;
@@ -1271,25 +1315,30 @@
     @media (max-width: 480px){
       header{ padding:8px 0; }
       .nav{ gap:8px; }
+
       .logo{
         white-space:normal;
         max-width:100%;
         line-height:1.1;
       }
+
       .btn-primary,.btn-phone{
         padding:7px 11px;
         font-size:.76rem;
       }
+
       .hero{ padding-top:68px; }
       .hero h1{ font-size:1.9rem; }
       .hero-meta{ grid-template-columns:1fr; }
       .pj-tab-head span{ display:none; }
+
       .cookie-banner{
         left:10px;
         right:10px;
         bottom:10px;
         padding:14px;
       }
+
       .cookie-actions{ flex-direction:column; }
       .cookie-btn{ width:100%; }
     }
@@ -1345,6 +1394,7 @@
 
   <section class="hero fade-in">
     <div class="container hero-grid">
+
       <div>
         <div class="hero-offer">
           <span>OFFRE</span>
@@ -1402,6 +1452,7 @@
           </div>
         </div>
       </aside>
+
     </div>
   </section>
 
@@ -1772,6 +1823,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </section>
 
