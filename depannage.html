@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rapid Dépannage Auto - Dépannage 24h/24 & 7j/7</title>
 
-  <!-- ✅ FAVICONS / LOGOS -->
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -13,7 +12,6 @@
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#111827">
 
-  <!-- ✅ GOOGLE ADS TAG -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17799257107"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -66,7 +64,6 @@
       padding:0 18px;
     }
 
-    /* HEADER */
     header{
       background:rgba(15,23,42,.82);
       backdrop-filter:blur(14px);
@@ -199,7 +196,6 @@
       transform:translateY(-1px);
     }
 
-    /* BURGER */
     .menu-toggle{
       display:none;
       width:44px;
@@ -263,7 +259,6 @@
       margin-top:8px;
     }
 
-    /* HERO */
     .hero{
       padding:86px 0 96px;
       background:
@@ -406,11 +401,12 @@
       color:#cbd5e1;
     }
 
-    /* QUICK LINKS */
+    /* FIX SUPERPOSITION */
     .quick-links-wrap{
-      margin-top:-18px;
+      margin-top:0;
       position:relative;
       z-index:3;
+      padding-top:24px;
     }
 
     .quick-links{
@@ -424,6 +420,7 @@
       flex-wrap:wrap;
       gap:10px;
       justify-content:center;
+      margin-bottom:18px;
     }
 
     .quick-link{
@@ -444,12 +441,11 @@
       transform:translateY(-1px);
     }
 
-    /* TRUST BAR */
     .trust-strip{
-      padding:0 0 12px;
-      margin-top:-30px;
+      padding:24px 0 12px;
+      margin-top:0;
       position:relative;
-      z-index:5;
+      z-index:2;
     }
 
     .trust-grid{
@@ -480,7 +476,6 @@
       font-size:.86rem;
     }
 
-    /* SECTIONS */
     section{padding:70px 0}
 
     #services{
@@ -662,7 +657,6 @@
       margin-bottom:4px;
     }
 
-    /* FOOTER */
     footer{
       background:
         radial-gradient(circle at top, rgba(239,68,68,.12), transparent 18%),
@@ -732,7 +726,6 @@
       font-size:.84rem;
     }
 
-    /* ANIMATIONS */
     .fade-in,.fade-in-right{
       opacity:0;
       transition:.65s ease;
