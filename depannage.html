@@ -23,54 +23,94 @@
   </script>
 
   <style>
+    :root{
+      --bg:#f3f4f6;
+      --surface:#ffffff;
+      --surface-soft:#f8fafc;
+      --text:#111827;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+      --dark:#0f172a;
+      --red:#ef4444;
+      --red-dark:#dc2626;
+      --green:#22c55e;
+      --amber:#facc15;
+      --shadow:0 10px 30px rgba(2,6,23,.08);
+      --shadow-lg:0 20px 50px rgba(2,6,23,.16);
+    }
+
     *{
       margin:0;
       padding:0;
       box-sizing:border-box;
       font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     }
-    body{background:#f3f4f6;color:#111827;line-height:1.6}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1100px;margin:0 auto;padding:0 16px}
 
-    /* ===================== HEADER (IDENTIQUE À PAGE 1) ===================== */
+    html{scroll-behavior:smooth}
+
+    body{
+      background:
+        radial-gradient(circle at top left, rgba(239,68,68,.06), transparent 28%),
+        radial-gradient(circle at top right, rgba(59,130,246,.07), transparent 30%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .container{
+      max-width:1180px;
+      margin:0 auto;
+      padding:0 18px;
+    }
+
+    /* HEADER */
     header{
-      background:#111827;
+      background:rgba(15,23,42,.82);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
       color:#fff;
       padding:10px 0;
       position:sticky;
       top:0;
-      z-index:50;
+      z-index:70;
+      border-bottom:1px solid rgba(255,255,255,.08);
     }
+
     .nav{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:12px;
+      gap:14px;
       width:100%;
     }
+
     .logo-area{
       display:flex;
       align-items:center;
-      gap:6px;
+      gap:10px;
       flex-shrink:0;
       min-width:0;
     }
+
     .logo-icon{
-      width:30px;
-      height:30px;
-      border-radius:6px;
+      width:34px;
+      height:34px;
+      border-radius:8px;
       object-fit:cover;
+      box-shadow:0 6px 16px rgba(0,0,0,.25);
     }
+
     .logo{
-      font-weight:700;
+      font-weight:800;
       font-size:1rem;
-      letter-spacing:.05em;
+      letter-spacing:.06em;
       text-transform:uppercase;
       white-space:nowrap;
     }
 
-    /* ✅ NAV CENTER (2 pages) */
     .nav-center{
       display:flex;
       align-items:center;
@@ -78,30 +118,33 @@
       flex-shrink:0;
       white-space:nowrap;
     }
+
     .nav-link{
-      border-radius: 999px;
-      padding: 8px 14px;          /* ✅ même taille que page 1 */
-      border: 1px solid #ffffff55;
-      color: #f9fafb;
-      background: transparent;
-      font-size: 0.8rem;          /* ✅ même taille que page 1 */
-      font-weight: 600;           /* ✅ même épaisseur */
-      cursor: pointer;
-      transition: 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      white-space: nowrap;
-      line-height: 1;             /* ✅ évite les différences de hauteur */
+      border-radius:999px;
+      padding:9px 15px;
+      border:1px solid rgba(255,255,255,.16);
+      color:#f9fafb;
+      background:transparent;
+      font-size:.82rem;
+      font-weight:600;
+      cursor:pointer;
+      transition:.2s;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      white-space:nowrap;
+      line-height:1;
     }
-    .nav-link:hover {
-      background: #ffffff11;
-      border-color: #ffffffaa;
+
+    .nav-link:hover{
+      background:rgba(255,255,255,.08);
+      border-color:rgba(255,255,255,.3);
+      transform:translateY(-1px);
     }
+
     .nav-link.active{
-      background: #ffffff18;
-      border-color: #ffffffcc;
-      font-weight: 600;
+      background:rgba(255,255,255,.12);
+      border-color:rgba(255,255,255,.34);
     }
 
     .nav-right{
@@ -111,235 +154,647 @@
       flex-shrink:0;
       white-space:nowrap;
     }
+
     .btn-primary,.btn-phone{
-      background:#ef4444;
+      background:linear-gradient(135deg,var(--red),#f87171);
       color:#fff;
-      padding:8px 12px;
+      padding:9px 14px;
       border-radius:999px;
-      font-size:.8rem;
-      font-weight:600;
-      transition:.2s;
+      font-size:.82rem;
+      font-weight:700;
+      transition:.22s;
       border:none;
       cursor:pointer;
       display:inline-flex;
       align-items:center;
       gap:6px;
       white-space:nowrap;
+      box-shadow:0 8px 22px rgba(239,68,68,.26);
     }
+
     .btn-primary:hover,.btn-phone:hover{
-      background:#dc2626;
+      background:linear-gradient(135deg,var(--red-dark),#ef4444);
       transform:translateY(-1px);
     }
+
     .btn-outline{
       border-radius:999px;
-      padding:8px 12px;
-      border:1px solid #ffffff55;
+      padding:9px 14px;
+      border:1px solid rgba(255,255,255,.18);
       color:#f9fafb;
-      background:transparent;
-      font-size:.8rem;
-      font-weight:500;
+      background:rgba(255,255,255,.04);
+      font-size:.82rem;
+      font-weight:600;
       cursor:pointer;
       transition:.2s;
       display:inline-flex;
       align-items:center;
       gap:6px;
+      white-space:nowrap;
     }
-    .btn-outline:hover{background:#ffffff11;border-color:#ffffffaa}
 
-    /* ===================== HERO (photo depannage.jpg fixe) ===================== */
+    .btn-outline:hover{
+      background:rgba(255,255,255,.1);
+      border-color:rgba(255,255,255,.34);
+      transform:translateY(-1px);
+    }
+
+    /* BURGER */
+    .menu-toggle{
+      display:none;
+      width:44px;
+      height:44px;
+      border:none;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:12px;
+      cursor:pointer;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      gap:5px;
+    }
+
+    .menu-toggle span{
+      width:18px;
+      height:2px;
+      background:#fff;
+      border-radius:999px;
+      transition:.25s;
+    }
+
+    .menu-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .menu-toggle.active span:nth-child(2){opacity:0}
+    .menu-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+    .mobile-menu{
+      display:none;
+      background:rgba(15,23,42,.96);
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+
+    .mobile-menu.open{display:block}
+
+    .mobile-menu-inner{
+      display:flex;
+      flex-direction:column;
+      padding:14px 18px 18px;
+      gap:10px;
+    }
+
+    .mobile-link{
+      color:#fff;
+      padding:12px 14px;
+      border-radius:12px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.07);
+      font-weight:600;
+      font-size:.92rem;
+    }
+
+    .mobile-link:hover{
+      background:rgba(255,255,255,.08);
+    }
+
+    .mobile-menu-actions{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top:8px;
+    }
+
+    /* HERO */
     .hero{
-      padding:70px 0 80px;
+      padding:86px 0 96px;
       background:
-        linear-gradient(135deg,rgba(15,23,42,.72),rgba(239,68,68,.28)),
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.14), transparent 24%),
+        radial-gradient(circle at 85% 10%, rgba(239,68,68,.24), transparent 22%),
+        linear-gradient(135deg, rgba(15,23,42,.84), rgba(30,41,59,.78), rgba(127,29,29,.34)),
         url("depannage.jpg") center/cover no-repeat;
       color:#fff;
+      position:relative;
+      overflow:hidden;
     }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:auto -120px -160px auto;
+      width:360px;
+      height:360px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(239,68,68,.22), transparent 70%);
+      pointer-events:none;
+    }
+
     .hero-grid{
       display:grid;
-      grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);
-      gap:40px;
+      grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);
+      gap:34px;
       align-items:start;
     }
-    .pill-urgent{
+
+    .hero-offer{
       display:inline-flex;
       align-items:center;
       gap:8px;
-      background:rgba(239,68,68,.92);
-      padding:6px 12px;
+      background:rgba(239,68,68,.96);
+      padding:7px 13px;
       border-radius:999px;
-      font-size:.8rem;
+      font-size:.82rem;
       font-weight:700;
-      margin-bottom:10px;
-      box-shadow:0 10px 25px rgba(0,0,0,.35);
+      margin-bottom:12px;
+      box-shadow:0 14px 30px rgba(0,0,0,.28);
     }
-    .pill-urgent .dot{
-      width:8px;height:8px;border-radius:999px;
-      background:#facc15;
-      box-shadow:0 0 0 5px rgba(250,204,21,.25);
+
+    .hero-offer span{
+      background:var(--amber);
+      color:#111827;
+      font-size:.72rem;
+      padding:2px 7px;
+      border-radius:999px;
     }
+
     .hero-tag{
       display:inline-flex;
-      background:rgba(15,23,42,.70);
-      padding:4px 10px;
+      align-items:center;
+      background:rgba(15,23,42,.58);
+      border:1px solid rgba(255,255,255,.12);
+      padding:5px 11px;
       border-radius:999px;
-      gap:6px;
-      font-size:.8rem;
-      margin-bottom:10px;
+      gap:8px;
+      font-size:.82rem;
+      margin-bottom:14px;
+      backdrop-filter:blur(8px);
     }
+
     .hero-tag span{
-      width:8px;height:8px;border-radius:999px;background:#22c55e;
+      width:9px;
+      height:9px;
+      border-radius:999px;
+      background:#22c55e;
+      box-shadow:0 0 0 5px rgba(34,197,94,.18);
     }
+
     .hero h1{
-      font-size:clamp(1.9rem,3vw,2.4rem);
-      margin-bottom:12px;
-      line-height:1.25;
+      font-size:clamp(2rem,4vw,3rem);
+      margin-bottom:14px;
+      line-height:1.1;
+      letter-spacing:-.02em;
     }
+
     .hero p{
-      max-width:560px;
+      max-width:620px;
       margin-bottom:10px;
-      opacity:.95;
-      font-size:.95rem;
+      opacity:.96;
+      font-size:1rem;
+      color:#e5e7eb;
     }
+
+    .hero-highlight{
+      opacity:.92;
+      margin-bottom:16px;
+      font-size:.95rem;
+      color:#f8fafc;
+    }
+
     .hero-actions{
-      margin-top:14px;
+      margin-top:18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .hero-card{
+      background:linear-gradient(180deg, rgba(15,23,42,.86), rgba(15,23,42,.72));
+      padding:20px 18px;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:0 18px 40px rgba(0,0,0,.28);
+      font-size:.92rem;
+      backdrop-filter:blur(12px);
+    }
+
+    .hero-card h2{
+      font-size:1.08rem;
+      margin-bottom:8px;
+    }
+
+    .hero-meta{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+      margin-top:16px;
+    }
+
+    .hero-meta .meta-box{
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      padding:12px;
+    }
+
+    .hero-meta .meta-box strong{
+      display:block;
+      font-size:.86rem;
+      color:#fff;
+      margin-bottom:2px;
+    }
+
+    .hero-meta .meta-box span{
+      font-size:.82rem;
+      color:#cbd5e1;
+    }
+
+    /* QUICK LINKS */
+    .quick-links-wrap{
+      margin-top:-18px;
+      position:relative;
+      z-index:3;
+    }
+
+    .quick-links{
+      background:rgba(255,255,255,.8);
+      backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,.7);
+      box-shadow:var(--shadow);
+      border-radius:20px;
+      padding:12px;
       display:flex;
       flex-wrap:wrap;
       gap:10px;
-    }
-    .hero-card{
-      background:rgba(15,23,42,.9);
-      padding:18px 16px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.15);
-      box-shadow:0 12px 24px rgba(0,0,0,.35);
-      font-size:.9rem;
+      justify-content:center;
     }
 
-    /* ===================== SECTIONS ===================== */
-    section{padding:60px 0}
-    section:nth-of-type(even){background:#fff}
-    .section-title{text-align:center;font-size:1.4rem;margin-bottom:6px}
-    .section-subtitle{text-align:center;color:#6b7280;margin-bottom:20px}
+    .quick-link{
+      padding:10px 14px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid var(--border);
+      font-size:.88rem;
+      font-weight:600;
+      color:#1f2937;
+      transition:.2s;
+      box-shadow:0 4px 12px rgba(15,23,42,.04);
+    }
+
+    .quick-link:hover{
+      border-color:#fecaca;
+      color:#b91c1c;
+      transform:translateY(-1px);
+    }
+
+    /* TRUST BAR */
+    .trust-strip{
+      padding:0 0 12px;
+      margin-top:-30px;
+      position:relative;
+      z-index:5;
+    }
+
+    .trust-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:14px;
+    }
+
+    .trust-item{
+      background:rgba(255,255,255,.92);
+      backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,.7);
+      border-radius:18px;
+      padding:16px 14px;
+      box-shadow:var(--shadow);
+      text-align:center;
+    }
+
+    .trust-item strong{
+      display:block;
+      font-size:1rem;
+      color:#111827;
+      margin-bottom:4px;
+    }
+
+    .trust-item span{
+      color:var(--muted);
+      font-size:.86rem;
+    }
+
+    /* SECTIONS */
+    section{padding:70px 0}
+
+    #services{
+      background:linear-gradient(180deg, rgba(255,255,255,.8), rgba(248,250,252,.95));
+    }
+
+    #process{background:#fff}
+
+    #contact{
+      background:
+        radial-gradient(circle at left bottom, rgba(239,68,68,.06), transparent 22%),
+        #fff;
+      padding-top:50px;
+      padding-bottom:60px;
+    }
+
+    .section-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin:0 auto 10px;
+      padding:7px 12px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid var(--border);
+      color:#b91c1c;
+      font-size:.8rem;
+      font-weight:700;
+      box-shadow:0 6px 18px rgba(15,23,42,.06);
+    }
+
+    .section-kicker .dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--red);
+      box-shadow:0 0 0 5px rgba(239,68,68,.12);
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:clamp(1.55rem,2.2vw,2rem);
+      margin-bottom:8px;
+      letter-spacing:-.02em;
+    }
+
+    .section-subtitle{
+      text-align:center;
+      color:var(--muted);
+      margin-bottom:22px;
+      max-width:760px;
+      margin-left:auto;
+      margin-right:auto;
+    }
 
     .cards{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
       gap:20px;
     }
+
     .card{
-      background:#fff;
-      border-radius:16px;
-      padding:18px;
+      background:linear-gradient(180deg,#ffffff,#fbfdff);
+      border-radius:20px;
+      padding:20px;
       border:1px solid #e5e7eb;
-      box-shadow:0 8px 22px rgba(0,0,0,.05);
-      font-size:.9rem;
+      box-shadow:var(--shadow);
+      font-size:.95rem;
+      transition:.25s ease;
     }
-    .card h3{margin-bottom:6px;display:flex;align-items:center;gap:6px}
+
+    .card:hover{
+      transform:translateY(-4px);
+      box-shadow:var(--shadow-lg);
+    }
+
+    .card h3{
+      margin-bottom:8px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-size:1rem;
+    }
 
     .steps{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:16px;
-    }
-    .step{
-      border:1px dashed #ddd;
-      padding:14px;
-      border-radius:12px;
-      background:#f9fafb;
-      font-size:.9rem;
+      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+      gap:18px;
     }
 
-    /* ===================== MODULES BAS (COMPLETS) ===================== */
+    .step{
+      border:1px solid #e5e7eb;
+      padding:18px;
+      border-radius:18px;
+      background:linear-gradient(180deg,#f9fafb,#ffffff);
+      font-size:.94rem;
+      box-shadow:0 8px 18px rgba(15,23,42,.04);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .step::before{
+      content:"";
+      position:absolute;
+      inset:0 auto 0 0;
+      width:4px;
+      background:linear-gradient(180deg,var(--red),#f97316);
+    }
+
     .info-grid{
       display:grid;
-      grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);
+      grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
       gap:30px;
+      align-items:start;
     }
-    .cta-urgent{
-      background:#111827;
-      color:#fff;
-      border-radius:18px;
-      padding:18px;
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow:0 14px 30px rgba(0,0,0,.12);
-      display:grid;
-      gap:10px;
-    }
-    .cta-urgent p{opacity:.95}
+
     .contact-box{
-      padding:16px;
-      background:#f9fafb;
-      border-radius:14px;
+      padding:20px;
+      background:linear-gradient(180deg,#ffffff,#fbfbfc);
+      border-radius:20px;
       border:1px solid #e5e7eb;
+      font-size:.95rem;
+      box-shadow:var(--shadow);
+    }
+
+    .urgent-box{
+      background:linear-gradient(180deg,#111827,#0f172a);
+      color:#fff;
+      border-radius:22px;
+      padding:22px;
+      box-shadow:0 18px 40px rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .urgent-box h2{
+      font-size:1.4rem;
+      margin-bottom:10px;
+    }
+
+    .urgent-list{
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .urgent-item{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      padding:14px;
+    }
+
+    .urgent-item strong{
+      display:block;
+      margin-bottom:4px;
+      color:#fff;
+    }
+
+    .urgent-item span{
+      color:#cbd5e1;
       font-size:.9rem;
     }
 
+    .contact-mini{
+      display:grid;
+      gap:12px;
+      margin-top:14px;
+    }
+
+    .contact-mini .mini-card{
+      background:#f8fafc;
+      border:1px solid #e5e7eb;
+      border-radius:16px;
+      padding:14px;
+    }
+
+    .contact-mini .mini-card strong{
+      display:block;
+      margin-bottom:4px;
+    }
+
+    /* FOOTER */
     footer{
-      background:#111827;
-      color:#9ca3af;
+      background:
+        radial-gradient(circle at top, rgba(239,68,68,.12), transparent 18%),
+        #0f172a;
+      color:#cbd5e1;
+      padding:0;
+      font-size:.9rem;
+    }
+
+    .footer-inner{padding:42px 0 18px}
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.2fr .9fr .9fr;
+      gap:26px;
+      margin-bottom:24px;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+    }
+
+    .footer-brand img{
+      width:42px;
+      height:42px;
+      border-radius:10px;
+      object-fit:cover;
+    }
+
+    .footer-title{
+      color:#fff;
+      font-weight:800;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      margin-bottom:8px;
+    }
+
+    .footer-col h4{
+      color:#fff;
+      margin-bottom:10px;
+      font-size:1rem;
+    }
+
+    .footer-links{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .footer-links a{
+      color:#cbd5e1;
+      transition:.2s;
+    }
+
+    .footer-links a:hover{
+      color:#fff;
+      transform:translateX(2px);
+    }
+
+    .footer-bottom{
+      border-top:1px solid rgba(255,255,255,.08);
+      padding:16px 0;
       text-align:center;
-      padding:18px 0;
-      font-size:.85rem;
+      color:#94a3b8;
+      font-size:.84rem;
     }
 
-    /* ===================== ANIMATIONS (comme page 1) ===================== */
-    .fade-in,.fade-in-right{opacity:0;transition:.6s ease}
-    .fade-in{transform:translateY(18px)}
-    .fade-in-right{transform:translateX(24px)}
-    .visible{opacity:1;transform:translate(0,0)}
-
-    /* TABLETTE */
-    @media (max-width:768px){
-      .hero-grid{grid-template-columns:1fr}
-      .info-grid{grid-template-columns:1fr}
+    /* ANIMATIONS */
+    .fade-in,.fade-in-right{
+      opacity:0;
+      transition:.65s ease;
     }
 
-    /* ✅ MOBILE HEADER (même logique que page 1 : 3 lignes propres) */
-    @media (max-width:480px){
-      header{padding:8px 0}
+    .fade-in{transform:translateY(20px)}
+    .fade-in-right{transform:translateX(26px)}
 
-      .nav{
-        flex-wrap:wrap;
-        gap:8px;
+    .visible{
+      opacity:1;
+      transform:translate(0,0);
+    }
+
+    @media (max-width: 900px){
+      .trust-grid,.footer-grid{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px){
+      .desktop-nav,.desktop-actions{
+        display:none;
       }
 
-      /* ligne 1 : logo + texte à gauche */
-      .logo-area{
-        width:100%;
+      .menu-toggle{
+        display:flex;
+      }
+
+      .hero-grid,
+      .trust-grid,
+      .info-grid,
+      .footer-grid{
+        grid-template-columns:1fr;
+      }
+
+      .quick-links{
         justify-content:flex-start;
-        min-width:0;
       }
+
+      .hero-meta{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px){
+      header{padding:8px 0}
+      .nav{gap:8px}
 
       .logo{
-        white-space:normal; /* ✅ pas coupé */
+        white-space:normal;
+        max-width:100%;
         line-height:1.1;
       }
 
-      .logo-icon{
-        width:26px;
-        height:26px;
-      }
-
-      /* ligne 2 : nav center centré */
-      .nav-center{
-        width:100%;
-        justify-content:center;
-      }
-
-      /* ligne 3 : boutons rouges centrés */
-      .nav-right{
-        width:100%;
-        justify-content:center;
-        gap:10px;
-      }
-
       .btn-primary,.btn-phone{
-        padding:6px 8px;
-        font-size:.72rem;
+        padding:7px 11px;
+        font-size:.76rem;
       }
 
-      .hero{padding-top:60px}
-      .hero h1{font-size:1.6rem}
+      .hero{padding-top:68px}
+      .hero h1{font-size:1.9rem}
+      .hero-meta{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -349,29 +804,55 @@
 <header>
   <div class="container nav">
     <div class="logo-area">
-      <img src="logo-depannage.png" class="logo-icon" alt="Logo Rapid Depannage Auto">
-      <a href="#top" class="logo">RAPID DEPANNAGE AUTO</a>
+      <img src="logo-depannage.png" class="logo-icon" alt="Logo Rapid Dépannage Auto">
+      <a href="#top" class="logo">RAPID DÉPANNAGE AUTO</a>
     </div>
 
-    <nav class="nav-center" aria-label="Navigation principale">
+    <button class="menu-toggle" id="menu-toggle" aria-label="Ouvrir le menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav-center desktop-nav" aria-label="Navigation principale">
       <a class="nav-link" href="index.html">Pare-brise</a>
       <a class="nav-link active" href="depannage.html">Dépannage</a>
+      <a class="nav-link" href="#services">Services</a>
+      <a class="nav-link" href="#contact">Urgence</a>
     </nav>
 
-    <div class="nav-right">
+    <div class="nav-right desktop-actions">
       <a href="tel:0644661878" class="btn-phone">📞 Appeler</a>
+      <a href="#contact" class="btn-primary">🚨 Intervention</a>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="container mobile-menu-inner">
+      <a class="mobile-link" href="index.html">Pare-brise</a>
+      <a class="mobile-link" href="depannage.html">Dépannage</a>
+      <a class="mobile-link" href="#services">Services</a>
+      <a class="mobile-link" href="#process">Comment ça marche</a>
+      <a class="mobile-link" href="#contact">Urgence</a>
+
+      <div class="mobile-menu-actions">
+        <a href="tel:0644661878" class="btn-phone">📞 Appeler</a>
+        <a href="#contact" class="btn-primary">🚨 Intervention</a>
+      </div>
     </div>
   </div>
 </header>
 
 <main id="top">
 
-  <!-- HERO -->
   <section class="hero fade-in">
     <div class="container hero-grid">
 
       <div>
-        <div class="pill-urgent"><span class="dot"></span> Intervention rapide</div>
+        <div class="hero-offer">
+          <span>URGENCE</span>
+          Assistance rapide
+        </div>
 
         <div class="hero-tag">
           <span></span>
@@ -381,12 +862,8 @@
         <h1>Rapid Dépannage Auto — Assistance & dépannage 24h/24 – 7j/7</h1>
 
         <p>Nous intervenons rapidement pour vous assister en cas de panne ou d’incident : voiture, moto ou poids lourd.</p>
-        <p style="opacity:0.92;">
-          Services fréquents : changement de pneu, booster batterie, assistance sur place ou remorquage selon situation.
-        </p>
-        <p style="opacity:0.92;">
-          <strong>Urgence uniquement :</strong> pas de prise de rendez-vous classique. Appelez et décrivez votre panne + localisation.
-        </p>
+        <p class="hero-highlight">Changement de pneu • Booster batterie • Assistance sur place • Remorquage selon situation</p>
+        <p><strong>Urgence uniquement :</strong> appelez et indiquez votre localisation ainsi que le type de panne.</p>
 
         <div class="hero-actions">
           <a href="tel:0644661878" class="btn-primary">📞 Appeler maintenant</a>
@@ -395,32 +872,86 @@
       </div>
 
       <aside class="hero-card fade-in-right">
-        <h2>Zone d’intervention</h2>
+        <h2>Prise en charge rapide</h2>
         <p><strong>Départ : Versailles</strong></p>
-        <p>Intervention selon disponibilité et distance. Appelez pour confirmer la prise en charge et le délai.</p>
+        <p>Intervention selon disponibilité, distance et nature de la panne. Appelez pour confirmer le délai.</p>
         <p style="font-size:0.78rem; opacity:0.85; margin-top:6px;">
           En cas de danger immédiat sur la route, mettez-vous en sécurité et appelez les services d’urgence.
         </p>
+
+        <div class="hero-meta">
+          <div class="meta-box">
+            <strong>Disponibilité</strong>
+            <span>24h/24 • 7j/7</span>
+          </div>
+          <div class="meta-box">
+            <strong>Véhicules</strong>
+            <span>Auto • Moto • PL</span>
+          </div>
+          <div class="meta-box">
+            <strong>Départ</strong>
+            <span>Versailles</span>
+          </div>
+          <div class="meta-box">
+            <strong>Contact</strong>
+            <span>06 44 66 18 78</span>
+          </div>
+        </div>
       </aside>
 
     </div>
   </section>
 
-  <!-- SERVICES -->
+  <div class="quick-links-wrap">
+    <div class="container">
+      <div class="quick-links fade-in">
+        <a href="#services" class="quick-link">🔧 Nos services</a>
+        <a href="#process" class="quick-link">📋 Comment ça marche</a>
+        <a href="#contact" class="quick-link">🚨 Besoin d’aide</a>
+        <a href="tel:0644661878" class="quick-link">📞 Appel immédiat</a>
+        <a href="index.html" class="quick-link">🪟 Page pare-brise</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="trust-strip">
+    <div class="container">
+      <div class="trust-grid fade-in">
+        <div class="trust-item">
+          <strong>24h/24 • 7j/7</strong>
+          <span>Assistance d’urgence</span>
+        </div>
+        <div class="trust-item">
+          <strong>Auto • Moto • PL</strong>
+          <span>Interventions adaptées</span>
+        </div>
+        <div class="trust-item">
+          <strong>Intervention rapide</strong>
+          <span>Selon zone et disponibilité</span>
+        </div>
+        <div class="trust-item">
+          <strong>Appel direct</strong>
+          <span>Prise en charge immédiate</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="services">
-    <div class="container fade-in">
+    <div class="container fade-in" style="text-align:center;">
+      <div class="section-kicker"><span class="dot"></span> Dépannage d’urgence</div>
       <h2 class="section-title">Nos services de dépannage</h2>
-      <p class="section-subtitle">Auto • Moto • Poids lourds — Intervention d’urgence</p>
+      <p class="section-subtitle">Assistance auto, moto et poids lourds avec intervention rapide selon la zone, la disponibilité et la sécurité de prise en charge.</p>
 
       <div class="cards">
         <div class="card fade-in">
           <h3>🚗 Dépannage auto</h3>
-          <p>Assistance en cas de panne, véhicule immobilisé, démarrage impossible. Intervention rapide selon la zone.</p>
+          <p>Assistance en cas de panne, véhicule immobilisé ou démarrage impossible, selon la localisation.</p>
         </div>
 
         <div class="card fade-in">
           <h3>🏍️ Dépannage moto</h3>
-          <p>Assistance moto, batterie à plat, transport sécurisé selon la situation et la distance.</p>
+          <p>Assistance moto, batterie à plat, panne ou transport sécurisé selon la situation.</p>
         </div>
 
         <div class="card fade-in">
@@ -430,36 +961,36 @@
 
         <div class="card fade-in">
           <h3>🛞 Changement de pneu</h3>
-          <p>Assistance sur place pour pneu crevé / remplacement, selon disponibilité et sécurité d’intervention.</p>
+          <p>Assistance sur place pour pneu crevé ou remplacement, selon sécurité et faisabilité.</p>
         </div>
 
         <div class="card fade-in">
           <h3>🔋 Booster batterie</h3>
-          <p>Démarrage / booster batterie en cas de batterie à plat.</p>
+          <p>Démarrage ou relance batterie en cas de batterie à plat.</p>
         </div>
 
         <div class="card fade-in">
           <h3>🧰 Assistance & remorquage</h3>
-          <p>Diagnostic rapide et orientation : assistance sur place ou remorquage selon l’état du véhicule.</p>
+          <p>Diagnostic rapide et orientation vers une assistance sur place ou remorquage selon le cas.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROCESS -->
   <section id="process">
-    <div class="container fade-in">
+    <div class="container fade-in" style="text-align:center;">
+      <div class="section-kicker"><span class="dot"></span> Process simple</div>
       <h2 class="section-title">Comment ça marche ?</h2>
-      <p class="section-subtitle">Un process simple pour une prise en charge rapide</p>
+      <p class="section-subtitle">Un process rapide pour gagner du temps et organiser l’intervention le plus vite possible.</p>
 
       <div class="steps">
         <div class="step fade-in">
           <strong>1. Vous appelez</strong><br>
-          Donnez votre localisation, le type de véhicule et la panne.
+          Donnez votre localisation, le type de véhicule et la nature de la panne.
         </div>
         <div class="step fade-in">
-          <strong>2. Confirmation & délai</strong><br>
-          Nous confirmons la prise en charge selon la zone et la disponibilité.
+          <strong>2. Confirmation</strong><br>
+          Nous confirmons la prise en charge selon la zone, la distance et la disponibilité.
         </div>
         <div class="step fade-in">
           <strong>3. Intervention</strong><br>
@@ -467,37 +998,65 @@
         </div>
         <div class="step fade-in">
           <strong>4. Sécurisation</strong><br>
-          Intervention dans le respect de la sécurité routière.
+          Intervention réalisée dans le respect de la sécurité routière.
         </div>
       </div>
     </div>
   </section>
 
-  <!-- MODULES BAS (COMPLETS) -->
   <section id="contact">
     <div class="container info-grid fade-in">
 
-      <div class="cta-urgent">
-        <h2 style="font-size:1.2rem;">🚨 Besoin d’un dépannage en urgence ?</h2>
+      <div class="urgent-box">
+        <h2>🚨 Besoin d’un dépannage en urgence ?</h2>
         <p>
-          Appelez-nous et décrivez la situation (type de véhicule, panne, localisation).
+          Appelez-nous immédiatement et décrivez la situation : type de véhicule, panne et localisation.
           Nous vous confirmons la prise en charge et le délai d’intervention.
         </p>
-        <div style="display:flex; flex-wrap:wrap; gap:10px;">
+
+        <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:14px;">
           <a href="tel:0644661878" class="btn-primary">📞 Appel immédiat</a>
           <a href="#top" class="btn-outline">⬆️ Revenir en haut</a>
         </div>
-        <p style="font-size:0.82rem;opacity:0.85;margin-top:6px;">
-          Conseil : en cas de danger, mettez-vous en sécurité avant d’appeler.
-        </p>
+
+        <div class="urgent-list">
+          <div class="urgent-item">
+            <strong>📍 Localisation précise</strong>
+            <span>Ville, rue, point de repère si possible.</span>
+          </div>
+          <div class="urgent-item">
+            <strong>🚗 Type de véhicule</strong>
+            <span>Voiture, moto ou poids lourd.</span>
+          </div>
+          <div class="urgent-item">
+            <strong>⚠️ Nature de la panne</strong>
+            <span>Pneu, batterie, panne moteur, remorquage, etc.</span>
+          </div>
+        </div>
       </div>
 
       <div class="contact-box fade-in-right">
-        <p><strong>Contact rapide :</strong></p>
-        <p>📞 <a href="tel:0644661878">06 44 66 18 78</a></p>
-        <p>Email : <a href="mailto:rapidautoplus@gmail.com">rapidautoplus@gmail.com</a></p>
-        <p style="margin-top:10px; font-size:0.85rem; color:#6b7280;">
-          Indiquez votre localisation précise (ville, rue si possible) + le type de panne pour un traitement plus rapide.
+        <h2 class="section-title" style="text-align:left; margin-bottom:12px;">Contact rapide</h2>
+        <p>📞 <strong><a href="tel:0644661878">06 44 66 18 78</a></strong></p>
+        <p>✉️ <a href="mailto:rapidautoplus@gmail.com">rapidautoplus@gmail.com</a></p>
+
+        <div class="contact-mini">
+          <div class="mini-card">
+            <strong>Disponibilité</strong>
+            <span>24h/24 • 7j/7</span>
+          </div>
+          <div class="mini-card">
+            <strong>Départ</strong>
+            <span>Versailles</span>
+          </div>
+          <div class="mini-card">
+            <strong>Conseil</strong>
+            <span>En cas de danger, mettez-vous d’abord en sécurité avant d’appeler.</span>
+          </div>
+        </div>
+
+        <p style="margin-top:14px; font-size:0.85rem; color:#6b7280;">
+          Indiquez votre localisation précise et le type de panne pour un traitement plus rapide.
         </p>
       </div>
 
@@ -507,26 +1066,78 @@
 </main>
 
 <footer>
-  © Rapid Dépannage Auto — Assistance 24h/24 • 7j/7 — Versailles
+  <div class="container footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="logo-depannage.png" alt="Logo Rapid Dépannage Auto">
+          <div>
+            <div class="footer-title">Rapid Dépannage Auto</div>
+            <p style="color:#cbd5e1; max-width:420px;">
+              Assistance et dépannage d’urgence 24h/24 • 7j/7 au départ de Versailles pour auto, moto et poids lourds.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Liens rapides</h4>
+        <div class="footer-links">
+          <a href="#top">Accueil</a>
+          <a href="#services">Nos services</a>
+          <a href="#process">Comment ça marche</a>
+          <a href="#contact">Urgence dépannage</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Liens annexes</h4>
+        <div class="footer-links">
+          <a href="index.html">Page pare-brise</a>
+          <a href="tel:0644661878">Nous appeler</a>
+          <a href="mailto:rapidautoplus@gmail.com">Nous écrire</a>
+          <a href="#top">Revenir en haut</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © Rapid Dépannage Auto — Assistance 24h/24 • 7j/7 — Versailles
+  </div>
 </footer>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    // Animations
     document.querySelectorAll(".fade-in, .fade-in-right").forEach(el => {
       const obs = new IntersectionObserver(entries => {
         if (entries[0].isIntersecting) {
           el.classList.add("visible");
           obs.disconnect();
         }
-      }, { threshold: 0.2 });
+      }, { threshold: 0.15 });
+
       obs.observe(el);
     });
 
-    // Tracking appel
-    document.querySelectorAll('a[href^="tel"]').forEach(el=>{
-      el.addEventListener("click",()=>{
-        if(typeof gtag==="function"){
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuToggle.addEventListener("click", () => {
+      menuToggle.classList.toggle("active");
+      mobileMenu.classList.toggle("open");
+    });
+
+    document.querySelectorAll(".mobile-link").forEach(link => {
+      link.addEventListener("click", () => {
+        menuToggle.classList.remove("active");
+        mobileMenu.classList.remove("open");
+      });
+    });
+
+    document.querySelectorAll('a[href^="tel"]').forEach(el => {
+      el.addEventListener("click", () => {
+        if(typeof gtag === "function"){
           gtag('event','conversion',{
             'send_to':'AW-17799257107/CqpwCMvjp9AbEJO4rKdC',
             'value':1.0,
